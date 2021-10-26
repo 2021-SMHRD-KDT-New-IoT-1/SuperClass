@@ -26,9 +26,9 @@ public class LoginCheck extends HttpServlet {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
-			String dbid = "hr";
-			String dbpw = "hr";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+			String dbid = "campus_a_3_1025";
+			String dbpw = "smhrd3";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 			
 			String sql = "Select * from JDBC_MEMBER where id = ? and pw = ?";
