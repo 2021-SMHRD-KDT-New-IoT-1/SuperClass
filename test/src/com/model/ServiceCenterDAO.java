@@ -6,13 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class MemberDAO {
+public class ServiceCenterDAO {
 	
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	MemberVO vo = null;
-	ArrayList<MemberVO> al = null;
+	ServiceCenterVO vo = null;
+	ArrayList<ServiceCenterVO> al = null;
 	int cnt = 0;
 	boolean check = false;
 	
@@ -49,17 +49,5 @@ public class MemberDAO {
 			e2.printStackTrace();
 			
 		}
-	}
-	
-	
-	
-	
-	
-	public void login() {
-		
-	}
-	
-	public void getWeather() {
-		
 	}
 }

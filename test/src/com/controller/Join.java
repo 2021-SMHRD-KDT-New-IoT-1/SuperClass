@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Join extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//JDBC
-		//1. ojdbc6.jar 가져오기(WEB-INF -> lib)
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		String m_name = request.getParameter("m_name");
@@ -24,7 +22,7 @@ public class Join extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		try {
-			//2. OracleDriver.class 동적로딩
+			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
 			//3. Oracle로 가서 DBID, DBPW를 인증

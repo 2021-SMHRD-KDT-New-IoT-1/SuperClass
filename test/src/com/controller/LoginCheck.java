@@ -38,7 +38,7 @@ public class LoginCheck extends HttpServlet {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				HttpSession session;
+				
 				response.sendRedirect("ex02LoginS.jsp");
 			}else {
 				response.sendRedirect("ex02LoginF.jsp");

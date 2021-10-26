@@ -22,7 +22,7 @@ public class SetLocation extends HttpServlet {
 		HttpSession session = request.getSession();
 		String p_location = request.getParameter("admCd");
 		String detail_location = request.getParameter("addrDetail");
-		String m_id = (String)session.getAttribute("m_id");
+		String p_id = (String)session.getAttribute("p_id");
 		
 		
 		PreparedStatement psmt	= null;
@@ -38,10 +38,9 @@ public class SetLocation extends HttpServlet {
 			
 			psmt = conn.prepareStatement(sql);
 			
-			
 			psmt.setString(1, p_location);
 			psmt.setString(2, detail_location);
-			psmt.setNString(3, m_id);
+			psmt.setNString(3, p_id);
 			
 			int cnt = psmt.executeUpdate();
 			

@@ -11,12 +11,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.model.ProductDAO;
 
 @WebServlet("/GetWeather")
 public class GetWeather extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
+		
+		String p_id = request.getParameter("p_id");
 		
 		Connection conn = null;
 		PreparedStatement psmt	= null;
@@ -29,14 +34,16 @@ public class GetWeather extends HttpServlet {
 			String dbpw = "smhrd3";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 			
-			String sql = "Select location_id from anzi_MEMBER where id = 2 ";
+			String sql = "Select p_location from phistory where p_id = ? ";
 			psmt	= conn.prepareStatement(sql);
-			
+			psmt.setString(1, p_id);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				String location_id = rs.getString(1);
-				response.sendRedirect("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone="+location_id);
+				String p_location = rs.getString(1);
+				String weather_url = "https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + p_location;
+				ProductDAO dao = new ProductDAO();
+				String weather = dao.getWeather(weather_url);
 			}else {
 				System.out.println("½ÇÆÐ");
 			}

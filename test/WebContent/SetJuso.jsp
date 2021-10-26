@@ -58,7 +58,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <body>
 <form action="SetLocation" name="form" id="form" method="post">
 
-	<input type="button" onClick="goPopup();" value="팝업_domainChk"/>
+	<input type="button" onClick="goPopup();" value="주소찾기"/>
 	<div id="list"></div>
 	<div id="callBackDiv">
 		<table>
