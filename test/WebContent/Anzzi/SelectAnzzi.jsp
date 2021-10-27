@@ -60,7 +60,7 @@
                                     <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">Select Anzzi</a>
                                 </li>                            
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="../Logout">·Î±×¾Æ¿ô</a>
+                                    <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"´Ô\t" %>·Î±×¾Æ¿ô</a>
                                 </li>
                             </ul>                            
                         </div>                        

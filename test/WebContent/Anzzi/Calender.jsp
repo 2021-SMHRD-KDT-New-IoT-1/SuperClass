@@ -67,10 +67,14 @@
                                     
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
-                                </li>                      
-                                <li class="nav-item">
-                                
-                                    <a class="nav-link tm-nav-link" href="Login.html" style="font-size: 20.8px;">로그인/회원가입</a>
+                                </li>                     
+                                 <li class="nav-item">
+                                <%if(vo == null){ %>
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <%}else{ %>
+                                    <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"님\t" %>로그아웃</a>
+                                    <%} %>
+                                </li>
                                 </li>
                             </ul>                            
                         </div>                        

@@ -60,7 +60,7 @@
                                 <%if(vo == null){ %>
                                     <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
                                     <%}else{ %>
-                                    <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"\t" %>로그아웃</a>
+                                    <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"님\t" %>로그아웃</a>
                                     <%} %>
                                 </li>
                             </ul>                            
