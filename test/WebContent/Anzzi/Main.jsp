@@ -1,26 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+ <meta charset="EUC-KR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diagoona - Services Page</title>
+    <title>AnZzi</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
-<!--
-
-TemplateMo 550 Diagoona
-
-https://templatemo.com/tm-550-diagoona
-
--->
 </head>
-
 <body>
-    <div class="tm-container">        
+	<div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
                 <div class="tm-col-left">
@@ -28,8 +21,8 @@ https://templatemo.com/tm-550-diagoona
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <h1 class="tm-sitename text-uppercase"><a href="main.html"><i>An zzi</i></a></h1>
-                                <p class="tm-slogon">smartÎ¨¥ÎìúÎì±</p>
+                                <h1 class="tm-sitename text-uppercase"><a href="Main.html"><i>An zzi</i></a></h1>
+                                <p class="tm-slogon">smartπ´µÂµÓ</p>
                             </div>        
                         </div>        
                     </div>
@@ -44,16 +37,16 @@ https://templatemo.com/tm-550-diagoona
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="time.html" style="color: azure;">ÏãúÍ∞ÑÏÑ§Ï†ï <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="time.html" style="color: azure;">Ω√∞£º≥¡§ <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="calender.html">Ïä§ÏºÄÏ§ÑÏÑ§Ï†ï</a>
+                                    <a class="nav-link tm-nav-link" href="calender.html">Ω∫ƒ…¡Ÿº≥¡§</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="sleep.html">ÏàòÎ©¥Ìå®ÌÑ¥</a>
+                                    <a class="nav-link tm-nav-link" href="sleep.html">ºˆ∏È∆–≈œ</a>
                                 </li>                            
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="join.html">Î°úÍ∑∏Ïù∏/ÌöåÏõêÍ∞ÄÏûÖ</a>
+                                    <a class="nav-link tm-nav-link" href="join.html">∑Œ±◊¿Œ/»∏ø¯∞°¿‘</a>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -85,7 +78,7 @@ https://templatemo.com/tm-550-diagoona
                 <footer class="tm-site-footer text-right">
                     <p class="mb-0">Copyright 2021 SuperClass Co. 
                     
-                    | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">Í∑ÄÏó¨Ïö¥ÏÜ°ÎØ∏</a></p>
+                    | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">±Õø©øÓº€πÃ</a></p>
                 </footer>
             </div>  
         </div>        
@@ -102,5 +95,4 @@ https://templatemo.com/tm-550-diagoona
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
 </body>
-
 </html>
