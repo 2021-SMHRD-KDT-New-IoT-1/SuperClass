@@ -1,34 +1,33 @@
+<%@page import="com.model.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>anzzi</title>
+    <title>Diagoona - Services Page</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
-    <link href="css/templatemo-diagoona.css" rel="stylesheet" />
-<!--
-
-TemplateMo 550 Diagoona
-
-https://templatemo.com/tm-550-diagoona
-
--->
-</head>
-
+    <link href="css/templatemo-diagoona.css" rel="stylesheet" /></head>
 <body>
-    <div class="tm-container">        
+<%
+	MemberVO vo = (MemberVO)session.getAttribute("member");
+	
+	%>
+  <div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
                 <div class="tm-col-left">
                     <div class="tm-site-header media">
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
-                            <h1 class="tm-sitename text-uppercase"><a href="Main.jsp"><i>An zzi</i></a></h1>
-                            <p class="tm-slogon">smart무드등</p>
+                            <div class="media-body">
+                                <h1 class="tm-sitename text-uppercase"><a href="Main.jsp"><i>An zzi</i></a></h1>
+                                <p class="tm-slogon">smart�����</p>
+                            </div>        
                         </div>        
                     </div>
                 </div>
@@ -42,56 +41,54 @@ https://templatemo.com/tm-550-diagoona
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="time.html">시간설정 <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="time.html" style="color: azure;"> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="calender.html">스케줄설정</a>
+                                    <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">�Խ��� </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="sleep.html">수면패턴</a>
+                                    <a class="nav-link tm-nav-link" href="SetMember.jsp">ȸ����������</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">Select Anzzi</a>
                                 </li>                            
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <a class="nav-link tm-nav-link" href="../Logout">�α׾ƿ�</a>
                                 </li>
                             </ul>                            
                         </div>                        
                     </nav>
                 </div>
             </div>
+               
+            
             
             <div class="tm-row">
                 <div class="tm-col-left"></div>
-                <main class="tm-col-right">
-                    <section class="tm-content">
-                        <h3><i>wake time</i></h3>
+                <main class="tm-col-right tm-contact-main"> <!-- Content -->
+                    <section class="tm-content tm-contact">
+                        <h2 class="mb-4 tm-content-title"></h2>
+                        <p class="mb-85"></p>
+                        <form id="contact-form" action="" method="POST">
+                            <div class="form-group mb-4">
+                                <input type="text" name="name" class="form-control" placeholder="name" required="" />
+                            </div>
+                                <div class="form-group mb-4">
+                                    <input type="id" name="id" class="form-control" placeholder="ID" required="" />
+                                </div>  
+                                <div class="form-group mb-4">
+                                    <input type="password" name="password" class="form-control" placeholder="password" required="" />
+                                </div>
+                                    <div class="text">
+                                      
+                                        <br>
+                                <button type="submit" class="btn btn-big btn-primary">�����ϱ�</button>
+                        </form>
                         <br>
-                        <input type="time" min="0" max="24" value="hour" placeholder="시간" name="wake_time">
-                        <button type="submit" class="btn btn-primary">설정</button>
                         <br>
-                        <br>
-                        <button type="submit" class="btn1 btn-primary">월</button>
-                        <button type="submit" class="btn1 btn-primary">화</button>
-                        <button type="submit" class="btn1 btn-primary">수</button>
-                        <button type="submit" class="btn1 btn-primary">목</button>
-                        <button type="submit" class="btn1 btn-primary">금</button>
-                        <button type="submit" class="btn1 btn-primary">토</button>
-                        <button type="submit" class="btn1 btn-primary">일</button>
-                        <br>
-                        <br>
-                        <br>
-                        <h3><i>fade in</i></h3>
-                        <br>
-                        <button type="submit" class="btn btn-primary">10분</button>
-                        <button type="submit" class="btn btn-primary">20분</button>
-                        <button type="submit" class="btn btn-primary">30분</button>
+             </div>
+           
                         
-                        <hr class="mb-5">
-                                            
-                       <td>소리알림 필요하냐 &nbsp;<input type="checkbox"></section></td><br>
-                       <td>날씨소리 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>스케줄알림 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>수면패턴 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
-                        <a href="#" class="btn btn-primary">Continue...</a>
                     </section>
                 </main>
             </div>
@@ -109,10 +106,10 @@ https://templatemo.com/tm-550-diagoona
                 <footer class="tm-site-footer text-right">
                     <p class="mb-0">Copyright 2021 SuperClass Co. 
                     
-                        | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">귀여운송미</a></p>
+                    | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">�Ϳ���۹�</a></p>
                 </footer>
             </div>  
-        </div>
+        </div>        
 
         <!-- Diagonal background design -->
         <div class="tm-bg">

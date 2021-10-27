@@ -43,13 +43,18 @@
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="time.html" style="color: azure;">시간설정 <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="" style="color: azure;"> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="calender.html">스케줄설정</a>
-                                </li>
+                               <%if(vo != null){ %>
+                                    <a class="nav-link tm-nav-link" href="sleep.html">게시판 </a>
+                                    <%} %>
+                                </li>  
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="sleep.html">수면패턴</a>
+                                <%if(vo != null){ %>
+                                    <a class="nav-link tm-nav-link" href="MyPage.jsp">마이페이지</a>
+                                    <%} %>
+                               
                                 </li>                            
                                 <li class="nav-item">
                                 <%if(vo == null){ %>

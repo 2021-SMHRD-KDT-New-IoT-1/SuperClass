@@ -1,8 +1,10 @@
+<%@page import="com.model.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Diagoona - About Page</title>
@@ -10,36 +12,28 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
-    <meta name="Generator" content="EditPlusÂ®">
+    <meta name="Generator" content="EditPlus¢ç">
     <meta name="Author" content="">
     <meta name="Keywords" content="">
     <meta name="Description" content="">
     <title>Document</title>
-     <!-- í™”ë©´ í•´ìƒë„ì— ë”°ë¼ ê¸€ì í¬ê¸° ëŒ€ì‘(ëª¨ë°”ì¼ ëŒ€ì‘) -->
+     <!-- È­¸é ÇØ»óµµ¿¡ µû¶ó ±ÛÀÚ Å©±â ´ëÀÀ(¸ğ¹ÙÀÏ ´ëÀÀ) -->
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <!-- jquery CDN -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- fullcalendar CDN -->
   <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.css' rel='stylesheet' />
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
-  <!-- fullcalendar ì–¸ì–´ CDN -->
+  <!-- fullcalendar ¾ğ¾î CDN -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
-
 </head>
-
-
-
-<!--
-
-TemplateMo 550 Diagoona
-
-https://templatemo.com/tm-550-diagoona
-
--->
-</head>
-
 <body>
-    <div class="tm-container">        
+<%
+	MemberVO vo = (MemberVO)session.getAttribute("member");
+	
+	%>
+
+<div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
                 <div class="tm-col-left">
@@ -48,7 +42,7 @@ https://templatemo.com/tm-550-diagoona
                         <div class="media-body">
                             <div class="media-body">
                                 <h1 class="tm-sitename text-uppercase" style="font-size: 40px;"><a href="Main.jsp" style="color:#5F9EA0;"><i>An zzi</i></a></h1>
-                                <p class="tm-slogon" style="font-size: 17px;">smartë¬´ë“œë“±</p>
+                                <p class="tm-slogon" style="font-size: 17px;">smart¹«µåµî</p>
                             </div>        
                         </div>        
                     </div>
@@ -65,16 +59,18 @@ https://templatemo.com/tm-550-diagoona
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="time.html" style="font-size: 20.8px;">ì‹œê°„ì„¤ì •</a>
+                                    <a class="nav-link tm-nav-link" href="Time.jsp" style="font-size: 20.8px;">½Ã°£¼³Á¤</a>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="calender.html" style="font-size: 20.8px;">ìŠ¤ì¼€ì¤„ì„¤ì • <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="Calender.jsp" style="font-size: 20.8px;">½ºÄÉÁÙ¼³Á¤ <span class="sr-only">(current)</span></a>
                                 </li>
+                                    
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="sleep.html" style="font-size: 20.8px;">ìˆ˜ë©´íŒ¨í„´</a>
-                                </li>                            
+                                    <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">°Ô½ÃÆÇ </a>
+                                </li>                      
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="Login.html" style="font-size: 20.8px;">ë¡œê·¸ì¸/íšŒì›ê°€ì…</a>
+                                
+                                    <a class="nav-link tm-nav-link" href="Login.html" style="font-size: 20.8px;">·Î±×ÀÎ/È¸¿ø°¡ÀÔ</a>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -90,7 +86,7 @@ https://templatemo.com/tm-550-diagoona
                         <hr class="mb-4">
                         
                       
-  <!-- calendar íƒœê·¸ -->
+  <!-- calendar ÅÂ±× -->
   <div id='calendar-container'>
     <div id='calendar'></div>
   </div>
@@ -98,38 +94,38 @@ https://templatemo.com/tm-550-diagoona
   <script>
   (function(){
     $(function(){
-      // calendar element ì·¨ë“
+      // calendar element Ãëµæ
       var calendarEl = $('#calendar')[0];
-      // full-calendar ìƒì„±í•˜ê¸°
+      // full-calendar »ı¼ºÇÏ±â
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        height: '650px', // calendar ë†’ì´ ì„¤ì •
-        expandRows: true, // í™”ë©´ì— ë§ê²Œ ë†’ì´ ì¬ì„¤ì •
-        slotMinTime: '08:00', // Day ìº˜ë¦°ë”ì—ì„œ ì‹œì‘ ì‹œê°„
-        slotMaxTime: '20:00', // Day ìº˜ë¦°ë”ì—ì„œ ì¢…ë£Œ ì‹œê°„
-        // í•´ë”ì— í‘œì‹œí•  íˆ´ë°”
+        height: '650px', // calendar ³ôÀÌ ¼³Á¤
+        expandRows: true, // È­¸é¿¡ ¸Â°Ô ³ôÀÌ Àç¼³Á¤
+        slotMinTime: '08:00', // Day Ä¶¸°´õ¿¡¼­ ½ÃÀÛ ½Ã°£
+        slotMaxTime: '20:00', // Day Ä¶¸°´õ¿¡¼­ Á¾·á ½Ã°£
+        // ÇØ´õ¿¡ Ç¥½ÃÇÒ Åø¹Ù
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
-        initialView: 'dayGridMonth', // ì´ˆê¸° ë¡œë“œ ë ë•Œ ë³´ì´ëŠ” ìº˜ë¦°ë” í™”ë©´(ê¸°ë³¸ ì„¤ì •: ë‹¬)
-        initialDate: null, // ì´ˆê¸° ë‚ ì§œ ì„¤ì • (ì„¤ì •í•˜ì§€ ì•Šìœ¼ë©´ ì˜¤ëŠ˜ ë‚ ì§œê°€ ë³´ì¸ë‹¤.)
-        navLinks: true, // ë‚ ì§œë¥¼ ì„ íƒí•˜ë©´ Day ìº˜ë¦°ë”ë‚˜ Week ìº˜ë¦°ë”ë¡œ ë§í¬
-        editable: true, // ìˆ˜ì • ê°€ëŠ¥?
-        selectable: true, // ë‹¬ë ¥ ì¼ì ë“œë˜ê·¸ ì„¤ì •ê°€ëŠ¥
-        nowIndicator: true, // í˜„ì¬ ì‹œê°„ ë§ˆí¬
-        dayMaxEvents: true, // ì´ë²¤íŠ¸ê°€ ì˜¤ë²„ë˜ë©´ ë†’ì´ ì œí•œ (+ ëª‡ ê°œì‹ìœ¼ë¡œ í‘œí˜„)
-        locale: 'ko', // í•œêµ­ì–´ ì„¤ì •
-        eventAdd: function(obj) { // ì´ë²¤íŠ¸ê°€ ì¶”ê°€ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+        initialView: 'dayGridMonth', // ÃÊ±â ·Îµå µÉ¶§ º¸ÀÌ´Â Ä¶¸°´õ È­¸é(±âº» ¼³Á¤: ´Ş)
+        initialDate: null, // ÃÊ±â ³¯Â¥ ¼³Á¤ (¼³Á¤ÇÏÁö ¾ÊÀ¸¸é ¿À´Ã ³¯Â¥°¡ º¸ÀÎ´Ù.)
+        navLinks: true, // ³¯Â¥¸¦ ¼±ÅÃÇÏ¸é Day Ä¶¸°´õ³ª Week Ä¶¸°´õ·Î ¸µÅ©
+        editable: true, // ¼öÁ¤ °¡´É?
+        selectable: true, // ´Ş·Â ÀÏÀÚ µå·¡±× ¼³Á¤°¡´É
+        nowIndicator: true, // ÇöÀç ½Ã°£ ¸¶Å©
+        dayMaxEvents: true, // ÀÌº¥Æ®°¡ ¿À¹öµÇ¸é ³ôÀÌ Á¦ÇÑ (+ ¸î °³½ÄÀ¸·Î Ç¥Çö)
+        locale: 'ko', // ÇÑ±¹¾î ¼³Á¤
+        eventAdd: function(obj) { // ÀÌº¥Æ®°¡ Ãß°¡µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
           console.log(obj);
         },
-        eventChange: function(obj) { // ì´ë²¤íŠ¸ê°€ ìˆ˜ì •ë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+        eventChange: function(obj) { // ÀÌº¥Æ®°¡ ¼öÁ¤µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
           console.log(obj);
         },
-        eventRemove: function(obj){ // ì´ë²¤íŠ¸ê°€ ì‚­ì œë˜ë©´ ë°œìƒí•˜ëŠ” ì´ë²¤íŠ¸
+        eventRemove: function(obj){ // ÀÌº¥Æ®°¡ »èÁ¦µÇ¸é ¹ß»ıÇÏ´Â ÀÌº¥Æ®
           console.log(obj);
         },
-        select: function(arg) { // ìº˜ë¦°ë”ì—ì„œ ë“œë˜ê·¸ë¡œ ì´ë²¤íŠ¸ë¥¼ ìƒì„±í•  ìˆ˜ ìˆë‹¤.
+        select: function(arg) { // Ä¶¸°´õ¿¡¼­ µå·¡±×·Î ÀÌº¥Æ®¸¦ »ı¼ºÇÒ ¼ö ÀÖ´Ù.
           var title = prompt('Event Title:');
           if (title) {
             calendar.addEvent({
@@ -143,7 +139,7 @@ https://templatemo.com/tm-550-diagoona
         }
         
       });
-      // ìº˜ë¦°ë” ëœë”ë§
+      // Ä¶¸°´õ ·£´õ¸µ
       calendar.render();
     });
   })();
@@ -167,7 +163,7 @@ https://templatemo.com/tm-550-diagoona
                 <footer class="tm-site-footer text-right">
                     <p class="mb-0">Copyright 2021 SuperClass Co. 
                     
-                        | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">ê·€ì—¬ìš´ì†¡ë¯¸</a></p>
+                        | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">±Í¿©¿î¼Û¹Ì</a></p>
                 </footer>
             </div>   
         </div>        

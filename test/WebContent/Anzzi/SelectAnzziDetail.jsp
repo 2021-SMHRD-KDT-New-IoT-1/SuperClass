@@ -1,17 +1,25 @@
+<%@page import="com.model.MemberVO"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="euc-kr">
+ <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diagoona Template - Contact page</title>
+    <title>Diagoona - Services Page</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
+
 </head>
 <body>
- <div class="tm-container">
+<%
+	MemberVO vo = (MemberVO)session.getAttribute("member");
+	
+	%>
+<div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
                 <div class="tm-col-left">
@@ -35,18 +43,17 @@
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="time.html"></a>
+                                    <a class="nav-link tm-nav-link" href="Time.jsp">시간설정</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="calender.html"></a>
+                                    <a class="nav-link tm-nav-link" href="Calender.jsp">스케줄설정</a>
                                 </li>
+                                                      
                                 <li class="nav-item">
-                                
-                                    <a class="nav-link tm-nav-link" href="sleep.html"></a>
-                                </li>                            
-                                
-                                <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입 <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
+                                </li>                          
+                                <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -56,30 +63,16 @@
             
             <div class="tm-row">
                 <div class="tm-col-left"></div>
-                <main class="tm-col-right tm-contact-main"> <!-- Content -->
-                    <section class="tm-content tm-contact">
-                        <h2 class="mb-4 tm-content-title">JOIN US</h2>
-                        <p class="mb-85"></p>
-                        <form id="contact-form" action="../Join" method="POST">
-                            <div class="form-group mb-4">
-                                <input type="text"  class="form-control" placeholder="name" required="" name="m_name">
-                            </div>
-                                <div class="form-group mb-4">
-                                    <input type="id"  class="form-control" placeholder="ID" required="" name="m_id">
-                                   
-                                </div>  
-                                <div class="form-group mb-4">
-                                    <input type="password"  class="form-control" placeholder="password" required="" name="m_pw">
-                                </div>
-                                    <div class="text">
-                                      
-                                        <br>
-                                <button type="submit" class="btn btn-big btn-primary">JOIN US</button>
-                        </form>
-                        
-             </div>
-            		 <button >아이디중복체크</button>
-                        
+                <main class="tm-col-right">
+                    <section class="tm-content">
+                        <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
+                            <img src="img/services-1.jpg" alt="Image" class="tm-service-img">
+                            <div class="media-body tm-service-text">
+                                <h2 class="mb-4 tm-content-title">Best Services for you</h2>
+                                <p>Our template is simple and effective. This is an alternating simple content with a squared size image. Menu hover is #9CC and text #FFF</p>
+                            </div> 
+                        </div>
+                          
                     </section>
                 </main>
             </div>
@@ -100,9 +93,10 @@
                         | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">귀여운송미</a></p>
                 </footer>
             </div>  
-        </div>
+        </div>        
 
-        <div class="tm-bg"> <!-- Diagonal background design -->
+        <!-- Diagonal background design -->
+        <div class="tm-bg">
             <div class="tm-bg-left"></div>
             <div class="tm-bg-right"></div>
         </div>
@@ -113,4 +107,5 @@
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
 </body>
+
 </html>
