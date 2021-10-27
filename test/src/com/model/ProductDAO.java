@@ -62,7 +62,7 @@ public class ProductDAO {
 	public void locate() {
 		
 	}
-	private String getTagValue(String tag, Element eElement) {
+	private static String getTagValue(String tag, Element eElement) {
 	    NodeList nlList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 	    Node nValue = (Node) nlList.item(0);
 	    if(nValue == null) 
@@ -70,7 +70,7 @@ public class ProductDAO {
 	    return nValue.getNodeValue();
 	}
 
-	public String getWeather(String url) {
+	public static String getWeather(String url) {
 		String weather = "";
 		try{
 			

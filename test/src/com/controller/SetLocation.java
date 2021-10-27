@@ -40,7 +40,7 @@ public class SetLocation extends HttpServlet {
 			
 			psmt.setString(1, p_location);
 			psmt.setString(2, detail_location);
-			psmt.setNString(3, p_id);
+			psmt.setString(3, p_id);
 			
 			int cnt = psmt.executeUpdate();
 			

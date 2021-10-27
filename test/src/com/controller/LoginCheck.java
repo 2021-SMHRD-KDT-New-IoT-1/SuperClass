@@ -23,6 +23,8 @@ public class LoginCheck extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement psmt	= null;
 		ResultSet rs = null;
+		HttpSession session = null;
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
@@ -31,17 +33,17 @@ public class LoginCheck extends HttpServlet {
 			String dbpw = "smhrd3";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 			
-			String sql = "Select * from JDBC_MEMBER where id = ? and pw = ?";
+			String sql = "Select * from MEMBERS where m_id = ? and m_pw = ?";
 			psmt	= conn.prepareStatement(sql);
 			psmt.setString(1, m_id);
 			psmt.setString(2, m_pw);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				
-				response.sendRedirect("ex02LoginS.jsp");
+				session.setAttribute("m_id", m_id);
+				response.sendRedirect("Main.jsp");
 			}else {
-				response.sendRedirect("ex02LoginF.jsp");
+				response.sendRedirect("Main.jsp");
 			}
 			
 			
