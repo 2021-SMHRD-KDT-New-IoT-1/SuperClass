@@ -1,3 +1,4 @@
+<%@page import="com.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -13,6 +14,11 @@
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
 </head>
 <body>
+
+	<%
+	MemberVO vo = (MemberVO)session.getAttribute("member");
+	
+	%>
 	<div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
@@ -21,7 +27,7 @@
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <h1 class="tm-sitename text-uppercase"><a href="Main.html"><i>An zzi</i></a></h1>
+                                <h1 class="tm-sitename text-uppercase"><a href="Main.jsp"><i>An zzi</i></a></h1>
                                 <p class="tm-slogon">smart무드등</p>
                             </div>        
                         </div>        
@@ -46,8 +52,11 @@
                                     <a class="nav-link tm-nav-link" href="sleep.html">수면패턴</a>
                                 </li>                            
                                 <li class="nav-item">
-                                <% %>
-                                    <a class="nav-link tm-nav-link" href="join.html">로그인/회원가입</a>
+                                <%if(vo == null){ %>
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <%}else{ %>
+                                    <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"\t" %>로그아웃</a>
+                                    <%} %>
                                 </li>
                             </ul>                            
                         </div>                        

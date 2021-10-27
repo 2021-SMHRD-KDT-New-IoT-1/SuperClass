@@ -50,10 +50,10 @@ public class Join extends HttpServlet {
 			
 			if(cnt > 0) {
 				System.out.println("가입성공");
-				response.sendRedirect("Main.jsp");
+				response.sendRedirect("Anzzi/Main.jsp");
 			}else {
 				System.out.println("가입실패");
-				response.sendRedirect("Main.jsp");
+				response.sendRedirect("Anzzi/Main.jsp");
 				
 			}
 			

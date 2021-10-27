@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.model.MemberVO;
+
 @WebServlet("/LoginCheck")
 public class LoginCheck extends HttpServlet {
 	
@@ -20,10 +22,11 @@ public class LoginCheck extends HttpServlet {
 		request.setCharacterEncoding("euc-kr");
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
+		
 		Connection conn = null;
 		PreparedStatement psmt	= null;
 		ResultSet rs = null;
-		HttpSession session = null;
+		MemberVO vo = null;
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -40,11 +43,21 @@ public class LoginCheck extends HttpServlet {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				session.setAttribute("m_id", m_id);
-				response.sendRedirect("Main.jsp");
+				String get_id = rs.getString(1);
+				String get_pw = rs.getString(2);
+				String get_name = rs.getString(3);
+				
+				vo = new MemberVO(get_id,get_pw,get_name);
+				
+				HttpSession session = request.getSession();
+				
+				session.setAttribute("member", vo);
+				
+				response.sendRedirect("Anzzi/Main.jsp");
 			}else {
-				response.sendRedirect("Main.jsp");
+				response.sendRedirect("Anzzi/Main.jsp");
 			}
+			
 			
 			
 		} catch (Exception e) {
