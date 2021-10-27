@@ -46,6 +46,7 @@
                                     <a class="nav-link tm-nav-link" href="sleep.html">수면패턴</a>
                                 </li>                            
                                 <li class="nav-item">
+                                <% %>
                                     <a class="nav-link tm-nav-link" href="join.html">로그인/회원가입</a>
                                 </li>
                             </ul>                            

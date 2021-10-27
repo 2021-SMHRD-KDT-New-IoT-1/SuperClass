@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/Join")
 public class Join extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("euc-kr");
 		
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
@@ -40,17 +41,20 @@ public class Join extends HttpServlet {
 			//4. SQL문 준비
 			String sql = "insert into members values(?,?,?)";
 			psmt	= conn.prepareStatement(sql);
-			psmt.setString(1, "m_id");
-			psmt.setString(2, "m_pw");
-			psmt.setString(3, "m_name");
+			psmt.setString(1, m_id);
+			psmt.setString(2, m_pw);
+			psmt.setString(3, m_name);
 			
 			//5. SQL문 명령 후 처리
 			int cnt = psmt.executeUpdate();
 			
 			if(cnt > 0) {
 				System.out.println("가입성공");
+				response.sendRedirect("Main.jsp");
 			}else {
 				System.out.println("가입실패");
+				response.sendRedirect("Main.jsp");
+				
 			}
 			
 		} catch (Exception e) {
