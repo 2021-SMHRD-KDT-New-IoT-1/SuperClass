@@ -32,6 +32,19 @@
 	MemberVO vo = (MemberVO)session.getAttribute("member");
 	
 	%>
+	
+	
+	 <%
+          request.setCharacterEncoding("euc-kr");
+          
+          // 세션으로 변동
+          
+          //String op = request.getParameter("data");
+         String op = (String)session.getAttribute("i");
+         System.out.println("문제의 op: " +op);
+          // 이 페이지로 와지기는 한거네요?? 쌤 다시 입력해주세요 안녕이라구요!
+          // 이 페이지로 돌아와지는것만 확인하면 괜찮습니당
+          %>
 
 <div class="tm-container">        
         <div>
@@ -93,15 +106,19 @@
   <!-- calendar 태그 -->
   <div id='calendar-container'>
     <div id='calendar'></div>
+   
   </div>
   
+  
   <script>
+
   (function(){
     $(function(){
       // calendar element 취득
       var calendarEl = $('#calendar')[0];
       // full-calendar 생성하기
       var calendar = new FullCalendar.Calendar(calendarEl, {
+    	  
         height: '650px', // calendar 높이 설정
         expandRows: true, // 화면에 맞게 높이 재설정
         slotMinTime: '08:00', // Day 캘린더에서 시작 시간
@@ -130,26 +147,42 @@
           console.log(obj);
         },
         select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
-          var title = prompt('Event Title:');
-          if (title) {
-            calendar.addEvent({
-              title: title,
-              start: arg.start,
-              end: arg.end,
-              allDay: arg.allDay
-            })
-          }
+        	console.log("1");
+          var title = confirm("스케줄을 입력하시겠습니까?");
+          
+          var url = "popup.jsp";
+          console.log("3");
+          var name = "popup test";
+
+          var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+          windowObj = window.open(url, name, option);
+          windowObj.calendar = calendar;
+          windowObj.arg = arg;
+
+ 
+
+            
+            // --------------
+            
+          
           calendar.unselect()
         }
         
+    
       });
+    
+      
+      /////////////////////////////////여기해봅시다.//////////////////////////////////
+      
+      
+      
       // 캘린더 랜더링
       calendar.render();
     });
   })();
 </script>
                 
-                       
+                      
                     </section>
                 </main>
             </div>
