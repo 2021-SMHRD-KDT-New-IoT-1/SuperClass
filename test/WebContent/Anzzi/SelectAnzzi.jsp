@@ -57,10 +57,12 @@
                                     <a class="nav-link tm-nav-link" href="SetMember.jsp">회원정보수정</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">Select Anzzi</a>
-                                </li>                            
                                 <li class="nav-item">
+                                <%if(vo == null){ %>
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <%}else{ %>
                                     <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"님\t" %>로그아웃</a>
+                                    <%} %>
                                 </li>
                             </ul>                            
                         </div>                        

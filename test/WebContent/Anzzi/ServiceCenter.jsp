@@ -55,8 +55,12 @@
                                  <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="SelectAnzziDetail.jsp">ANZZI Detail</a>
                                 </li>                          
-                                <li class="nav-item">
+                                 <li class="nav-item">
+                                <%if(vo == null){ %>
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <%}else{ %>
                                     <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"님\t" %>로그아웃</a>
+                                    <%} %>
                                 </li>
                             </ul>                            
                         </div>                        
@@ -68,25 +72,26 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
-                        
+                        		<h1 style="text-align:center">게시판</h1>
+                        		<hr class="mb-5">
                                <table border="1">
                                	<tr>
-                               		<td>게시글번호</td>
-                               		<td>게시글제목</td>
-                               		<td>게시글내용</td>
-                               		<td>게시글날짜</td>
-                               		<td>회원아이디</td>
+                               		<th width="50" height="50" style="text-align:center">번호</th>
+                               		<th width="350" height="50" style="text-align:center">제목</th>
+                               		<th width="130" height="50" style="text-align:center">날짜</th>
+                               		<th width="130" height="50" style="text-align:center">회원아이디</th>
                                	</tr>
                                	<%for(int i=0;i<1;i++){ %>
                                	<tr>
-                               		<td>게시글번호</td>
-                               		<td>게시글제목</td>
-                               		<td>게시글내용</td>
-                               		<td>게시글날짜</td>
-                               		<td>회원아이디</td>
+                               		<td  width="50" height="50" style="text-align:center">1</td>
+                               		<td  width="350" height="50" style="text-align:center">귀여운 송미</td>
+                               		<td  width="130" height="50" style="text-align:center">2021/10/28</td>
+                               		<td  width="130" height="50" style="text-align:center">song</td>
                                	</tr>
                                	<%} %>
                                </table>
+                               <BR>
+                               
                                <a href="WriteServiceCenter.jsp"><button>글쓰기</button></a>
                             
                     </section>

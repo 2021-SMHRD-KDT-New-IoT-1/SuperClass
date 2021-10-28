@@ -41,7 +41,7 @@
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item active">
-                                    <a class="nav-link tm-nav-link" href="time.html" style="color: azure;"> <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link tm-nav-link" href="Time.jsp" style="color: azure;"> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
@@ -52,8 +52,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">Select Anzzi</a>
                                 </li>                            
-                                <li class="nav-item">
+                               <li class="nav-item">
+                                <%if(vo == null){ %>
+                                    <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
+                                    <%}else{ %>
                                     <a class="nav-link tm-nav-link" href="../Logout"><%=vo.getName()+"님\t" %>로그아웃</a>
+                                    <%} %>
                                 </li>
                             </ul>                            
                         </div>                        
