@@ -97,7 +97,7 @@
                                <p>날씨</p>
                             </div> 
                         </div>                      
-                  			 <a href=""><button>추가하기</button></a>
+                  			 <a href="AddAnzziDetail.jsp"><button>추가하기</button></a>
                     </section>
                 </main>
             </div>

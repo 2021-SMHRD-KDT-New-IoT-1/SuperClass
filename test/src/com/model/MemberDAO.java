@@ -59,7 +59,5 @@ public class MemberDAO {
 		
 	}
 	
-	public void getWeather() {
-		
-	}
+	
 }

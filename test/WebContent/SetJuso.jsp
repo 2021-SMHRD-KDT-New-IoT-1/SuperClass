@@ -51,12 +51,18 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 		
 		
 }
+function setroadFullAddr(){
+    opener.document.getElementById("proadFullAddr").value = document.getElementById("roadFullAddr").value
+    opener.document.getElementById("admCd").value = document.getElementById("admCd").value
+    window.close();
+}
+
 
 </script>
 <title>주소 입력 샘플</title>
 </head>
 <body>
-<form action="SetLocation" name="form" id="form" method="post">
+<form  name="form" id="form" method="post">
 
 	<input type="button" onClick="goPopup();" value="주소찾기"/>
 	<div id="list"></div>
@@ -65,7 +71,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			<tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>
 			<tr><td>도로명주소           </td><td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td></tr>
 			<tr><td>고객입력 상세주소    </td><td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td></tr>
-			<tr><td></td><td><input type="submit" value="수정하기"></td></tr>
+			<tr><td></td><td><input type="button" value="수정하기" onclick="setroadFullAddr();"></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="roadAddrPart2"  name="roadAddrPart2" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="engAddr"  name="engAddr" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="jibunAddr"  name="jibunAddr" /></td></tr>
