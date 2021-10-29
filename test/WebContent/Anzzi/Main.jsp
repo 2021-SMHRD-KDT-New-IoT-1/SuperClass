@@ -47,7 +47,7 @@
                                 </li>
                                 <li class="nav-item">
                                <%if(vo != null){ %>
-                                    <a class="nav-link tm-nav-link" href="sleep.html">게시판 </a>
+                                    <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
                                     <%} %>
                                 </li>  
                                 <li class="nav-item">
