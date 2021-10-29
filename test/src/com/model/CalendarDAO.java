@@ -55,9 +55,28 @@ public class CalendarDAO {
 	
 
 	
-//	public String getP_serialnum() {
-//		
-//	}
+	public String getP_serialnum() {
+		try {
+			connection();
+
+			String sql = "select p_serialnum from phistory where m_id =? and  ";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, s_date);
+			psmt.setString(2, calendar_op);
+			psmt.setString(3, p_serialnum);
+			psmt.setString(4, m_id);
+
+			// 5. SQL문 명령 후 처리
+			cnt = psmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("등록실패");
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}//getP_serialnum 메서드 끝	
+	
 	
 	
 
@@ -65,12 +84,12 @@ public class CalendarDAO {
 		try {
 			connection();
 
-			String sql = "insert into schedule values(?,?,'910',?)";
+			String sql = "insert into schedule values(?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, s_date);
 			psmt.setString(2, calendar_op);
 			//psmt.setString(3, p_serialnum);
-			psmt.setString(3, m_id);
+			psmt.setString(4, m_id);
 
 			// 5. SQL문 명령 후 처리
 			cnt = psmt.executeUpdate();
