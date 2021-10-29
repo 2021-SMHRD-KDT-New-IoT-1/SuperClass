@@ -30,9 +30,9 @@
 			console.log(calendar);
 			console.log(arg);
 			
-			console.log(arg.start);
-			console.log(arg.end);
-			console.log(arg.allDay);
+			console.log("스타트: "+ arg.start);
+			console.log("앤드: " +arg.end);
+			console.log("올데이: " + arg.allDay);
 			
 			$.ajax({
 				url:"http://localhost:8087/test/calendarService",
@@ -43,6 +43,7 @@
 					'start' : arg.start,
 					'end' : arg.end,
 					'allday' : arg.allDay
+					
 				},
 				success : function(res){
 					calendar.addEvent({
@@ -50,6 +51,7 @@
 		                start: arg.start,
 		                end: arg.end,
 		                allDay: arg.allDay
+		                
 		              })
 					//alert(res)
 					//opener.location.href="Calender.jsp?data="+res;
