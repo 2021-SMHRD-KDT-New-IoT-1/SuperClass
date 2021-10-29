@@ -103,13 +103,13 @@
                                	
 								<div id="list"></div>
                                	<div id="callBackDiv">
+                               	<input type="hidden" id="admCd" name="p_location">
                                	<input type="hidden"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" />
 								<input type="hidden"  style="width:500px;" id="addrDetail"  name="addrDetail" />
                                	<input type="hidden"  style="width:500px;" id="roadAddrPart2"  name="roadAddrPart2" />
                                	<input type="hidden"  style="width:500px;" id="engAddr"  name="engAddr" />
 								<input type="hidden"  style="width:500px;" id="jibunAddr"  name="jibunAddr" />
 								<input type="hidden" style="width:500px;" id="zipNo"  name="zipNo" />
-								<input type="hidden"  style="width:500px;" id="admCd"  name="admCd" />
 								<input type="hidden"  style="width:500px;" id="rnMgtSn"  name="rnMgtSn" />
 								<input type="hidden"  style="width:500px;" id="bdMgtSn"  name="bdMgtSn" />
 								<input type="hidden"  style="width:500px;" id="detBdNmList"  name="detBdNmList" />
@@ -127,9 +127,10 @@
 								<input type="hidden"  style="width:500px;" id="lnbrMnnm"  name="lnbrMnnm" />
 								<input type="hidden"  style="width:500px;" id="lnbrSlno"  name="lnbrSlno" />
 								<input type="hidden"  style="width:500px;" id="emdNo"  name="emdNo" />
+								
                                		<th colspan="2" width="330" height="50" style="text-align:center"><input name="p_locationdetail" size="40" id="roadFullAddr" type="text"></th>
                                	</tr>
-                               	<input type="hidden" id="admCd" name="p_location">
+                               	
                                	</div>
                                	<tr>
                                		<th colspan="2" width="330" height="50" style="text-align:center"><button type="submit">추가하기</button></th>

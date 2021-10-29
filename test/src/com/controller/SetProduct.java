@@ -26,7 +26,7 @@ public class SetProduct extends HttpServlet {
 		String p_serialnum = request.getParameter("p_serialnum");
 		String p_locationdetail = request.getParameter("p_locationdetail");
 		String m_id = vo.getId();
-		
+		System.out.println(p_location);
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		try {

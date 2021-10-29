@@ -11,7 +11,7 @@
 function goPopup(){
 	// 주소검색을 수행할 팝업 페이지를 호출합니다.
 	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-	var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("Anzzi/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 	
 	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
     //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
@@ -69,14 +69,14 @@ function setroadFullAddr(){
 	<div id="callBackDiv">
 		<table>
 			<tr><td>도로명주소 전체(포멧)</td><td><input type="text"  style="width:500px;" id="roadFullAddr"  name="roadFullAddr" /></td></tr>
-			<tr><td>도로명주소           </td><td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td></tr>
-			<tr><td>고객입력 상세주소    </td><td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td></tr>
+			<tr><td>도로명주소           </td><td><input type="hidden"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td></tr>
+			<tr><td>고객입력 상세주소    </td><td><input type="hidden"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td></tr>
 			<tr><td></td><td><input type="button" value="수정하기" onclick="setroadFullAddr();"></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="roadAddrPart2"  name="roadAddrPart2" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="engAddr"  name="engAddr" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="jibunAddr"  name="jibunAddr" /></td></tr>
 			<tr><td></td><td><input type="hidden" style="width:500px;" id="zipNo"  name="zipNo" /></td></tr>
-			<tr><td></td><td><input type="hidden"  style="width:500px;" id="admCd"  name="admCd" /></td></tr>
+			<tr><td></td><td><input type="text"  style="width:500px;" id="admCd"  name="admCd" /></td></tr>
 			<tr><td> </td><td><input type="hidden"  style="width:500px;" id="rnMgtSn"  name="rnMgtSn" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="bdMgtSn"  name="bdMgtSn" /></td></tr>
 			<tr><td></td><td><input type="hidden"  style="width:500px;" id="detBdNmList"  name="detBdNmList" /></td></tr>
