@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.ServiceCenterDAO"%>
+<%@page import="java.time.LocalDate"%>
 <%@page import="com.model.ServiceCenterVO"%>
 <%@page import="com.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -15,20 +16,15 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
-<style>
-	#titleboard{
-		border : 0;
-		outline : 0;
-		background-color:transparent;
-		color : white;
-	}
-</style>
+
 </head>
 <body>
 <%
 	MemberVO vo = (MemberVO)session.getAttribute("member");
 	ServiceCenterDAO dao = new ServiceCenterDAO();
-	ArrayList<ServiceCenterVO> al = dao.noContents();
+	int board_num = Integer.parseInt(request.getParameter("board_num"));
+	ServiceCenterVO svo = dao.getContents(board_num);
+	System.out.print(board_num);
 	%>
 <div class="tm-container">        
         <div>
@@ -84,29 +80,40 @@
                     <section class="tm-content">
                         		<h1 style="text-align:center">게시판</h1>
                         		<hr class="mb-5">
+                        		<form action="../WriteServiceCenter" method="post">
                                <table border="1">
-                               	<tr>
-                               		<th width="50" height="50" style="text-align:center">번호</th>
-                               		<th width="350" height="50" style="text-align:center">제목</th>
-                               		<th width="130" height="50" style="text-align:center">날짜</th>
-                               		<th width="130" height="50" style="text-align:center">회원아이디</th>
-                               	</tr>
-                               	<%for(ServiceCenterVO svo : al){ %>
-                               	<form action="ServiceCenterDetail.jsp" method="post">
-                               	<tr>
-                               	<input type="hidden" name="board_num" value="<%=svo.getBoardNum() %>">
-                               		<td  width="50" height="50" style="text-align:center"><%=svo.getBoardNum() %></td>
-                               		<td  width="350" height="50" style="text-align:center"><button id=titleboard type="submit"><%=svo.getBoardTitle() %></button></td>
-                               		<td  width="130" height="50" style="text-align:center"><%=svo.getBoardDate() %></td>
-                               		<td  width="130" height="50" style="text-align:center"><%=svo.getMid() %></td>
-                               		
-                               	</tr>
-                               	</form>
-                               	<%} %>
+                                  <tr>
+                                     <th width="200" height="50" style="text-align:center">제목</th>
+                                     <th width="500" height="50" style="text-align:center"><%=svo.getBoardTitle() %></th>
+                                  </tr>
+                                  
+                                  <tr>
+                                     <th width="200" height="50"style="text-align:center">회원아이디</th>
+                                     <th width="500" height="50" style="text-align:center"><%=svo.getMid()%></th>
+                                  </tr>   
+                                 
+                                  <tr>
+                                     <th width="200" height="50"style="text-align:center">날짜</th>
+                                     <th width="500" height="50" style="text-align:center" name="board_date"><%=svo.getBoardDate() %></th>
+                               </tr>
+                                  <tr>
+                                     <th colspan="2" width="200" height="50"style="text-align:center">내용</th>
+                                     
+                               </tr>
+                                <tr>
+                               <td colspan="2" width="500" height="50" style="text-align:center"><%=svo.getBoardContents() %></td>
+                               </tr>
                                </table>
-                               <BR>
-                               
-                               <a href="WriteServiceCenter.jsp"><button>글쓰기</button></a>
+                               <table>
+                               <tr>
+                                     <th width="200" height="10"style="text-align:center"></th>
+                                     <th width="500" height="10" style="text-align:center"></th>
+                               </tr>
+                               <tr>
+                               <td colspan="2" width="500" height="50" style="text-align:center"><input type="submit" class="btn btn-primary" value="글쓰기"></td>
+                               </tr>
+                               </table>
+                               </form>
                             
                     </section>
                 </main>

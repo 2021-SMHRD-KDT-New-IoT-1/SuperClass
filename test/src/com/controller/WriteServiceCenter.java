@@ -52,8 +52,8 @@ public class WriteServiceCenter extends HttpServlet {
 			
 			rs = psmt.executeQuery();
 			
-			if(rs.next()) {
-				cnt++;
+			while(rs.next()) {
+				cnt = Integer.parseInt(rs.getString(1))+1;
 			}
 			
 			sql = "insert into servicecenter values(?,?,?,?,?)";

@@ -16,6 +16,7 @@ public class ServiceCenterDAO {
 	int cnt = 0;
 	boolean check = false;
 	
+	
 	public void connection() {
 		//1. 드라이버 동적로딩
 		try {
@@ -50,4 +51,69 @@ public class ServiceCenterDAO {
 			
 		}
 	}
+	public ArrayList<ServiceCenterVO> noContents() {
+
+		al = new ArrayList<ServiceCenterVO>();
+		
+		try {
+			connection();
+			
+			String sql = "Select board_num,board_title,board_date,m_id from ServiceCenter";
+			psmt	= conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int board_num = Integer.parseInt(rs.getString("board_num"));
+				String board_title = rs.getString(2);
+				String board_date = rs.getString(3);
+				String m_id = rs.getString(4);
+				
+				vo = new ServiceCenterVO(board_num,board_title,board_date,m_id);
+				al.add(vo);
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return al;
+	}
+	
+	public ServiceCenterVO getContents(int board_num) {
+		
+		try {
+			connection();
+			
+			String sql = "Select * from ServiceCenter where board_num=?";
+			
+			psmt	= conn.prepareStatement(sql);
+			psmt.setInt(1, board_num);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				board_num = rs.getInt(1);
+				String board_title = rs.getString(2);
+			 	String board_contents = rs.getString(3);
+				String board_date = rs.getString(4);
+				String m_id = rs.getString(5);
+				
+				vo = new ServiceCenterVO(board_num,board_title,board_contents,board_date,m_id);
+			
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
 }
