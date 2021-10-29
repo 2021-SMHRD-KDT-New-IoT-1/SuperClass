@@ -35,7 +35,7 @@
 			console.log("ø√µ•¿Ã: " + arg.allDay);
 			
 			$.ajax({
-				url:"http://localhost:8087/test/calendarService",
+				url:"../calendarService",
 				type:'post',
 				contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
 				data:{
