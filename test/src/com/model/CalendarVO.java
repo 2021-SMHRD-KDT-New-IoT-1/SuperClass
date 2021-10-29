@@ -14,8 +14,7 @@ public class CalendarVO {
 	private String[] month_num = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 	private String[] month_name = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec" };
 	private String month;
-	
-	private String p_serialnum; // 시리얼넘버
+	private String[] arr = new String[3];
 
 	public CalendarVO(String calendar_op, String start, String end, String allday) {
 		this.calendar_op = calendar_op;
@@ -25,7 +24,7 @@ public class CalendarVO {
 	}
 
 	public String makeS_date(String start) {
-
+		
 		// 2021부분까지 잘라주기
 		start = start.substring(4, 15);
 		// 띄어쓰기를 -로 바꿔주기
@@ -39,7 +38,7 @@ public class CalendarVO {
 			}
 		}
 		// Oct-06-2021 -> 10-06-2021
-		String[] arr = s_date.split("-");
+		arr = s_date.split("-");
 		// 10[0],06[1],2021[2]
 		String[] arr2 = s_date.split("-");
 		
@@ -50,7 +49,7 @@ public class CalendarVO {
 		String d = "";
 		for (int i = 0; i < arr.length; i++) {
 			if (i < arr.length - 1) {
-				d += arr[i] + "-";
+				d += arr[i] + "/";
 			} else {
 				d += arr[i];
 			}
@@ -59,6 +58,13 @@ public class CalendarVO {
 		return this.s_date;
 	}
 
+	public String[] getarr() {
+		return arr;
+	}
+	
+	
+	
+	
 	public String getCalendar_op() {
 		return calendar_op;
 	}

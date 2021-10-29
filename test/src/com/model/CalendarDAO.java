@@ -1,9 +1,11 @@
 package com.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -52,43 +54,18 @@ public class CalendarDAO {
 			
 		}
 	}
-	
 
-	
-//	public String getP_serialnum() {
-//		try {
-//			connection();
-//
-//			String sql = "select p_serialnum from phistory where m_id =? and  ";
-//			psmt = conn.prepareStatement(sql);
-//			psmt.setString(1, s_date);
-//			psmt.setString(2, calendar_op);
-//			psmt.setString(3, p_serialnum);
-//			psmt.setString(4, m_id);
-//
-//			// 5. SQL문 명령 후 처리
-//			cnt = psmt.executeUpdate();
-//
-//		} catch (Exception e) {
-//			System.out.println("등록실패");
-//			e.printStackTrace();
-//		} finally {
-//			close();
-//		}
-//	}//getP_serialnum 메서드 끝	
-	
-	
-	
+	SimpleDateFormat s_date;
 
-	public void inSchedule (String s_date,String calendar_op, String m_id) {
+	public void inSchedule (java.sql.Date s_date,String calendar_op,String p_serialnum, String m_id) {
 		try {
 			connection();
 
-			String sql = "insert into schedule values(?,?,?,?)";
+			String sql = "insert INTO schedule (s_sq,s_date,s_option,p_serialnum,m_id) VALUES (schedule_sq.nextval,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, s_date);
+			psmt.setDate(1, s_date);
 			psmt.setString(2, calendar_op);
-			//psmt.setString(3, p_serialnum);
+			psmt.setString(3, p_serialnum);
 			psmt.setString(4, m_id);
 
 			// 5. SQL문 명령 후 처리
