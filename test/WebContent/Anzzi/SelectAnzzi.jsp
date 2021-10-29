@@ -97,7 +97,7 @@
                                <p>날씨</p>
                             </div> 
                         </div>                      
-                  			 <button>추가하기</button>
+                  			 <a href=""><button>추가하기</button></a>
                     </section>
                 </main>
             </div>

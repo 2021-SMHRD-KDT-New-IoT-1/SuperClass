@@ -29,6 +29,7 @@
 	MemberVO vo = (MemberVO)session.getAttribute("member");
 	ServiceCenterDAO dao = new ServiceCenterDAO();
 	ArrayList<ServiceCenterVO> al = dao.noContents();
+	int cnt = 1;
 	%>
 <div class="tm-container">        
         <div>
@@ -95,7 +96,7 @@
                                	<form action="ServiceCenterDetail.jsp" method="post">
                                	<tr>
                                	<input type="hidden" name="board_num" value="<%=svo.getBoardNum() %>">
-                               		<td  width="50" height="50" style="text-align:center"><%=svo.getBoardNum() %></td>
+                               		<td  width="50" height="50" style="text-align:center"><%=cnt++ %></td>
                                		<td  width="350" height="50" style="text-align:center"><button id=titleboard type="submit"><%=svo.getBoardTitle() %></button></td>
                                		<td  width="130" height="50" style="text-align:center"><%=svo.getBoardDate() %></td>
                                		<td  width="130" height="50" style="text-align:center"><%=svo.getMid() %></td>

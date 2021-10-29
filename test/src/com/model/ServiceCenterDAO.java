@@ -94,7 +94,7 @@ public class ServiceCenterDAO {
 			psmt.setInt(1, board_num);
 			rs = psmt.executeQuery();
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				
 				board_num = rs.getInt(1);
 				String board_title = rs.getString(2);
@@ -114,6 +114,27 @@ public class ServiceCenterDAO {
 				close();
 			}
 		return vo;
+	}
+	
+	public int deleteServiceCenter(int board_num) {
+		try {
+			connection();
+			
+			String sql = "delete from ServiceCenter where board_num=?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, board_num);
+			
+			cnt = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+			
+		}finally {
+			close();
+			}
+		return cnt;
 	}
 	
 }

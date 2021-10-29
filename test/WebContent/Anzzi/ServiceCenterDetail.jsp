@@ -80,13 +80,13 @@
                     <section class="tm-content">
                         		<h1 style="text-align:center">게시판</h1>
                         		<hr class="mb-5">
-                        		<form action="../WriteServiceCenter" method="post">
+                        		<form action="../DeleteServiceCenter" method="post">
                                <table border="1">
                                   <tr>
                                      <th width="200" height="50" style="text-align:center">제목</th>
                                      <th width="500" height="50" style="text-align:center"><%=svo.getBoardTitle() %></th>
                                   </tr>
-                                  
+                                  <input type="hidden" name="board_num" value="<%=board_num%>">
                                   <tr>
                                      <th width="200" height="50"style="text-align:center">회원아이디</th>
                                      <th width="500" height="50" style="text-align:center"><%=svo.getMid()%></th>
@@ -104,15 +104,17 @@
                                <td colspan="2" width="500" height="50" style="text-align:center"><%=svo.getBoardContents() %></td>
                                </tr>
                                </table>
+                               <%if(vo.getId().equals(svo.getMid())) {%>
                                <table>
                                <tr>
                                      <th width="200" height="10"style="text-align:center"></th>
                                      <th width="500" height="10" style="text-align:center"></th>
                                </tr>
                                <tr>
-                               <td colspan="2" width="500" height="50" style="text-align:center"><input type="submit" class="btn btn-primary" value="글쓰기"></td>
+                               <td colspan="2" width="500" height="50" style="text-align:center"><input type="submit" class="btn btn-primary" value="글삭제"></td>
                                </tr>
                                </table>
+                               <%} %>
                                </form>
                             
                     </section>
