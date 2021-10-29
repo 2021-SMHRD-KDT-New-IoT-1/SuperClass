@@ -9,7 +9,7 @@ public class CalendarVO {
 	private String start; // option의 arg.start
 	private String end; // option의 arg.end
 	private String allday; // option의 arg.allDay
-	private String s_date; // DB에 들어갈 필드 //완료..
+	private String date; // 
 
 	private String[] month_num = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 	private String[] month_name = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec" };
@@ -34,13 +34,13 @@ public class CalendarVO {
 		// 월 영어를 숫자로 바꿔주기
 		for (int i = 0; i < month_name.length; i++) {
 			if (month.equals(month_name[i])) {
-				s_date = start.replace(month_name[i], month_num[i]);
+				date = start.replace(month_name[i], month_num[i]);
 			}
 		}
 		// Oct-06-2021 -> 10-06-2021
-		arr = s_date.split("-");
+		arr = date.split("-");
 		// 10[0],06[1],2021[2]
-		String[] arr2 = s_date.split("-");
+		String[] arr2 = date.split("-");
 		
 		arr[0] = arr2[2]; // 2021
 		arr[1] = arr2[0]; // 10
@@ -54,8 +54,9 @@ public class CalendarVO {
 				d += arr[i];
 			}
 		}
-		this.s_date = d;
-		return s_date;
+		this.date = d;
+		
+		return date;
 	}
 
 	public String[] getarr() {
@@ -97,12 +98,12 @@ public class CalendarVO {
 		this.allday = allday;
 	}
 
-	public String getS_date() {
-		return s_date;
+	public String getDate() {
+		return date;
 	}
 
-	public void setS_date(String s_date) {
-		this.s_date = s_date;
+	public void setDate(String s_date) {
+		this.date = s_date;
 	}
 
 }

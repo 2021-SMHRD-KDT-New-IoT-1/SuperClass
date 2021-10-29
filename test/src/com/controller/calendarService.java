@@ -55,12 +55,16 @@ public class calendarService extends HttpServlet {
 		System.out.println(allday);
 		
 		
-		String pre_date = Cvo.makeS_date(start);
-		String end_date = Cvo.makeS_date(end);
+		String s_date = Cvo.makeS_date(start);
+		String e_date = Cvo.makeS_date(end);
 		
 		//String[] arr = Cvo.getarr();
 		//java.sql.Date d=  java.sql.Date.valueOf(arr[0]+"-"+arr[1]+"-"+arr[2]);
-		java.sql.Date s_date =  java.sql.Date.valueOf(pre_date);
+		
+		
+		//DB에 들어가기전 sql date 형식으로 바꿔주는 작업
+		java.sql.Date start_date =  java.sql.Date.valueOf(s_date);
+		java.sql.Date end_date =  java.sql.Date.valueOf(e_date);
 		//java.
 		
 		//System.out.println(s_date);
@@ -78,8 +82,10 @@ public class calendarService extends HttpServlet {
 		//String p_serialnum = request.getParameter("p_serialnum");
 		
 		//임시 시리얼넘버
-		String p_serialnum = "910-1";
-		dao.inSchedule(s_date, calendar_op,p_serialnum, m_id);
+		String p_serialnum = "910-5";
+		
+		//p_serialnum은 어디서 가져올지 생각해봐야함. m_id는 세션에서 가져옴.
+		dao.inSchedule(start_date, end_date, calendar_op,p_serialnum, m_id);
 		
 
 		
