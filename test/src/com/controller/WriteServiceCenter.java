@@ -33,11 +33,10 @@ public class WriteServiceCenter extends HttpServlet {
 		String board_date = now.get(Calendar.YEAR) +"-"+ (now.get(Calendar.MONTH)+1) + "-"+now.get(Calendar.DATE);
 		String board_title = request.getParameter("board_title");
 		String m_id = vo.getId();
-		int cnt = 1;
 		Connection conn = null;
 		PreparedStatement psmt	= null;
 		ResultSet rs = null;
-		
+		java.sql.Date d = java.sql.Date.valueOf(board_date);
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -50,20 +49,16 @@ public class WriteServiceCenter extends HttpServlet {
 			String sql = "select board_num from servicecenter";
 			psmt	= conn.prepareStatement(sql);
 			
-			rs = psmt.executeQuery();
 			
-			while(rs.next()) {
-				cnt = Integer.parseInt(rs.getString(1))+1;
-			}
 			
-			sql = "insert into servicecenter values(?,?,?,?,?)";
+			sql = "insert into servicecenter values(Board_sq.nextval,?,?,?,?)";
 			psmt	= conn.prepareStatement(sql);
 			
-			psmt.setInt(1, cnt);
-			psmt.setString(2, board_title);
-			psmt.setString(3, board_contents);
-			psmt.setString(4, board_date);
-			psmt.setString(5, m_id);
+			
+			psmt.setString(1, board_title);
+			psmt.setString(2, board_contents);
+			psmt.setDate(3, d);
+			psmt.setString(4, m_id);
 		
 			rs = psmt.executeQuery();
 			

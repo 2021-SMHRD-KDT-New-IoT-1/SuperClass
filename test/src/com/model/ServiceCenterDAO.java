@@ -58,13 +58,13 @@ public class ServiceCenterDAO {
 		try {
 			connection();
 			
-			String sql = "Select board_num,board_title,board_date,m_id from ServiceCenter";
+			String sql = "Select board_sq,board_title, TO_CHAR(board_date, 'YYYY/MM/DD'),m_id from ServiceCenter";
 			psmt	= conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				
-				int board_num = Integer.parseInt(rs.getString("board_num"));
+				int board_num = Integer.parseInt(rs.getString(1));
 				String board_title = rs.getString(2);
 				String board_date = rs.getString(3);
 				String m_id = rs.getString(4);
@@ -88,7 +88,7 @@ public class ServiceCenterDAO {
 		try {
 			connection();
 			
-			String sql = "Select * from ServiceCenter where board_num=?";
+			String sql = "Select * from ServiceCenter where board_sq=?";
 			
 			psmt	= conn.prepareStatement(sql);
 			psmt.setInt(1, board_num);
@@ -120,7 +120,7 @@ public class ServiceCenterDAO {
 		try {
 			connection();
 			
-			String sql = "delete from ServiceCenter where board_num=?";
+			String sql = "delete from ServiceCenter where board_sq=?";
 			
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, board_num);
