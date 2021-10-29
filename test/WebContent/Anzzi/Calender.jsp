@@ -28,10 +28,11 @@
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
 </head>
 <body>
+
 <%
 	MemberVO vo = (MemberVO)session.getAttribute("member");
 
-	
+
 	%>
 	
 	
@@ -41,10 +42,10 @@
           // 세션으로 변동
           
           //String op = request.getParameter("data");
-         String op = (String)session.getAttribute("i");
-         System.out.println("문제의 op: " +op);
-          // 이 페이지로 와지기는 한거네요?? 쌤 다시 입력해주세요 안녕이라구요!
-          // 이 페이지로 돌아와지는것만 확인하면 괜찮습니당
+         // String op = (String)session.getAttribute("i");
+         // System.out.println("문제의 op: " +op);
+         // 이 페이지로 와지기는 한거네요?? 쌤 다시 입력해주세요 안녕이라구요!
+         // 이 페이지로 돌아와지는것만 확인하면 괜찮습니당
           %>
 
 <div class="tm-container">        
@@ -128,11 +129,11 @@
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          right: ''    //'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
         initialView: 'dayGridMonth', // 초기 로드 될때 보이는 캘린더 화면(기본 설정: 달)
         initialDate: null, // 초기 날짜 설정 (설정하지 않으면 오늘 날짜가 보인다.)
-        navLinks: true, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
+        navLinks: null, // 날짜를 선택하면 Day 캘린더나 Week 캘린더로 링크
         editable: true, // 수정 가능?
         selectable: true, // 달력 일자 드래그 설정가능
         nowIndicator: true, // 현재 시간 마크
@@ -159,11 +160,6 @@
           windowObj = window.open(url, name, option);
           windowObj.calendar = calendar;
           windowObj.arg = arg;
-
- 
-
-        
-            
           
           calendar.unselect()
         }
@@ -172,8 +168,8 @@
       });
     
       
-      /////////////////////////////////여기해봅시다//////////////////////////////////
-      
+      /////////////////////////////////출력//////////////////////////////////
+ 
       
       
       // 캘린더 랜더링

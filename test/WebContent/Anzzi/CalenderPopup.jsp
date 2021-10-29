@@ -11,7 +11,7 @@
 <form action = "Calender.jsp" method = "post">
 	
 	<h1>스케줄선택</h1>
-	<select name = "i" >
+	<select name = "calendar_op" >
 	<option value = "병원">병원</option>
 	<option value = "출근">출근</option>
 	<option value = "데이트">데이트</option>
@@ -26,7 +26,7 @@
 	<script type="text/javascript">
 	      
 		$('input[type="button"]').on('click', function(){
-			let i = $('select[name="i"]').val() 
+			let calendar_op = $('select[name="calendar_op"]').val() 
 			console.log(calendar);
 			console.log(arg);
 			
@@ -39,7 +39,7 @@
 				type:'post',
 				contentType: 'application/x-www-form-urlencoded; charset=euc-kr',
 				data:{
-					'i' : i,
+					'calendar_op' : calendar_op,
 					'start' : arg.start,
 					'end' : arg.end,
 					'allday' : arg.allDay
