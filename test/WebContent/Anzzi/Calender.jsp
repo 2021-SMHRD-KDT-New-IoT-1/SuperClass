@@ -151,9 +151,9 @@
         	console.log("1");
           var title = confirm("스케줄을 입력하시겠습니까?");
           
-          var url = "popup.jsp";
+          var url = "CalenderPopup.jsp";
           console.log("3");
-          var name = "popup test";
+          var name = "CalenderPopup test";
 
           var option = "width = 500, height = 500, top = 100, left = 200, location = no"
           windowObj = window.open(url, name, option);
