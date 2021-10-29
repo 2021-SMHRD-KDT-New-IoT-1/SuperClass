@@ -114,8 +114,6 @@
   
   <script>
 
-  (function(){
-    $(function(){
       // calendar element 취득
       var calendarEl = $('#calendar')[0];
       // full-calendar 생성하기
@@ -174,8 +172,6 @@
       
       // 캘린더 랜더링
       calendar.render();
-    });
-  })();
 </script>
                 
                       

@@ -49,13 +49,13 @@ public class CalendarVO {
 		String d = "";
 		for (int i = 0; i < arr.length; i++) {
 			if (i < arr.length - 1) {
-				d += arr[i] + "/";
+				d += arr[i] + "-";
 			} else {
 				d += arr[i];
 			}
 		}
-		s_date = d;
-		return this.s_date;
+		this.s_date = d;
+		return s_date;
 	}
 
 	public String[] getarr() {

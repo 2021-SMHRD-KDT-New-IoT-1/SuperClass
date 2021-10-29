@@ -55,7 +55,6 @@ public class CalendarDAO {
 		}
 	}
 
-	SimpleDateFormat s_date;
 
 	public void inSchedule (java.sql.Date s_date,String calendar_op,String p_serialnum, String m_id) {
 		try {
