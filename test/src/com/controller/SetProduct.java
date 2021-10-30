@@ -59,10 +59,11 @@ public class SetProduct extends HttpServlet {
 			
 			if(cnt > 0) {
 				System.out.println("추가성공");
+				response.sendRedirect("Anzzi/SelectAnzzi.jsp");
 				
 			}else {
 				System.out.println("추가실패");
-				
+				response.sendRedirect("Anzzi/SelectAnzzi.jsp");
 				
 			}
 			
