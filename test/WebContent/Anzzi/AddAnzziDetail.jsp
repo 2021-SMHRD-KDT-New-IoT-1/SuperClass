@@ -62,7 +62,7 @@
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
                                 </li>        
                                  <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="SelectAnzziDetail.jsp">ANZZI Detail</a>
+                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">SELECT ANZZI</a>
                                 </li>                          
                                  <li class="nav-item">
                                 <%if(vo == null){ %>
@@ -97,7 +97,7 @@
                                	</tr>
                                	<tr>
                                		<th width="200" height="50" style="text-align:center">주소</th>
-                               		<th width="460" height="50" style="text-align:center"><input type="button" onClick="goPopup();" value="주소찾기"/></th>
+                               		<th width="460" height="50" style="text-align:center"><input type="button" onClick="goPopup();"  value="주소찾기"/></th>
                                	</tr>
                                	<tr>
                                	
@@ -133,7 +133,7 @@
                                	
                                	</div>
                                	<tr>
-                               		<th colspan="2" width="330" height="50" style="text-align:center"><button type="submit">추가하기</button></th>
+                               		<th colspan="2" width="330" height="50" style="text-align:center"><button type="submit" class="btn1 btn-primary">추가하기</button></th>
                                		
                                	</tr>
                                	

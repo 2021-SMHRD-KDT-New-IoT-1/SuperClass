@@ -57,6 +57,8 @@
                                     <a class="nav-link tm-nav-link" href="SetMember.jsp">회원정보수정</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">SELECT ANZZI</a>
+                                </li>          
                                 <li class="nav-item">
                                 <%if(vo == null){ %>
                                     <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
@@ -97,7 +99,7 @@
                                <p>날씨</p>
                             </div> 
                         </div>                      
-                  			 <a href="AddAnzziDetail.jsp"><button>추가하기</button></a>
+                  			 <button><a href="AddAnzziDetail.jsp" class="btn btn-big btn-primary">추가하기</button></a>
                     </section>
                 </main>
             </div>

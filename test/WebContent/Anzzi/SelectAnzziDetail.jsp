@@ -51,9 +51,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
                                 </li>        
-                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="SelectAnzziDetail.jsp">ANZZI Detail</a>
-                                </li>                          
+                               <li class="nav-item">
+                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">SELECT ANZZI</a>
+                                </li>                                
                                  <li class="nav-item">
                                 <%if(vo == null){ %>
                                     <a class="nav-link tm-nav-link" href="Login.html">로그인/회원가입</a>
