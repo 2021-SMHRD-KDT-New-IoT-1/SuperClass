@@ -17,8 +17,10 @@
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
     <style>
     	.btnsa{
-    		padding:0px 0px; 
-    		margin: 0px 0px;
+    		border : 0;
+		outline : 0;
+		background-color:transparent;
+		color : white;
     	}
     </style>
 </head>
@@ -83,8 +85,9 @@
                     <section class="tm-content">
                     <%for(ProductVO pvo : pal){ %>
                         <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/services-1.jpg" alt="Image" class="tm-service-img"></button></a>
+                            <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
                             <div class="media-body tm-service-text">
+                            <br>
                                 <h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
                                 <p><%=pvo.getDetail_location() %></p>
                                 <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
