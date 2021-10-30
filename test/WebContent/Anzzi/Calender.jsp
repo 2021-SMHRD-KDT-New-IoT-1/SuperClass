@@ -158,7 +158,8 @@
         },
         select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
         	console.log("1");
-          var title = confirm("스케줄을 입력하시겠습니까?");
+          var input_confirm = confirm("스케줄을 입력하시겠습니까?");
+          if(input_confirm == true){
           
           var url = "CalenderPopup.jsp";
           console.log("3");
@@ -170,6 +171,7 @@
           windowObj.arg = arg;
           
           calendar.unselect()
+          }
         }             
 
         })//끝
@@ -193,8 +195,14 @@
       $('.fc-event-title-container').on('click', function(){
     	  let td = $(this).parents().parents().parents().parents().parents().parents().parents()
     	  console.log(td.attr('data-date'))
+    	  
+    	  var input_confirm = confirm("스케줄을 삭제하시겠습니까?")
+    	  if(input_confirm == true){
+    		  //삭제메서드
+    	  }
+    	  
     	  //삭제시켜주는 함수만들기.
-      })
+      })//제이쿼리끝
 </script>
                 
                       
