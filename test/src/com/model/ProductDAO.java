@@ -14,14 +14,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ProductDAO {
-
+	
 	
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
 	ProductVO vo = null;
-	ArrayList<ProductVO> al = null;
-	int cnt = 0;
 	boolean check = false;
 	
 	public void connection() {
@@ -111,6 +109,40 @@ public class ProductDAO {
 		}	// try~catch end
 		return weather;
 	}	// main end
+	
+	
+	public ArrayList<ProductVO> getAnzzi(String m_id) {
+		ArrayList<ProductVO> pal = new ArrayList<ProductVO>();
+		try {
+			connection();
+			
+			String sql = "Select p_serialnum, p_location,detail_location from phistory where m_id = ?";
+			psmt	= conn.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String p_serialnum = rs.getString(1);
+				String p_location = rs.getString(2);
+				String detail_location = rs.getString(3);
+				
+				
+				vo = new ProductVO(p_serialnum,p_location,detail_location);
+				pal.add(vo);
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return pal;
+	}
+	
+	
 	
 	
 }

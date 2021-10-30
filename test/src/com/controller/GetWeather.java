@@ -21,7 +21,7 @@ public class GetWeather extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
 		
-		String p_id = request.getParameter("p_id");
+		String p_serialnum = request.getParameter("p_serialnum");
 		
 		Connection conn = null;
 		PreparedStatement psmt	= null;
@@ -34,9 +34,9 @@ public class GetWeather extends HttpServlet {
 			String dbpw = "smhrd3";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
 			
-			String sql = "Select p_location from phistory where p_id = ? ";
+			String sql = "Select p_location from phistory where p_serialnum = ? ";
 			psmt	= conn.prepareStatement(sql);
-			psmt.setString(1, p_id);
+			psmt.setString(1, p_serialnum);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {

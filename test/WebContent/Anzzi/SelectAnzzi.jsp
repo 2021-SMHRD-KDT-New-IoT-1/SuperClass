@@ -1,3 +1,6 @@
+<%@page import="com.model.ProductVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.ProductDAO"%>
 <%@page import="com.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -22,7 +25,9 @@
 <body>
 <%
 	MemberVO vo = (MemberVO)session.getAttribute("member");
-	
+	String m_id = vo.getId();
+	ProductDAO pdao = new ProductDAO();
+	ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
 	%>
 <div class="tm-container">        
         <div>
@@ -76,29 +81,16 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
+                    <%for(ProductVO pvo : pal){ %>
                         <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
                             <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/services-1.jpg" alt="Image" class="tm-service-img"></button></a>
                             <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">¾ÈÂî»Ñµî1</h2>
-                                <p>À§Ä¡</p>
-                                <p>³¯¾¾</p>
+                                <h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
+                                <p><%=pvo.getDetail_location() %></p>
+                                <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
                             </div> 
                         </div>
-                        <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <a href=""><button class="btnsa"><img src="img/services-1.jpg" alt="Image" class="tm-service-img"></button></a>
-                            <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">¾ÈÂî»Ñµî1</h2>
-                                <p>À§Ä¡</p>
-                                <p>³¯¾¾</p>
-                            </div> 
-                        </div>                        <div class="media my-3 tm-service-media tm-service-media-img-l">
-                           <a href="Main.jsp"><button class="btnsa"><img src="img/services-1.jpg" alt="Image" class="tm-service-img"></button></a>
-                            <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">¾ÈÂî»Ñµî3</h2>
-                               <p>À§Ä¡</p>
-                               <p>³¯¾¾</p>
-                            </div> 
-                        </div>                      
+                      <%} %>                    
                   			 <button><a href="AddAnzziDetail.jsp" class="btn btn-big btn-primary">Ãß°¡ÇÏ±â</button></a>
                     </section>
                 </main>

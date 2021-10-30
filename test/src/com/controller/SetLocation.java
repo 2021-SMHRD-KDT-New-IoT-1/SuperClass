@@ -22,7 +22,7 @@ public class SetLocation extends HttpServlet {
 		HttpSession session = request.getSession();
 		String p_location = request.getParameter("admCd");
 		String detail_location = request.getParameter("addrDetail");
-		String p_id = (String)session.getAttribute("p_id");
+		String p_serialnum = (String)session.getAttribute("p_serialnum");
 		
 		
 		PreparedStatement psmt	= null;
@@ -34,18 +34,19 @@ public class SetLocation extends HttpServlet {
 			String dbid = "campus_a_3_1025";
 			String dbpw = "smhrd3";
 			conn = DriverManager.getConnection(url, dbid, dbpw);
-			String sql = "UPDATE phistory SET p_location = ? , detail_location = ? WHERE p_id = ?";
+			String sql = "UPDATE phistory SET p_location = ? , detail_location = ? WHERE p_serialnum = ?";
 			
 			psmt = conn.prepareStatement(sql);
 			
 			psmt.setString(1, p_location);
 			psmt.setString(2, detail_location);
-			psmt.setString(3, p_id);
+			psmt.setString(3, p_serialnum);
 			
 			int cnt = psmt.executeUpdate();
 			
 			if(cnt > 0) {
 				System.out.println("수정성공");
+				response.sendRedirect("");
 			}else {
 				System.out.println("수정실패");
 			}

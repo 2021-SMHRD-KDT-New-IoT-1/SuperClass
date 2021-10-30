@@ -2,8 +2,7 @@ package com.model;
 
 public class ProductVO {
 
-	String p_id;
-	String p_name;
+	
 	String p_serialnum;
 	String detail_location;
 	String p_location;
@@ -12,21 +11,16 @@ public class ProductVO {
 	String wake_time;
 	int m_data;
 	
+	public ProductVO() {
+		
+	}
 	
+	public ProductVO(String p_serialnum,String p_location,String detail_location) {
+		this.p_serialnum = p_serialnum;
+		this.p_location = p_location;
+		this.detail_location = detail_location;
+	}
 	
-	
-	public String getP_id() {
-		return p_id;
-	}
-	public void setP_id(String p_id) {
-		this.p_id = p_id;
-	}
-	public String getP_name() {
-		return p_name;
-	}
-	public void setP_name(String p_name) {
-		this.p_name = p_name;
-	}
 	public String getP_serialnum() {
 		return p_serialnum;
 	}
