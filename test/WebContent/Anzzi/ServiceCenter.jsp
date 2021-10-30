@@ -83,7 +83,7 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
-                        		<h1 style="text-align:center">게시판</h1>
+                        		<h1 style="text-align:center"><i>massage board</i></h1>
                         		<hr class="mb-5">
                                <table border="1">
                                	<tr>
@@ -107,7 +107,7 @@
                                </table>
                                <BR>
                                
-                               <a href="WriteServiceCenter.jsp"><button>글쓰기</button></a>
+                              <button><a href="WriteServiceCenter.jsp" class="btn btn-primary">글쓰기</a></button>
                             
                     </section>
                 </main>

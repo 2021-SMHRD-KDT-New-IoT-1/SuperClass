@@ -84,7 +84,7 @@
                                     <div class="text">
                                       
                                         <br>
-                                <button type="submit" class="btn btn-big btn-primary">수정하기</button>
+                                 <td colspan="2" width="500" height="50" style="text-align:center"><input type="submit" class="btn btn-big btn-primary" value="수정하기"></td>
                         </form>
                         <br>
                         <br>
