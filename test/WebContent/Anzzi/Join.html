@@ -65,10 +65,10 @@
                                 <input type="text"  class="form-control" placeholder="name" required="" name="m_name">
                             </div>
                                 <div class="form-group mb-4">
-                                    <input type="id"  class="form-control" placeholder="ID" required="" name="m_id">
+                                    <input type="id"  id="m_id" class="form-control" placeholder="ID" required="" name="m_id">
                                     <br>
-                                <button type="submit" class="btn btn-big btn-primary">CHECK&nbsp;</button>
-                                   
+                                <button class="btn btn-big btn-primary" onclick="emailCheck()">CHECK&nbsp;</button>
+                                   <br><span id="sp_result"></span>
                                 </div>  
                                 <div class="form-group mb-4">
                                     <input type="password"  class="form-control" placeholder="password" required="" name="m_pw">
@@ -114,5 +114,34 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+	<script>
+
+	function emailCheck() {
+			//요소의 실제 값을 가지고 오는 방법
+			//1. innerText : 태그사이의 텍스트를 가지고 오는 방법 <p>""</p>
+			let email = document.getElementById("m_id");
+			/* alert(email.value); */
+			$.ajax({
+				type : "post", //데이터 전송(요청) 방식
+				data : {
+					"m_id" : email.value
+				}, //전송하는 데이터
+				url : "../IdCheckService", //데이터를 전송하는 (요청하는) 서버페이지
+				dataType : "text", //응답데이터의 형식
+				success : function(data) { //통신성공
+					let sp_result = document.getElementById("sp_result");
+					//alert(data)
+					if (data == "true") {
+						sp_result.innerText = "사용불가능한 아이디";
+					} else {
+						$("#sp_result").text("사용가능한 아이디");
+					}
+				},
+				error : function() { //통신실패
+					alert("통신실패!!")
+				}
+			});
+		}
+	</script>
 </body>
 </html>
