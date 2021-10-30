@@ -73,15 +73,13 @@
                     <section class="tm-content tm-contact">
                         <h2 class="mb-4 tm-content-title"></h2>
                         <p class="mb-85"></p>
-                        <form id="contact-form" action="" method="POST">
+                        <form id="contact-form" action="../UpdateMember" method="POST">
                             <div class="form-group mb-4">
-                                <input type="text" name="name" class="form-control" placeholder="name" required="" />
+                                <input type="text" name="name" class="form-control" placeholder="name"  />
                             </div>
+                                
                                 <div class="form-group mb-4">
-                                    <input type="id" name="id" class="form-control" placeholder="ID" required="" />
-                                </div>  
-                                <div class="form-group mb-4">
-                                    <input type="password" name="password" class="form-control" placeholder="password" required="" />
+                                    <input type="password" name="password" class="form-control" placeholder="password" />
                                 </div>
                                     <div class="text">
                                       

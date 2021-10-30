@@ -20,6 +20,7 @@ public class LoginCheck extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("euc-kr");
+		
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		
