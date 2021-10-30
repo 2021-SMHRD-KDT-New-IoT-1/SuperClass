@@ -88,7 +88,7 @@ public class ServiceCenterDAO {
 		try {
 			connection();
 			
-			String sql = "Select * from ServiceCenter where board_sq=?";
+			String sql = "Select board_sq,board_title,board_contents ,TO_CHAR(board_date, 'YYYY/MM/DD'),m_id from ServiceCenter where board_sq=?";
 			
 			psmt	= conn.prepareStatement(sql);
 			psmt.setInt(1, board_num);
