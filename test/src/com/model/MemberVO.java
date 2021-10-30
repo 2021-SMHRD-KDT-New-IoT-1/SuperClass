@@ -11,6 +11,9 @@ public class MemberVO {
 		this.m_pw = m_pw;
 		this.m_name = m_name;
 	}
+	public MemberVO() {
+		
+	}
 	 
 	public String getId() {
 		return m_id;
