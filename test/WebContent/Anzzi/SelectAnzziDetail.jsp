@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.ProductDAO"%>
+<%@page import="com.model.ProductVO"%>
 <%@page import="com.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -12,11 +15,21 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
-
+ <style>
+    	.btnsa{
+    		border : 0;
+		outline : 0;
+		background-color:transparent;
+		color : white;
+    	}
+    </style>
 </head>
 <body>
 <%
-	MemberVO vo = (MemberVO)session.getAttribute("member");
+MemberVO vo = (MemberVO)session.getAttribute("member");
+String m_id = vo.getId();
+ProductDAO pdao = new ProductDAO();
+ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
 	
 	%>
 <div class="tm-container">        
@@ -67,17 +80,21 @@
                 </div>
             </div>
             
-            <div class="tm-row">
+           <div class="tm-row">
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
+                    <%for(ProductVO pvo : pal){ %>
                         <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <img src="img/services-1.jpg" alt="Image" class="tm-service-img">
+                            <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
                             <div class="media-body tm-service-text">
-                                <h2 class="mb-4 tm-content-title">Best Services for you</h2>
-                                <p>Our template is simple and effective. This is an alternating simple content with a squared size image. Menu hover is #9CC and text #FFF</p>
+                            <br>
+                                <h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
+                                <p><%=pvo.getDetail_location() %></p>
+                                <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
                             </div> 
                         </div>
+                      <%} %>                    
                           
                     </section>
                 </main>

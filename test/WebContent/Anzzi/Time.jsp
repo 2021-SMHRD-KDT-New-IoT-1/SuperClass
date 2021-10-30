@@ -75,14 +75,15 @@
                         <button type="submit" class="btn btn-primary">설정</button>
                         <br>
                         <br>
-                        <button type="submit" class="btn1 btn-primary">월</button>
-                        <button type="submit" class="btn1 btn-primary">화</button>
-                        <button type="submit" class="btn1 btn-primary">수</button>
-                        <button type="submit" class="btn1 btn-primary">목</button>
-                        <button type="submit" class="btn1 btn-primary">금</button>
-                        <button type="submit" class="btn1 btn-primary">토</button>
-                        <button type="submit" class="btn1 btn-primary">일</button>
-                        <br>
+                        <form>
+                        <button type="checkbox" class="btn1 btn-primary">월</button>
+                        <button type="checkbox" class="btn1 btn-primary">화</button>
+                        <button type="checkbox" class="btn1 btn-primary">수</button>
+                        <button type="checkbox" class="btn1 btn-primary">목</button>
+                        <button type="checkbox" class="btn1 btn-primary">금</button>
+                        <button type="checkbox" class="btn1 btn-primary">토</button>
+                        <button type="checkbox" class="btn1 btn-primary">일</button>
+                        </form>
                         <br>
                         <br>
                         <h3><i>fade in</i></h3>
@@ -93,10 +94,10 @@
                         
                         <hr class="mb-5">
                                             
-                       <td>소리알림 필요하냐 &nbsp;<input type="checkbox"></section></td><br>
-                       <td>날씨소리 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>스케줄알림 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>수면패턴 필요하냐 &nbsp;<input type="checkbox"></section></td><br><br>
+                       <td>소리알림으로 아침을 알려드릴까요? &nbsp;<input type="checkbox"></section></td><br>
+                       <td>날씨소리로 아침을 알려드릴까요? &nbsp;<input type="checkbox"></section></td><br><br>
+                       <td>스케줄알림으로 아침을 알려드릴까요?&nbsp;<input type="checkbox"></section></td><br><br>
+                       <td>수면패턴기능을 이용하시겠습니까?&nbsp;<input type="checkbox"></section></td><br><br>
                         <a href="#" class="btn btn-primary">Continue...</a>
                     </section>
                 </main>
