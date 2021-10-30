@@ -52,7 +52,7 @@ public class SensorDAO {
 	}
 
 	public SensorVO insert(int moveSensor) {
-		SensorVO vo = null;
+		
 		conn();
 		String sql1 = "INSERT INTO ARDUINO values(sysdate, ?)";
 		try {
@@ -71,15 +71,15 @@ public class SensorDAO {
 	}
 
 	public SensorVO getSensor() {
-		SensorVO vo = null;
+		
 		conn();
 		String sql = "select * from ARDUINO";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			if (rs.next()) {
-				int mysensor = rs.getInt(1);
-				vo = new SensorVO(mysensor);
+				int moveSensor = rs.getInt(2);
+				vo = new SensorVO(moveSensor);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
