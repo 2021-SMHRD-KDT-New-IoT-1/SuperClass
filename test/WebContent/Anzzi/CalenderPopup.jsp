@@ -46,7 +46,7 @@
 					
 				},
 				success : function(res){
-					calendar.addEvent({
+					    calendar.addEvent({
 		                title: res,
 		                start: arg.start,
 		                end: arg.end,
@@ -61,6 +61,7 @@
 				}
 			})
 		})
+		
 		
 /*		let arr = $("input[type='checkbox']")
 		

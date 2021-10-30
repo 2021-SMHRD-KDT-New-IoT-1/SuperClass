@@ -15,10 +15,16 @@ public class CalendarDAO {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
+	CalendarVO Cvo = null;
+	ArrayList <CalendarVO> Cal;
 	
 
 	int cnt = 0;
 	boolean check = false;
+	
+	public CalendarDAO() {
+		Cal = new ArrayList<CalendarVO>();
+	}
 	
 	public void connection() {
 		//1. 드라이버 동적로딩
@@ -80,7 +86,39 @@ public class CalendarDAO {
 	}//inSchedule 메서드 끝
 		
 	
-	
+	public ArrayList<CalendarVO> getSchedule (String m_id) {
+		
+		try {
+			connection();
+			
+			String sql = "Select TO_CHAR(start_date,'YYYY-MM-DD'),TO_CHAR(end_date,'YYYY-MM-DD'),s_option from schedule where m_id = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, m_id);
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				String start_date = rs.getString(1);
+			 	String end_date = rs.getString(2);
+				String s_option = rs.getString(3);
+				String allday = "true";
+				
+				Cvo = new CalendarVO(s_option,start_date,end_date,allday);
+				Cal.add(Cvo);
+			}
+			
+		} catch (Exception e) {
+				System.out.println("캘린더조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return Cal;
+	}
+
 	
 		
 }

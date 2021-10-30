@@ -1,3 +1,6 @@
+<%@page import="com.model.CalendarVO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.model.CalendarDAO"%>
 <%@page import="com.model.MemberVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
@@ -31,9 +34,14 @@
 
 <%
 	MemberVO vo = (MemberVO)session.getAttribute("member");
-
-
-	%>
+	CalendarDAO Cdao = new CalendarDAO();
+	ArrayList<CalendarVO> al = null;
+	
+	if(vo != null){
+	String m_id = vo.getId();
+	al = Cdao.getSchedule(m_id);
+	}
+	%>	
 	
 	
 	 <%
@@ -140,9 +148,8 @@
         nowIndicator: true, // 현재 시간 마크
         dayMaxEvents: true, // 이벤트가 오버되면 높이 제한 (+ 몇 개식으로 표현)
         locale: 'ko', // 한국어 설정
-        eventAdd: function(obj) { // 이벤트가 추가되면 발생하는 이벤트
-          console.log(obj);
-        },
+        
+ 
         eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
           console.log(obj);
         },
@@ -163,18 +170,31 @@
           windowObj.arg = arg;
           
           calendar.unselect()
-        }
+        }             
+
+        })//끝
+        
+        <%if(vo != null){%>
+        <%for(int i = 0; i<al.size();i++){%>
+         calendar.addEvent({
+        	title : "<%=al.get(i).getCalendar_op()%>",
+         	start: "<%=al.get(i).getStart()%>",
+         	end: "<%=al.get(i).getEnd()%>",
+         	allDay: true
+         })
+         <%}%>
+         <%}%>
         
     
-      });
-    
-      
-      /////////////////////////////////출력//////////////////////////////////
- 
-      
       
       // 캘린더 랜더링
       calendar.render();
+      
+      $('.fc-event-title-container').on('click', function(){
+    	  let td = $(this).parents().parents().parents().parents().parents().parents().parents()
+    	  console.log(td.attr('data-date'))
+    	  //삭제시켜주는 함수만들기.
+      })
 </script>
                 
                       
