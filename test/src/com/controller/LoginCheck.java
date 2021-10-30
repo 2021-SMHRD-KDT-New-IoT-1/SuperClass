@@ -25,8 +25,8 @@ public class LoginCheck extends HttpServlet {
 		String m_id = request.getParameter("m_id");
 		String m_pw = request.getParameter("m_pw");
 		
-		MemberVO vo = null;
-		MemberDAO dao = null;
+		MemberVO vo = new MemberVO();
+		MemberDAO dao = new MemberDAO();
 		
 		
 			
