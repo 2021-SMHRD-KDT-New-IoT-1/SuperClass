@@ -55,7 +55,6 @@
 		              })
 					//alert(res)
 					//opener.location.href="Calender.jsp?data="+res;
-
 					window.close();
 					//window.location.href="Calendar.jsp?data="+res;
 				}
