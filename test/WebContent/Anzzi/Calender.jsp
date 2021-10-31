@@ -175,6 +175,7 @@
         }             
 
         })//끝
+ 
         
         <%if(vo != null){%>
         <%for(int i = 0; i<al.size();i++){%>
@@ -187,7 +188,6 @@
          <%}%>
          <%}%>
         
-    
       
       // 캘린더 랜더링
       calendar.render();
@@ -196,9 +196,12 @@
     	  let td = $(this).parents().parents().parents().parents().parents().parents().parents()
     	  console.log(td.attr('data-date'))
     	  
-    	  var input_confirm = confirm("스케줄을 삭제하시겠습니까?")
-    	  if(input_confirm == true){
-    		  //삭제메서드
+    	  let td_date = td.attr('data-date')
+    	  
+    	  let input_confirm = confirm("'"+td_date+"'"+"스케줄을 삭제하시겠습니까?")
+    	  
+    	  if(input_confirm){
+    		location.replace("../CalendarDelete?start_date="+td_date)
     	  }
     	  
     	  //삭제시켜주는 함수만들기.

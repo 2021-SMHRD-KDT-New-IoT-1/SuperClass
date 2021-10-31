@@ -46,14 +46,9 @@
                                     <a class="nav-link tm-nav-link" href="" style="color: azure;"> <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
-                                <%if(vo != null) {%>
-                                    <a class="nav-link tm-nav-link" href="Time.jsp">시간설정</a>
-                                    <%} %>
-                                </li>
+                              
                                 <li class="nav-item">
-                                <%if(vo != null) {%>
-                                    <a class="nav-link tm-nav-link" href="Calender.jsp">스케줄설정</a>
-                                    <%} %>
+                               
                                 </li>
                                 <li class="nav-item">
                                <%if(vo != null){ %>
