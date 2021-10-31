@@ -34,7 +34,7 @@ public class CalendarDelete extends HttpServlet {
 		}else {
 			System.out.println("스케줄삭제실패");
 		}
-		response.sendRedirect("Anzzi/Calender.jsp");
+		response.sendRedirect("Anzzi/Calendar.jsp");
 		
 
 		

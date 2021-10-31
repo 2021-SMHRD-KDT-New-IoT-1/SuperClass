@@ -161,7 +161,7 @@
         	console.log("1");
           var input_confirm = confirm("스케줄을 입력하시겠습니까?");
           if(input_confirm == true){
-          var url = "CalenderPopup.jsp";
+          var url = "CalendarPopup.jsp";
           console.log("3");
           var name = "CalenderPopup test";
           var option = "width = 500, height = 500, top = 100, left = 200, location = no"
