@@ -17,7 +17,7 @@
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
  <style>
     	.btnsa{
-    		border : 0;
+    	border : 0;
 		outline : 0;
 		background-color:transparent;
 		color : white;
@@ -85,19 +85,34 @@ ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
                 <main class="tm-col-right">
                     <section class="tm-content">
                     <%for(ProductVO pvo : pal){ %>
-                        <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
-                            <div class="media-body tm-service-text">
-                            <br>
-                                <h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
-                                <p><%=pvo.getDetail_location() %></p>
-                                <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
-                            </div> 
-                        </div>
-                      <%} %>                    
+						<div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
+							<a href="SelectAnzziDetail.jsp"><button class="btnsa">
+									<img src="img/3-1.jpg" alt="Image" class="tm-service-img".btnsa>
+								</button></a>
+							<div class="media-body tm-service-text">
+								<br>
+								<h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
+								<p><%=pvo.getDetail_location() %></p>
+								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
+								<br><br><br>
+							</div>
+							<% }%> 
+							  
+							</div>
+								<div class="media-body tm-service-text">			
+									<div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
+										<input style = "float : right" id="input_submit"type="submit" onclick="input()" value="È®ÀÎ">
+										<input style = "float : right" id="input_date" type="date">
+									</div>
+									<canvas style="color:white"  id='cvs'></canvas>
+								</div>
+							          
                           
                     </section>
                 </main>
+                <div>
+                	
+                </div>
             </div>
         </div>        
 
@@ -124,7 +139,150 @@ ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
             <div class="tm-bg-right"></div>
         </div>
     </div>
+	<script>
+	function input(){
+	    const dday = document.querySelector("#input_date").value;
+	    console.log(dday);
+	}
+	
+	
+	// data
+	data = [0, 1, 1, 0, 1, 0, 1, 1, 1, 0];
 
+	const cvs = document.getElementById("cvs");
+	const ctx = cvs.getContext("2d");
+
+	cvs.height = window.innerHeight/3;
+	cvs.width = window.innerWidth/3;
+
+	// mouse position
+	mx = 0;
+	my = 0;
+
+	function draw() {
+	  const pad = 50;
+	  const chartInnerWidth = cvs.width - 2 * pad;
+	  const chartInnerHeight = cvs.height - 2 * pad;
+
+	  ctx.moveTo(pad, pad);
+	  ctx.lineTo(pad, pad + chartInnerHeight);
+	  ctx.stroke();
+
+	  ctx.moveTo(pad, pad + chartInnerHeight);
+	  ctx.lineTo(pad + chartInnerWidth, pad + chartInnerHeight);
+	  ctx.stroke();
+	
+	  
+	  max = Math.max(...data);
+	  min = 0
+	  nX = data.length;
+	  nY = max + 1;
+
+	  blockWidth = chartInnerWidth / (nX + 1);
+	  blockHeight = chartInnerHeight / (nY + 1);
+
+	  // drawing ticks
+	  const ticklenhalf = 5;
+	  for (i = 1; i < nX + 1; ++i) {
+		  
+	    ctx.moveTo(pad + i * blockWidth, pad + chartInnerHeight - ticklenhalf);
+	    ctx.lineTo(pad + i * blockWidth, pad + chartInnerHeight + ticklenhalf);
+	    ctx.stroke();
+	  }
+
+	  for (i = 1; i < nY + 1; ++i) {
+	    ctx.moveTo(pad - ticklenhalf, pad + chartInnerHeight - i * blockHeight);
+	    ctx.lineTo(pad + ticklenhalf, pad + chartInnerHeight - i * blockHeight);
+	    ctx.stroke();
+	    ctx.font = "15px Arial";
+	    ctx.textAlign = "right";
+	    ctx.textBaseline = "middle";
+	    ctx.fillText(
+	      (min + i - 1).toString(),
+	      pad - 20,
+	      pad + chartInnerHeight - i * blockHeight
+	    );
+	  }
+
+	  xOnCvs = [];
+	  yOnCvs = [];
+
+	  // where to draw
+	  x = pad + blockWidth;
+	  y = pad + chartInnerHeight - blockHeight * (data[0] - min + 1);
+
+	  xOnCvs.push(x);
+	  yOnCvs.push(y);
+
+	  for (i = 1; i < nX; ++i) {
+	    xOnCvs.push(pad + (i + 1) * blockWidth);
+	    yOnCvs.push(pad + chartInnerHeight - blockHeight * (data[i] - min + 1));
+	  }
+
+	  function drawlines() {
+	    ctx.fillStyle = "white";
+	    ctx.strokeStyle = "white";
+	    x = xOnCvs[0];
+	    y = yOnCvs[0];
+
+	    ctx.beginPath();
+	    ctx.arc(x, y, 5, 0, 2 * Math.PI);
+	    ctx.fill();
+
+	    for (i = 1; i < nX; ++i) {
+	      nextx = xOnCvs[i];
+	      nexty = yOnCvs[i];
+
+	      ctx.moveTo(x, y);
+	      ctx.lineTo(nextx, nexty);
+	      ctx.stroke();
+
+	      ctx.beginPath();
+	      ctx.arc(nextx, nexty, 5, 0, 2 * Math.PI);
+	      ctx.fill();
+
+	      x = nextx;
+	      y = nexty;
+	    }
+	  }
+
+	  for (i = 0; i < nX; ++i) {
+	    dx = xOnCvs[i] - mx;
+	    dy = yOnCvs[i] - my;
+	    ctx.font = "30px Arial";
+	    if (dx * dx + dy * dy < 100) {
+	      ctx.fillStyle = "white";
+	      ctx.fillRect(xOnCvs[i], yOnCvs[i] - 40, 40, 40);
+	      ctx.textAlign = "center";
+	      ctx.textBaseline = "middle";
+	      ctx.fillStyle = "white";
+	      ctx.fillText(data[i].toString(), xOnCvs[i] + 20, yOnCvs[i] + 20 - 40);
+	    }
+	  }
+	  drawlines();
+	}
+
+	window.addEventListener("resize", function () {
+	  cvs.width = window.innerWidth/3;
+	  cvs.height = window.innerHeight/3;
+
+	  draw();
+	});
+
+	cvs.addEventListener(
+	  "mousemove",
+	  function (event) {
+	    cvsrect = this.getBoundingClientRect();
+	    ctx.clearRect(0, 0, cvsrect.width, cvsrect.height);
+	    mx = event.offsetX;
+	    my = event.offsetY;
+	    draw();
+	  },
+	  false
+	);
+
+	draw();
+	</script>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>

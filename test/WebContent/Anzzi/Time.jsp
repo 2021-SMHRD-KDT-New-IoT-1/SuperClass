@@ -12,12 +12,40 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
+    <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+    
+	    $(document).ready(function(){
+	    var dayof = "";
+	     $('#send').click(function(){
+	      $('input[name="dayof"]:checked').each(function(idx){
+	       if(idx != 0){
+	        dayof = dayof + ","
+	       }
+	       dayof = dayof + $(this).val();
+	      });
+	      $('#dayofs').val(dayof);
+	     });
+	    });
+	    $(document).ready(function(){
+	        var on_off = "";
+	         $('#send').click(function(){
+	          $('input[name="on_off"]:checked').each(function(idx){
+	           if(idx != 0){
+	            on_off = on_off + ","
+	           }
+	           on_off = on_off + $(this).val();
+	          });
+	          $('#on_offs').val(on_off);
+	         });
+	        });
+   </script>
 </head>
 <body>
 <%
-	MemberVO vo = (MemberVO)session.getAttribute("member");
-	
-	%>
+   MemberVO vo = (MemberVO)session.getAttribute("member");
+   
+   %>
 
     <div class="tm-container">        
         <div>
@@ -46,11 +74,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="Calender.jsp">스케줄설정</a>
                                 </li>
+                               
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
-                                </li>                     
-                                <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="SelectAnzzi.jsp">SELECT ANZZI</a>
                                 </li>                     
                                 <li class="nav-item">
                                 <%if(vo == null){ %>
@@ -69,36 +95,56 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
+                        <form action = "../SetTime" method="post">
                         <h3><i>wake time</i></h3>
                         <br>
                         <input type="time" min="0" max="24" value="hour" placeholder="시간" name="wake_time">
-                        <button type="submit" class="btn btn-primary">설정</button>
+                        <button type="button" class="btn btn-primary"></button>
                         <br>
                         <br>
-                        <form>
-                        <button type="checkbox" class="btn1 btn-primary">월</button>
-                        <button type="checkbox" class="btn1 btn-primary">화</button>
-                        <button type="checkbox" class="btn1 btn-primary">수</button>
-                        <button type="checkbox" class="btn1 btn-primary">목</button>
-                        <button type="checkbox" class="btn1 btn-primary">금</button>
-                        <button type="checkbox" class="btn1 btn-primary">토</button>
-                        <button type="checkbox" class="btn1 btn-primary">일</button>
-                        </form>
+                            <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Mon" autocomplete="off"><span style="color:white">월요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Tue" autocomplete="off"><span style="color:white">화요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Wed" autocomplete="off"><span style="color:white">수요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Thu" autocomplete="off"><span style="color:white">목요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Fri" autocomplete="off"><span style="color:white">금요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Sat" autocomplete="off"><span style="color:white">토요일</span>
+                   </label>
+                   <label class="btn btn-default">
+                       <input type="checkbox" name="dayof" value="Sun" autocomplete="off"><span style="color:white">일요일</span>
+                   </label>
+                        <br>
                         <br>
                         <br>
                         <h3><i>fade in</i></h3>
                         <br>
-                        <button type="submit" class="btn btn-primary">10분</button>
-                        <button type="submit" class="btn btn-primary">20분</button>
-                        <button type="submit" class="btn btn-primary">30분</button>
-                        
+
+                        <label><input type="radio" value="10" class="btn btn-primary" name="fade_in">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>                         
+                        <label><input type="radio" value="20" class="btn btn-primary" name="fade_in">&nbsp;&nbsp;20분 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" value="30" class="btn btn-primary" name="fade_in">&nbsp;&nbsp;30분 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                 
                         <hr class="mb-5">
-                                            
-                       <td>소리알림으로 아침을 알려드릴까요? &nbsp;<input type="checkbox"></section></td><br>
-                       <td>날씨소리로 아침을 알려드릴까요? &nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>스케줄알림으로 아침을 알려드릴까요?&nbsp;<input type="checkbox"></section></td><br><br>
-                       <td>수면패턴기능을 이용하시겠습니까?&nbsp;<input type="checkbox"></section></td><br><br>
-                        <a href="#" class="btn btn-primary">Continue...</a>
+                        <table style="border-collapse: separate;border-spacing: 0 20px;">
+                             <tr><td><label><input type="checkbox" name="sound" value="on">&nbsp;소리알림으로 아침을 알려드릴까요?</label></td></tr>
+                             <tr><td><label><input type="checkbox" name="weather_sound" value="on"> &nbsp;날씨소리로 아침을 알려드릴까요?</label></td></tr>
+                             <tr><td><label><input type="checkbox" name="schedule" value="on"> &nbsp;스케줄알림으로 아침을 알려드릴까요?</label></td></tr>
+                             <tr><td><label><input type="checkbox" name="pattern" value="on">&nbsp;수면패턴기능을 이용하시겠습니까? </label></td></tr>
+                         </table>   
+                        
+                        <input type="hidden" id="dayofs" name="dayofs">
+                        <input type="hidden" id="on_offs" name="on_offs">
+                    <input type="submit" id="send" class="btn btn-primary value="클릭">
+                        </form>
                     </section>
                 </main>
             </div>
