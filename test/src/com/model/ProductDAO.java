@@ -142,6 +142,34 @@ public class ProductDAO {
 		return pal;
 	}
 	
+	public ProductVO SelectAnzziDetail(String p_serialnum) {
+		try {
+			connection();
+			
+			String sql = "Select p_serialnum, p_location,detail_location from phistory where p_serialnum = ?";
+			psmt	= conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				p_serialnum = rs.getString(1);
+				String p_location = rs.getString(2);
+				String detail_location = rs.getString(3);
+				
+				
+				vo = new ProductVO(p_serialnum,p_location,detail_location);
+				
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}return vo;
+	}
 	
 	
 	

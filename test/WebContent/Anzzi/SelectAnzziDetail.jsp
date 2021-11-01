@@ -30,6 +30,7 @@ MemberVO vo = (MemberVO)session.getAttribute("member");
 String m_id = vo.getId();
 ProductDAO pdao = new ProductDAO();
 ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
+ProductVO detail = (ProductVO)session.getAttribute("PVO");
 	
 	%>
 <div class="tm-container">        
@@ -84,16 +85,16 @@ ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
-                    <%for(ProductVO pvo : pal){ %>
+                    <%if(detail != null){ %>
 						<div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
 							<a href="SelectAnzziDetail.jsp"><button class="btnsa">
 									<img src="img/3-1.jpg" alt="Image" class="tm-service-img".btnsa>
 								</button></a>
 							<div class="media-body tm-service-text">
 								<br>
-								<h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
-								<p><%=pvo.getDetail_location() %></p>
-								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
+								<h2 class="mb-4 tm-content-title"><%=detail.getP_serialnum() %></h2>
+								<p><%=detail.getDetail_location() %></p>
+								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + detail.getP_location()) %></p>
 								<a href = "" >수정하기</a>
 								<a href = " ">강제제어</a>
 								<br><br><br>

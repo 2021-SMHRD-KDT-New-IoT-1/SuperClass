@@ -85,10 +85,13 @@
                     <section class="tm-content">
                     <%for(ProductVO pvo : pal){%>
                         <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
-                            <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
+                        <form action="../SelectAnzziDetail">
+                            <button type="submit" class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button>
+                            <input type="hidden" name="p_serialnum" value="<%=pvo.getP_serialnum()%>">
+                            </form>
                             <div class="media-body tm-service-text">
                             <br>
-                               <a href="../P_serialnumSession?p_serialnum=?<%=pvo.getP_serialnum()%>"><h2 class="mb-4 tm-content-title" onclick="selectNum()"><%=pvo.getP_serialnum()%></h2></a>                             
+                              <h2 class="mb-4 tm-content-title" ><%=pvo.getP_serialnum()%></h2>                             
                                 <p><%=pvo.getDetail_location() %></p>
                                 <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
                             </div> 
