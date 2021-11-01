@@ -82,7 +82,7 @@ public class calendarService extends HttpServlet {
 		//String p_serialnum = request.getParameter("p_serialnum");
 		
 		//임시 시리얼넘버
-		String p_serialnum = "910-5";
+		String p_serialnum = "910-1";
 		
 		//p_serialnum은 어디서 가져올지 생각해봐야함. m_id는 세션에서 가져옴.
 		dao.inSchedule(start_date, end_date, calendar_op,p_serialnum, m_id);

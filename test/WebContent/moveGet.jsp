@@ -17,7 +17,7 @@
 		System.out.println(moveSensor);		
 	%>	
 	
-	
+
 	<p id="result"></p>
 	
 	<script type="text/javascript">
@@ -37,5 +37,6 @@
 		});
 	});
 </script>
+
 </body>
 </html>

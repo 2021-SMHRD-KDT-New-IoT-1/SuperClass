@@ -88,7 +88,7 @@
                             <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
                             <div class="media-body tm-service-text">
                             <br>
-                                <h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
+                                <h2 class="mb-4 tm-content-title" ><%=pvo.getP_serialnum() %></h2>
                                 <p><%=pvo.getDetail_location() %></p>
                                 <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
                             </div> 
@@ -123,6 +123,10 @@
             <div class="tm-bg-right"></div>
         </div>
     </div>
+<script>
+//시리얼번호 클릭시 세션생성 내일마저해볼게요
+</script>
+
 
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

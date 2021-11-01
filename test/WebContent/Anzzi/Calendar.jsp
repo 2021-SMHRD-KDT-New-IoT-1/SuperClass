@@ -124,10 +124,11 @@
   
   
   <script>
-
+	
       // calendar element 취득
       var calendarEl = $('#calendar')[0];
       // full-calendar 생성하기
+        
       var calendar = new FullCalendar.Calendar(calendarEl, {
     	  
         height: '650px', // calendar 높이 설정
@@ -153,28 +154,31 @@
         eventChange: function(obj) { // 이벤트가 수정되면 발생하는 이벤트
           console.log(obj);
         },
-        eventRemove: function(obj){ // 이벤트가 삭제되면 발생하는 이벤트
-          console.log(obj);
+        eventRemove: function(arg){ // 이벤트가 삭제되면 발생하는 이벤트
+          console.log("삭제되면 발생하는 이벤트");
         },
         select: function(arg) { // 캘린더에서 드래그로 이벤트를 생성할 수 있다.
         	console.log("1");
           var input_confirm = confirm("스케줄을 입력하시겠습니까?");
           if(input_confirm == true){
-          
-          var url = "CalenderPopup.jsp";
+          var url = "CalendarPopup.jsp";
           console.log("3");
           var name = "CalenderPopup test";
-
           var option = "width = 500, height = 500, top = 100, left = 200, location = no"
           windowObj = window.open(url, name, option);
           windowObj.calendar = calendar;
           windowObj.arg = arg;
           
+          
           calendar.unselect()
+        
           }
+          
         }             
-
+	
         })//끝
+       
+ 
         
         <%if(vo != null){%>
         <%for(int i = 0; i<al.size();i++){%>
@@ -186,23 +190,36 @@
          })
          <%}%>
          <%}%>
-        
-    
-      
+         
+         
+       
+         
       // 캘린더 랜더링
       calendar.render();
       
+     
+    
+    //삭제기능
       $('.fc-event-title-container').on('click', function(){
     	  let td = $(this).parents().parents().parents().parents().parents().parents().parents()
     	  console.log(td.attr('data-date'))
     	  
-    	  var input_confirm = confirm("스케줄을 삭제하시겠습니까?")
-    	  if(input_confirm == true){
-    		  //삭제메서드
-    	  }
+    	  let td_date = td.attr('data-date')
     	  
-    	  //삭제시켜주는 함수만들기.
-      })//제이쿼리끝
+    	  let input_confirm = confirm("'"+td_date+"'"+"스케줄을 삭제하시겠습니까?")
+    	  
+    	  if(input_confirm){
+    		location.replace("../CalendarDelete?start_date="+td_date)
+    	  }
+      }) //삭제기능끝
+ 
+
+      // 선생님께 여쭤보기. 이벤트 추가된 후에 새로고침을 해야지만 추가한 이벤트 삭제가능...어느 타이밍에 이걸 써줘야 하는지 여쭤보기
+      function reload(){
+    	$("#calendar > div.fc-view-harness.fc-view-harness-active").load(window.location.href+"#calendar > div.fc-view-harness.fc-view-harness-active");
+    }
+
+      
 </script>
                 
                       

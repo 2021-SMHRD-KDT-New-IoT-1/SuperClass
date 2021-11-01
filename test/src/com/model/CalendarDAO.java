@@ -117,9 +117,32 @@ public class CalendarDAO {
 				close();
 			}
 		return Cal;
+	}//메서드끝
+	
+	public int delectSchedule(String p_serialnum, String start_date) {
+		try {
+			connection();
+			
+			String sql = "delete from schedule where p_serialnum = ? and start_date = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+			psmt.setString(2, start_date);
+			cnt = psmt.executeUpdate();
+			
+			//System.out.println(cnt);
+						
+		} catch (Exception e) {
+			System.out.println("CalendarDAO에서 삭제실패");
+			e.printStackTrace();
+			
+		}finally {
+			close();
+			}
+		return cnt;
 	}
 
-	
+
 		
 }
 	
