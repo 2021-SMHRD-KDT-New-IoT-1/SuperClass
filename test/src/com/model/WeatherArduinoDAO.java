@@ -6,75 +6,53 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SensorDAO {
+public class WeatherArduinoDAO {
 
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	SensorVO vo = null;
+	WeatherArduinoVO vo = null;
 	int cnt = 0;
-	boolean check = false;	
+	boolean check = false;
 
 	private void connection() {
 
 		try {
 
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1521:xe";
 			String dbid = "campus_a_3_1025";
 			String dbpw = "smhrd3";
 
 			// 2.데이터베이스 연결 객체(Connection) 생성
 			conn = DriverManager.getConnection(url, dbid, dbpw);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("연결fail");
+			System.out.println("연결실패");
 		}
 
 	}
 
 	private void close() {
 		try {
-			if(rs != null) {
+			if (rs != null) {
 				rs.close();
 			}
-			if(psmt != null) {
+			if (psmt != null) {
 				psmt.close();
 			}
-			if(conn != null) {
+			if (conn != null) {
 				conn.close();
 			}
 		} catch (Exception e2) {
 			e2.printStackTrace();
-			
+
 		}
 	}
-
-	public SensorVO insert(int moveSensor) {
-		
-		connection();
-		String sql1 = "INSERT INTO ARDUINO values(sysdate, ?)";
-		try {
-			psmt = conn.prepareStatement(sql1);			
-			psmt.setInt(1, moveSensor);
-			// psmt.execute();
-			
-			int cnt = psmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			System.out.println("fail");
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-
-		vo = getSensor();
-		return vo;
-	}
-
-	public SensorVO getSensor() {
-		SensorVO vo = null;
+	
+	public WeatherArduinoVO getWeatherInfo() {
+		vo = null;
 		connection();
 		String sql = "select * from ARDUINO";
 		try {
@@ -82,7 +60,7 @@ public class SensorDAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				int mysensor = rs.getInt(1);
-				vo = new SensorVO(mysensor);
+				vo = new WeatherArduinoVO(mysensor);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -92,5 +70,6 @@ public class SensorDAO {
 		}
 		return vo;
 	}
-
+	
+	
 }

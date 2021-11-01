@@ -11,11 +11,11 @@ public class SensorVO {
 		this.moveSensor = moveSensor;
 	}
 
-	public int getMysensor() {
+	public int getmoveSensor() {
 		return moveSensor;
 	}
 
-	public void setMysensor(int moveSensor) {
+	public void setmoveSensor(int moveSensor) {
 		this.moveSensor = moveSensor;
 	}
 

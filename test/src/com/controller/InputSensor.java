@@ -20,13 +20,22 @@ public class InputSensor extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		int moveSensor = Integer.parseInt(request.getParameter("moveSensor"));
-		System.out.println("서버로 들어온 값 : " + moveSensor);
-		SensorDAO dao = new SensorDAO();
-		SensorVO vo = dao.insert(moveSensor);
-		PrintWriter out = response.getWriter();
-		String result = new Gson().toJson(vo);
-		out.print(result);
+		int moveSensor = 999;
+		moveSensor = Integer.parseInt(request.getParameter("moveSensor"));
+		
+		if(moveSensor != 999 ) {
+			System.out.println("값이 들어옴");
+			System.out.println("서버로 들어온 값 : " + moveSensor);
+			SensorDAO dao = new SensorDAO();
+			SensorVO vo = dao.insert(moveSensor);
+			PrintWriter out = response.getWriter();
+			String result = new Gson().toJson(vo);
+			out.print(result);
+		} else {
+			System.out.println("null");
+		}
+		
+		
 		
 		
 	}
