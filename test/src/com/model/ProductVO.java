@@ -21,6 +21,7 @@ public class ProductVO {
 		this.detail_location = detail_location;
 	}
 	
+	
 	public String getP_serialnum() {
 		return p_serialnum;
 	}

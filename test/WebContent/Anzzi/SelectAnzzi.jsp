@@ -83,12 +83,12 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
-                    <%for(ProductVO pvo : pal){ %>
+                    <%for(ProductVO pvo : pal){%>
                         <div class="media my-3 mb-5 tm-service-media tm-service-media-img-l">
                             <a href="SelectAnzziDetail.jsp"><button class="btnsa"><img src="img/3-1.jpg" alt="Image" class="tm-service-img" .btnsa ></button></a>
                             <div class="media-body tm-service-text">
                             <br>
-                                <h2 class="mb-4 tm-content-title" ><%=pvo.getP_serialnum() %></h2>
+                               <a href="../P_serialnumSession?p_serialnum=?<%=pvo.getP_serialnum()%>"><h2 class="mb-4 tm-content-title" onclick="selectNum()"><%=pvo.getP_serialnum()%></h2></a>                             
                                 <p><%=pvo.getDetail_location() %></p>
                                 <p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
                             </div> 
@@ -124,7 +124,10 @@
         </div>
     </div>
 <script>
-//시리얼번호 클릭시 세션생성 내일마저해볼게요
+
+	//시리얼번호 클릭시 세션생성 내일마저해볼게요
+	//let weather = pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location())
+	
 </script>
 
 

@@ -94,7 +94,10 @@ ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
 								<h2 class="mb-4 tm-content-title"><%=pvo.getP_serialnum() %></h2>
 								<p><%=pvo.getDetail_location() %></p>
 								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + pvo.getP_location()) %></p>
+								<a href = "" >수정하기</a>
+								<a href = " ">강제제어</a>
 								<br><br><br>
+					
 							</div>
 							<% }%> 
 							  

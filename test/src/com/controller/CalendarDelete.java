@@ -26,9 +26,11 @@ public class CalendarDelete extends HttpServlet {
 		CalendarDAO dao = new CalendarDAO();
 		
 		//임시 시리얼 넘버 (제품선택페이지에서 세션 만들어놓으면 그거 들고  다니면 됨)
-		String p_serialnum = "910-1";
+		String p_serialnum = (String)session.getAttribute("p_serialnum");
+		
 		int cnt = dao.delectSchedule(p_serialnum, start_date);
 		System.out.println(cnt);
+		
 		if(cnt > 0) {
 			System.out.println("스케줄삭제성공");
 		}else {
