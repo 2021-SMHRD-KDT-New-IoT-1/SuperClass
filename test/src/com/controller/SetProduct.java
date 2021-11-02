@@ -30,6 +30,7 @@ public class SetProduct extends HttpServlet {
 		
 		Connection conn = null;
 		PreparedStatement psmt = null;
+		
 		try {
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");

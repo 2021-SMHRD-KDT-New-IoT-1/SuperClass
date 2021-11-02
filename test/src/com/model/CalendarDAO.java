@@ -66,13 +66,13 @@ public class CalendarDAO {
 		try {
 			connection();
 
-			String sql = "insert INTO schedule (s_sq,start_date,end_date,s_option,p_serialnum,m_id) VALUES (schedule_sq.nextval,?,?,?,?,?)";
+			String sql = "insert INTO schedule (s_sq,start_date,s_option,p_serialnum,m_id,end_date) VALUES (schedule_sq.nextval,?,?,?,?,?)";
 			psmt = conn.prepareStatement(sql);
 			psmt.setDate(1, start_date);
-			psmt.setDate(2, end_date);
-			psmt.setString(3, calendar_op);
-			psmt.setString(4, p_serialnum);
-			psmt.setString(5, m_id);
+			psmt.setString(2, calendar_op);
+			psmt.setString(3, p_serialnum);
+			psmt.setString(4, m_id);
+			psmt.setDate(5, end_date);
 
 			// 5. SQL문 명령 후 처리
 			cnt = psmt.executeUpdate();

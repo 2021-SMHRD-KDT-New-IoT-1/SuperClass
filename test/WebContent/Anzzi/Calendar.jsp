@@ -29,6 +29,16 @@
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.min.js'></script>
   <!-- fullcalendar ¾ð¾î CDN -->
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/locales-all.min.js'></script>
+  <style>
+  #logo{
+          width:250px;
+          height:250px;
+          position: absolute;
+          background-color:transparent;
+            border : 0;
+		outline : 0;
+       }
+  </style>
 </head>
 <body>
 
@@ -64,8 +74,9 @@
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <h1 class="tm-sitename text-uppercase" style="font-size: 40px;"><a href="Main.jsp" style="color:#5F9EA0;"><i>An zzi</i></a></h1>
-                                <p class="tm-slogon" style="font-size: 17px;">smart¹«µåµî</p>
+                                <button href="Main.jsp" id="logo">
+                           <img src="img/¾ÈÂî»Ñµî3.png">
+                        </button> 
                             </div>        
                         </div>        
                     </div>

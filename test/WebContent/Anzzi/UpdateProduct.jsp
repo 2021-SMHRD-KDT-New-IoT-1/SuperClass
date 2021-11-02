@@ -23,6 +23,14 @@
 		background-color:transparent;
 		color : white;
 	}
+	#logo{
+          width:250px;
+          height:250px;
+          position: absolute;
+          background-color:transparent;
+            border : 0;
+		outline : 0;
+       }
 </style>
 </head>
 <body>
@@ -39,8 +47,9 @@
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <h1 class="tm-sitename text-uppercase"><a href="Main.jsp"><i>An zzi</i></a></h1>
-                                <p class="tm-slogon">smart무드등</p>
+                                 <button href="Main.jsp" id="logo">
+                           <img src="img/안찌뿌등3.png">
+                        </button>  
                             </div>        
                         </div>        
                     </div>
@@ -95,7 +104,7 @@
                                	</tr>
                                	<tr>
                                		<th width="200" height="50" style="text-align:center">시리얼넘버</th>
-                               		<th width="460" height="50" style="text-align:center"><p><%=detail.getP_serialnum() %></p>
+                               		<th width="460" height="50" style="text-align:center"><p><%=detail.getP_serialnum()%></p>
                                	</tr>
                                	<tr>
                                		<th width="200" height="50" style="text-align:center">주소</th>
