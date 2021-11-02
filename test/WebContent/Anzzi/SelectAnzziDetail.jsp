@@ -38,6 +38,7 @@
 	border-radius: 15px;
 	position: relative;
 	left: 0px;
+	}
     </style>
 </head>
 <body>
