@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -197,7 +199,33 @@ public class ProductDAO {
         }
         return cnt;
      } 
+	
 
+	public ProductVO getLoginSerialnum(String m_id) {
+		try {
+			connection();
+			
+			String sql = "Select p_serialnum, p_location, detail_location from phistory where m_id = ? and rownum = 1";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,m_id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String p_serialnum = rs.getString(1);
+				String p_location = rs.getString(2);
+				String detail_location = rs.getString(3);
+				
+				vo = new ProductVO(p_serialnum,p_location,detail_location);
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}return vo;
+	}
 	
 	
 }

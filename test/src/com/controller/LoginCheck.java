@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import com.model.MemberDAO;
 import com.model.MemberVO;
+import com.model.ProductDAO;
+import com.model.ProductVO;
 
 @WebServlet("/LoginCheck")
 public class LoginCheck extends HttpServlet {
@@ -36,6 +38,12 @@ public class LoginCheck extends HttpServlet {
 				HttpSession session = request.getSession();
 				
 				session.setAttribute("member", vo);
+				
+				ProductDAO Pdao = new ProductDAO();
+				
+				ProductVO Pvo = Pdao.getLoginSerialnum(vo.getId());
+				//회원이 가지고 있는 첫번째 제품의 시리얼번호를 불러와서 세션에 담기
+				session.setAttribute("PVO", Pvo);
 				
 				response.sendRedirect("Anzzi/Main.jsp");
 			}else {

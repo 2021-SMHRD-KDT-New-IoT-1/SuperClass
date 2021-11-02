@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.model.MemberVO;
 import com.model.ProductDAO;
 import com.model.ProductVO;
 
@@ -19,6 +20,7 @@ public class SelectAnzziDetail extends HttpServlet {
 		ProductDAO dao = new ProductDAO();
 		ProductVO vo = dao.SelectAnzziDetail(p_serialnum);
 		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
 		session.setAttribute("PVO", vo);
 		if(vo != null) {
 			response.sendRedirect("Anzzi/SelectAnzziDetail.jsp");
