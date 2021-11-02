@@ -10,7 +10,7 @@
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Diagoona - Services Page</title>
+    <title>ANZZI</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet" /> <!-- https://fonts.google.com/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet" /> <!-- https://getbootstrap.com/ -->
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
@@ -22,6 +22,15 @@
 		background-color:transparent;
 		color : white;
     	}
+    	#logo{
+          width:250px;
+          height:250px;
+          position: absolute;
+          background-color:transparent;
+            border : 0;
+		outline : 0;
+       }
+   
     </style>
 </head>
 <body>
@@ -39,8 +48,9 @@
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <h1 class="tm-sitename text-uppercase"><a href="Main.jsp"><i>An zzi</i></a></h1>
-                                <p class="tm-slogon">smart¹«µåµî</p>
+                                <button href="Main.jsp" id="logo">
+                           <img src="img/¾ÈÂî»Ñµî3.png">
+                        </button>  
                             </div>        
                         </div>        
                     </div>

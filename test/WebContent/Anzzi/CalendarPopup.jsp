@@ -4,7 +4,17 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>ANZZI</title>
+<style>
+#logo{
+          width:250px;
+          height:250px;
+          position: absolute;
+          background-color:transparent;
+            border : 0;
+		outline : 0;
+       }
+</style>
 </head>
 <body>
 
