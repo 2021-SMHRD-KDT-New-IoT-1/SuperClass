@@ -50,25 +50,25 @@ public class TimeDAO {
    }
 
 
-   public int inTime (String p_serialnum, String wake_time, String dayof,String fade_in, String sound, String weather_sound, String schedule, String pattern ) {
+   public int inWakeUp(String p_serialnum, String wake_time, String dayofs,String fade_in, String sound, String weather_sound, String schedule, String sleep_pattern ) {
       try {
          connection();
-         String sql = "UPDATE Time SET wake_time=?, dayof=?, fade_in=?, sound=?, weather_sound=?, schedule=?, pattern=? WHERE p_serialnum =?";
+         String sql = "UPDATE Wakeup SET wake_time=?, dayofs=?, fade_in=?, sound=?, weather_sound=?, schedule=?, sleep_pattern=? WHERE p_serialnum =?";
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, wake_time);
-         psmt.setString(2, dayof);
+         psmt.setString(2, dayofs);
          psmt.setString(3, fade_in);
          psmt.setString(4, sound);
          psmt.setString(5, weather_sound);
          psmt.setString(6, schedule);
-         psmt.setString(7, pattern);
+         psmt.setString(7, sleep_pattern);
          psmt.setString(8, p_serialnum);
 
          // 5. SQL문 명령 후 처리
          cnt = psmt.executeUpdate();
 
       } catch (Exception e) {
-         System.out.println("등록실패");
+         System.out.println("WakeUp테이블 실패");
          e.printStackTrace();
       } finally {
          close();

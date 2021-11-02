@@ -40,7 +40,7 @@
           position: absolute;
           background-color:transparent;
             border : 0;
-		outline : 0;
+      outline : 0;
        }
         </style>
 </head>
@@ -57,11 +57,9 @@
                     <div class="tm-site-header media">
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
-                            <button id="logo">
-                               <a href="Main.jsp">
+                             <button href="Main.jsp" id="logo">
                            <img src="img/an3.png">
-                           </a>
-                        </button>    
+                        </button>  
                         </div>        
                     </div>
                 </div>
@@ -103,13 +101,13 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
+                 	 <form action = "../SetTime" method = "post">
                         <h3><i>wake time</i></h3>
                         <br>
-                        <input type="time" min="0" max="24" value="hour" placeholder="시간" name="wake_time">
+                        <input type="time" min="0" max="24"  placeholder="시간" name="wake_time">
                         <!-- <button type="submit" class="btn btn-primary">설정</button> -->
                         <br>
                         <br>
-                        <form>
                         <input id = "ckbox1" type= "checkbox" name = "selectDay" value = "mon" class="dayCheck">
                         <label for="ckbox1">월</label>
                         <input id = "ckbox2"  type= "checkbox" name = "selectDay" value = "thu" class="dayCheck">
@@ -133,14 +131,14 @@
                         <div  class="btn1 btn-primary">금</div>
                         <div  class="btn1 btn-primary">토</div>
                         <div  class="btn1 btn-primary">일</div> -->
-                        </form>
+                     
                         <br>
                         <br>
                         <h3><i>fade in</i></h3>
                         <br>
-                        <button type="submit" class="btn btn-primary" value="10" name="fade_in">10분</button>
-                        <button type="submit" class="btn btn-primary" value="20" name="fade_in">20분</button>
-                        <button type="submit" class="btn btn-primary" value="30" name="fade_in">30분</button>
+                        <label><input type="radio" class="btn btn-primary" value="10" name="fade_in">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="20" name="fade_in">&nbsp;&nbsp;20분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="30" name="fade_in">&nbsp;&nbsp;30분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         
                         <hr class="mb-5">
                                             
@@ -152,6 +150,7 @@
                          </table>   
                            <input type="hidden" id="dayofs" name="dayofs">
                     <input type="submit" id="send" class="btn btn-primary" value='뀨!'>
+                    </form>
                     </section>
                 </main>
             </div>
@@ -196,5 +195,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+    
 </body>
 </html>
