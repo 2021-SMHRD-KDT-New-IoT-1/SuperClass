@@ -66,7 +66,7 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
                         <div class="media-body">
                             <div class="media-body">
                                 <button href="Main.jsp" id="logo">
-                           <img src="img/¾ÈÂî»Ñµî3.png">
+                           <img src="img/an3.png">
                         </button>  
                             </div>        
                         </div>        

@@ -37,7 +37,7 @@
                         <div class="media-body">
                             <div class="media-body">
                                <button href="Main.jsp" id="logo">
-                           <img src="img/¾ÈÂî»Ñµî3.png">
+                           <img src="img/an3.png">
                         </button>  
                             </div>        
                         </div>        
@@ -90,7 +90,7 @@
                 <div class="tm-col-left"></div>
                 <main class="tm-col-right">
                     <section class="tm-content">
-                        <img src="img/±×¸²5.png" alt="Image" class="tm-service-img".btnsa>
+                        <img src="img/an5.png" alt="Image" class="tm-service-img".btnsa>
                     </section>
                 </main>
             </div>

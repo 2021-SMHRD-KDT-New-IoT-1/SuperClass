@@ -58,7 +58,7 @@
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                              <button href="Main.jsp" id="logo">
-                           <img src="img/¾ÈÂî»Ñµî3.png">
+                           <img src="img/an3.png">
                         </button>  
                         </div>        
                     </div>
