@@ -16,13 +16,14 @@
     <link href="fontawesome/css/all.min.css" rel="stylesheet" /> <!-- https://fontawesome.com/ -->
     <link href="css/templatemo-diagoona.css" rel="stylesheet" />
  <style>
-    	.btnsa{
-    	border : 0;
-		outline : 0;
-		background-color:transparent;
-		color : white;
-    	}
-    	.toggleBG {
+	.btnsa {
+	border : 0;
+	outline : 0;
+	background-color: transparent;
+	color: white;
+}
+    	
+.toggleBG {
 	background: #CCCCCC;
 	width: 70px;
 	height: 35px;
@@ -39,7 +40,7 @@
 	position: relative;
 	left: 0px;
 	}
-    </style>
+</style>
 </head>
 <body>
 <%
@@ -48,8 +49,7 @@ String m_id = vo.getId();
 ProductDAO pdao = new ProductDAO();
 ArrayList<ProductVO> pal = pdao.getAnzzi(m_id);
 ProductVO detail = (ProductVO)session.getAttribute("PVO");
-	
-	%>
+%>
 <div class="tm-container">        
         <div>
             <div class="tm-row pt-4">
