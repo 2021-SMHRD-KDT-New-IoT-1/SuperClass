@@ -168,10 +168,10 @@
           windowObj = window.open(url, name, option);
           windowObj.calendar = calendar;
           windowObj.arg = arg;
-          
-          
+          windowObj.main = window.self;
           calendar.unselect()
-        
+          
+          
           }
           
         }             
@@ -200,6 +200,7 @@
      
     
     //삭제기능
+    let deleteCal = function(){
       $('.fc-event-title-container').on('click', function(){
     	  let td = $(this).parents().parents().parents().parents().parents().parents().parents()
     	  console.log(td.attr('data-date'))
@@ -211,8 +212,10 @@
     	  if(input_confirm){
     		location.replace("../CalendarDelete?start_date="+td_date)
     	  }
-      }) //삭제기능끝
- 
+      }) 
+    }
+    deleteCal();
+  //삭제기능끝
 
       // 선생님께 여쭤보기. 이벤트 추가된 후에 새로고침을 해야지만 추가한 이벤트 삭제가능...어느 타이밍에 이걸 써줘야 하는지 여쭤보기
       function reload(){

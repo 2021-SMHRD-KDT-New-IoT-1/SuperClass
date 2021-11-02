@@ -25,9 +25,9 @@ public class P_serialnumSession extends HttpServlet {
 		
 		System.out.println(p_serialnum);
 		
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("p_serialnum",p_serialnum);
+//		HttpSession session = request.getSession();
+//		
+//		session.setAttribute("p_serialnum",p_serialnum);
 		
 		//String se = (String)session.getAttribute("p_serialnum");
 		

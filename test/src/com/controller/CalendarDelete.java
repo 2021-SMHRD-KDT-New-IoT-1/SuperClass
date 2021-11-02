@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.model.CalendarDAO;
+import com.model.ProductVO;
 import com.model.ServiceCenterDAO;
 
 
@@ -26,9 +27,9 @@ public class CalendarDelete extends HttpServlet {
 		CalendarDAO dao = new CalendarDAO();
 		
 		//임시 시리얼 넘버 (제품선택페이지에서 세션 만들어놓으면 그거 들고  다니면 됨)
-		String p_serialnum = (String)session.getAttribute("p_serialnum");
+		ProductVO pvo = (ProductVO)session.getAttribute("PVO");
 		
-		int cnt = dao.delectSchedule(p_serialnum, start_date);
+		int cnt = dao.delectSchedule(pvo.getP_serialnum(), start_date);
 		System.out.println(cnt);
 		
 		if(cnt > 0) {

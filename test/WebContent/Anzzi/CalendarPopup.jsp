@@ -53,13 +53,19 @@
 		                allDay: arg.allDay
 		                
 		              })
+		           	
 					//alert(res)
 					//opener.location.href="Calender.jsp?data="+res;
+					main.location.reload();
 					window.close();
-					//window.location.href="Calendar.jsp?data="+res;
+					//window.location.href="Calendar.jsp";
 				}
 			})
+			
+			// ajax
+	
 		})
+		
 		
 		
 /*		let arr = $("input[type='checkbox']")
