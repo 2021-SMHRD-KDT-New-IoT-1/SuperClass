@@ -95,7 +95,7 @@
                                	</tr>
                                	<tr>
                                		<th width="200" height="50" style="text-align:center">시리얼넘버</th>
-                               		<th width="460" height="50" style="text-align:center"><p><%=detail.getP_serialnum() %></p>
+                               		<th width="460" height="50" style="text-align:center"><p><%=detail.getP_serialnum()%></p>
                                	</tr>
                                	<tr>
                                		<th width="200" height="50" style="text-align:center">주소</th>

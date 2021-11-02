@@ -22,20 +22,27 @@ public class UpdateProduct extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("1");
 		request.setCharacterEncoding("euc-kr");
 		HttpSession session = request.getSession();
 		String p_location = request.getParameter("p_location");
+		MemberVO mvo = (MemberVO)session.getAttribute("member");
+		String m_id = mvo.getId();
 		ProductVO detail = (ProductVO)session.getAttribute("PVO");
 		String detail_location = request.getParameter("p_locationdetail");
 		String p_serialnum = detail.getP_serialnum();
+		
 		System.out.println(p_location);
 		System.out.println(p_serialnum);
 		ProductDAO dao = new ProductDAO();
-		int cnt = dao.UpdateProduct(p_location, detail_location, p_serialnum);
+		
+		int cnt = dao.UpdateProduct(p_location, detail_location, p_serialnum, m_id);
 		
 		
 			if(cnt > 0) {
 				System.out.println("추가성공");
+				ProductVO pvo = new ProductVO(p_location, detail_location, p_serialnum);
+				request.setAttribute("PVO", pvo);
 				response.sendRedirect("Anzzi/SelectAnzzi.jsp");
 				
 			}else {
