@@ -106,7 +106,7 @@
 								<div id="list"></div>
                                	<div id="callBackDiv">
                                	<input type="hidden" id="admCd" name="p_location">
-                               	<input type="hidden" name="P_serialnum" value="<%=detail.getP_serialnum() %>">
+                               	
                                	<input type="hidden"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" />
 								<input type="hidden"  style="width:500px;" id="addrDetail"  name="addrDetail" />
                                	<input type="hidden"  style="width:500px;" id="roadAddrPart2"  name="roadAddrPart2" />
