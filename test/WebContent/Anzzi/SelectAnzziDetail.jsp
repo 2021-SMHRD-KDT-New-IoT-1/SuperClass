@@ -65,8 +65,10 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
                         <i class="fas fa-umbrella-beach fa-3x mt-1 tm-logo"></i>
                         <div class="media-body">
                             <div class="media-body">
-                                <button href="Main.jsp" id="logo">
+                               <button id="logo">
+                               <a href="Main.jsp">
                            <img src="img/an3.png">
+                           </a>
                         </button>  
                             </div>        
                         </div>        
