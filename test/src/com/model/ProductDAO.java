@@ -171,6 +171,33 @@ public class ProductDAO {
 			}return vo;
 	}
 	
+	int cnt=0;
+	public int UpdateProduct(String p_location, String detail_location, String p_serialnum) {
+        
+        try {
+              
+           connection();
+           
+           String sql="UPDATE phistory SET p_location=?, detail_location=? WHERE p_serialnum = ?";
+           
+           PreparedStatement psmt = conn.prepareStatement(sql);
+           psmt.setString(1, p_location);
+           psmt.setString(2, detail_location);
+           psmt.setString(3, p_serialnum);
+   
+           cnt = psmt.executeUpdate();
+           
+           
+        } catch (Exception e) {
+           
+           e.printStackTrace();
+        
+        }finally {
+           close();
+        }
+        return cnt;
+     } 
+
 	
 	
 }

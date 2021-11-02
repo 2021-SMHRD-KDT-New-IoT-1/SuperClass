@@ -22,6 +22,22 @@
 		background-color:transparent;
 		color : white;
     	}
+    	.toggleBG {
+	background: #CCCCCC;
+	width: 70px;
+	height: 35px;
+	border: 1px solid #A9A9A9;
+	border-radius: 15px;
+}
+
+.toggleFG {
+	background: #FFFFFF;
+	width: 35px;
+	height: 35px;
+	border: none;
+	border-radius: 15px;
+	position: relative;
+	left: 0px;
     </style>
 </head>
 <body>
@@ -95,9 +111,12 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
 								<h2 class="mb-4 tm-content-title"><%=detail.getP_serialnum() %></h2>
 								<p><%=detail.getDetail_location() %></p>
 								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + detail.getP_location()) %></p>
-								<a href = "" >수정하기</a>
-								<a href = " ">강제제어</a>
-								<br><br><br>
+								<a href = "./UpdateProduct.jsp" >수정하기</a>
+								
+									<div class='toggleBG'>
+                           <button id="buttonID" type="submit" class='toggleFG' onclick="alert(getToggleBtnState('buttonID'));">ON</button>
+                           
+                        </div>
 					
 							</div>
 							<% }%> 
@@ -291,6 +310,44 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+     <script>
+    $(document).on('click', '.toggleBG', function () {
+        var toggleBG = $(this);
+        var toggleFG = $(this).find('.toggleFG');
+        var left = toggleFG.css('left');
+        if(left == '40px') {
+            toggleBG.css('background', '#CCCCCC');
+            toggleActionStart(toggleFG, 'TO_LEFT');
+        }else if(left == '0px') {
+            toggleBG.css('background', '#53FF4C');
+            toggleActionStart(toggleFG, 'TO_RIGHT');
+        }
+    });
+     
+    // 토글 버튼 이동 모션 함수
+    function toggleActionStart(toggleBtn, LR) {
+        // 0.01초 단위로 실행
+        var intervalID = setInterval(
+            function() {
+                // 버튼 이동
+                var left = parseInt(toggleBtn.css('left'));
+                left += (LR == 'TO_RIGHT') ? 5 : -5;
+                if(left >= 0 && left <= 40) {
+                    left += 'px';
+                    toggleBtn.css('left', left);
+                }
+            }, 10);
+        setTimeout(function(){
+            clearInterval(intervalID);
+        }, 201);
+    }
+    
+    function getToggleBtnState(toggleBtnId){
+        const left_px = parseInt( $('#'+toggleBtnId).css('left') );
+     
+        return (left_px > 0)? "off" : "on";
+    }
+    </script>
 </body>
 
 </html>
