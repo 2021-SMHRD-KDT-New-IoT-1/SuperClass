@@ -1,6 +1,7 @@
 package com.model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -228,5 +229,30 @@ public class ProductDAO {
 			}return vo;
 	}
 	
+	public void getMove(String p_serialnum) {
+		try {
+			connection();
+			
+			String sql = "select TO_CHAR(movetime, 'YYYY-MM-DD HH24:MI:SS') , movesensor from arduino";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1,p_serialnum);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				Date movetime = rs.getDate(1);
+				String movesensor = rs.getString(2);
+				
+				
+				
+			}
+			
+		} catch (Exception e) {
+				System.out.println("조회실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+	}
 	
 }

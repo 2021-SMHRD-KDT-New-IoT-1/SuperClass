@@ -6,10 +6,10 @@ public class ProductVO {
 	String p_serialnum;
 	String detail_location;
 	String p_location;
-	int p_value;
+	String movetime;
 	String sleep_time;
 	String wake_time;
-	int m_data;
+	String movesensor;
 	
 	public ProductVO() {
 		
@@ -40,12 +40,7 @@ public class ProductVO {
 	public void setP_location(String p_location) {
 		this.p_location = p_location;
 	}
-	public int getP_value() {
-		return p_value;
-	}
-	public void setP_value(int p_value) {
-		this.p_value = p_value;
-	}
+	
 	public String getSleep_time() {
 		return sleep_time;
 	}
@@ -58,12 +53,23 @@ public class ProductVO {
 	public void setWake_time(String wake_time) {
 		this.wake_time = wake_time;
 	}
-	public int getM_data() {
-		return m_data;
+
+	public String getMovetime() {
+		return movetime;
 	}
-	public void setM_data(int m_data) {
-		this.m_data = m_data;
+
+	public void setMovetime(String movetime) {
+		this.movetime = movetime;
 	}
+
+	public String getMovesensor() {
+		return movesensor;
+	}
+
+	public void setMovesensor(String movesensor) {
+		this.movesensor = movesensor;
+	}
+	
 	
 	
 	
