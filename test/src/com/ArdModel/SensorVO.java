@@ -1,5 +1,7 @@
 package com.ArdModel;
 
+//움직임감지값 mpattern 테이블로 넣어야겠네.
+
 public class SensorVO {
 	
 	private int moveSensor;

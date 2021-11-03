@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ArdModel.WeatherArduinoDAO;
 import com.ArdModel.WeatherArduinoVO;
+import com.ArdModel.sVO;
 import com.google.gson.Gson;
 
 @WebServlet("/getS")
@@ -23,7 +24,7 @@ public class getS extends HttpServlet {
 		//아두이노가 값을 받아오려면 이 서블릿에 와야함. (근데 아두이노가 본인 시리얼넘버를 같이 가지고 와야지만 값을 가지고 갈 수 있다.)
 		
 		WeatherArduinoDAO dao = new WeatherArduinoDAO(); 
-		WeatherArduinoVO avo = dao.getWeatherInfo("910-1"); 
+		sVO avo = dao.getS("910-1"); 
 		String result = new Gson().toJson(avo); 
 		PrintWriter out = response.getWriter(); 
 		out.print(result);

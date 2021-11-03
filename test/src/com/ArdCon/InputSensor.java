@@ -20,21 +20,26 @@ public class InputSensor extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		//움직임감지센서값 아두이노한테 받아오는 서블릿
+		//아두이노한테 받아오는 서블릿
 		
-		int moveSensor = 999;
-		moveSensor = Integer.parseInt(request.getParameter("moveSensor"));
+		String moveSensor = "-";
+		moveSensor = request.getParameter("moveSensor");
 		
-		if(moveSensor != 999 ) {
+		if(!moveSensor.equals("-")) {
 			System.out.println("값이 들어옴");
 			System.out.println("서버로 들어온 값 : " + moveSensor);
 			SensorDAO dao = new SensorDAO();
-			SensorVO vo = dao.insert(moveSensor);
-			PrintWriter out = response.getWriter();
-			String result = new Gson().toJson(vo);
-			out.print(result);
+			
+			int cnt = dao.inMoveSensor(moveSensor,"910-1");
+			
+			if(cnt>0) {
+				System.out.println("moveSensor insert 성공!");
+			}else {
+				System.out.println("moveSensor insert 실패!");
+			}
+			
 		} else {
-			System.out.println("null");
+			System.out.println("inputSensor.java에서 값을 못 받아 오거나 없음");
 		}
 		
 		

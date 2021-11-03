@@ -5,11 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+//아두이노 DAO 여기서 다함 
 public class WeatherArduinoDAO {
 
 	WeatherArduinoVO vo = null;
-
 	
 
 	private Connection conn;
@@ -19,107 +18,270 @@ public class WeatherArduinoDAO {
 	int cnt = 0;
 	boolean check = false;
 
-	private void connection() {
-
-		try {
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1521:xe";
-			String dbid = "campus_a_3_1025";
-			String dbpw = "smhrd3";
-
-			// 2.데이터베이스 연결 객체(Connection) 생성
-			conn = DriverManager.getConnection(url, dbid, dbpw);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("연결실패");
-		}
-
-	}
-
-	private void close() {
-		try {
-			if (rs != null) {
-				rs.close();
-			}
-			if (psmt != null) {
-				psmt.close();
-			}
-			if (conn != null) {
-				conn.close();
-			}
-		} catch (Exception e2) {
-			e2.printStackTrace();
-
-		}
-	}
 	
-////////////////wakeup 테이블에서 컬럼을 전부 빼오는 메서드(m_id와 시리얼넘버 빼고)
-	public WeatherArduinoVO getWeatherInfo(String p_serialnum) {
-		
+	//wakeUp테이블 아이디랑 시리얼넘버 빼고 전부 불러오는 메서드
+	public WeatherArduinoVO getWakeUp(String p) {
 		try {
 			connection();
-			
-			String sql = "Select sleep_time, wake_time, dayofs, fade_in, sound, weather_sound, schedule, sleep_pattern from wakeup where p_serialnum = ?";
+			String sql = "Select sleep_time, wake_time, dayofs, fade_in, sound, weather_sound, schedule, sleep_pattern, led_onoff from wakeup where p_serialnum = ?";
 			
 			psmt= conn.prepareStatement(sql);
-			psmt.setString(1, p_serialnum);
-
-			
+			psmt.setString(1, p);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				
-				
 				String sleep_time = rs.getString(1);
-				if(sleep_time == null) {
-					sleep_time = "x";
-				}
 			 	String wake_time = rs.getString(2);
-				if(wake_time == null) {
-					wake_time = "x";
-				}
 				String dayofs = rs.getString(3);
-				if(dayofs == null) {
-					dayofs = "x";
-				}
 				String fade_in = rs.getString(4);
-				if(fade_in == null) {
-					 fade_in = "x";
-				}
 				String sound = rs.getString(5);
-				if(sound == null) {
-					sound = "x";
-				}
 				String weather_sound = rs.getString(6);
-				if(weather_sound == null) {
-					weather_sound = "x";
-				}
 				String schedule = rs.getString(7);
-				if(schedule == null) {
-					schedule = "x";
-				}
 				String sleep_pattern = rs.getString(8);
-				if(sleep_pattern == null) {
-					sleep_pattern = "x";
-				}
-				
-				vo = new WeatherArduinoVO(sleep_time, wake_time, dayofs,fade_in,sound, weather_sound,schedule,sleep_pattern);
-				
+				String led_onoff = rs.getString(9);
+
+				vo = new WeatherArduinoVO(sleep_time, wake_time, dayofs,fade_in,sound, weather_sound,schedule,sleep_pattern,led_onoff);
 			}
-			
 		} catch (Exception e) {
-				System.out.println("WeatherArduinoDAO getWeatherInfo() 실패!");
+				System.out.println("getWakeUp("+p+") 실패!");
 				e.printStackTrace();
-				
 			}finally {
 				close();
 			}
 		return vo;
-	}//메서드끝
+	}//getWakeUp()메서드 끝
+	
+
+	// dayofs 컬럼 
+	public dVO getD(String p) {
+		dVO vo = null;
+		try {
+			connection();
+			String sql = "Select dayofs from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String d = rs.getString(1);
+				vo = new dVO(d);
+			}
+		} catch (Exception e) {
+				System.out.println("getD("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// fade_in 컬럼
+	public fiVO getFi(String p) {
+		fiVO vo = null;
+		try {
+			connection();
+			String sql = "Select fade_in from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String fi = rs.getString(1);
+				vo = new fiVO(fi);
+			}
+		} catch (Exception e) {
+				System.out.println("getFi("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// scehdule 컬럼
+	public scVO getSc(String p) {
+		scVO vo = null;
+		try {
+			connection();
+			String sql = "Select schedule from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String sc = rs.getString(1);
+				vo = new scVO(sc);
+			}
+		} catch (Exception e) {
+				System.out.println("getSc("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// sleep_pattern 컬럼
+	public spVO getSp(String p) {
+		spVO vo = null;
+		try {
+			connection();
+			String sql = "Select sleep_pattern from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String sp = rs.getString(1);
+				vo = new spVO(sp);
+			}
+		} catch (Exception e) {
+				System.out.println("getD("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// sleep_time 컬럼
+	public stVO getSt(String p) {
+		stVO vo = null;
+		try {
+			connection();
+			String sql = "Select sleep_time from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String st = rs.getString(1);
+				vo = new stVO(st);
+			}
+		} catch (Exception e) {
+				System.out.println("getSt("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// sound 컬럼
+	public sVO getS(String p) {
+		sVO vo = null;
+		try {
+			connection();
+			String sql = "Select sound from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String s = rs.getString(1);
+				vo = new sVO(s);
+			}
+		} catch (Exception e) {
+				System.out.println("getS("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	//Weather_sound 컬럼
+	public wsVO getWs(String p) {
+		wsVO vo = null;
+		try {
+			connection();
+			String sql = "Select weather_sound from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String ws = rs.getString(1);
+				vo = new wsVO(ws);
+			}
+		} catch (Exception e) {
+				System.out.println("getWs("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	//Wake_time 컬럼
+	public wtVO getWt(String p) {
+		wtVO vo = null;
+		try {
+			connection();
+			String sql = "Select wake_time from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String wt = rs.getString(1);
+				vo = new wtVO(wt);
+			}
+		} catch (Exception e) {
+				System.out.println("getWt("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
+	
+	// led_ofoff 컬럼
+	public ledVO getLed(String p) {
+		ledVO vo = null;
+		try {
+			connection();
+			String sql = "Select led_onoff from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String led = rs.getString(1);
+				vo = new ledVO(led);
+			}
+		} catch (Exception e) {
+				System.out.println("getLed("+p+") 실패!");
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+		return vo;
+	}
 	
 	
+	
+//////////////////////////////////////////////////////////////////DB연결,닫기//////////////////////////	
+	private void connection() {
+		try {Class.forName("oracle.jdbc.driver.OracleDriver");
+			 String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1521:xe";
+			 String dbid = "campus_a_3_1025";
+			 String dbpw = "smhrd3";
+			 conn = DriverManager.getConnection(url, dbid, dbpw);} catch (Exception e) {e.printStackTrace();System.out.println("연결실패");}}
+	
+	private void close() {
+		try {if (rs != null) {rs.close();}if (psmt != null) {psmt.close();}if (conn != null) {conn.close();}} catch (Exception e2) {e2.printStackTrace();}}
+	
+		
 	
 	
 //////////////////움직임감지기능 sleep_pattern on인지 x인지

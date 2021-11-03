@@ -12,23 +12,29 @@ import javax.servlet.http.HttpSession;
 
 import com.ArdModel.WeatherArduinoDAO;
 import com.ArdModel.WeatherArduinoVO;
-import com.ArdModel.wtVO;
+import com.ArdModel.ledVO;
 import com.google.gson.Gson;
 
-@WebServlet("/getWt")
-public class getWt extends HttpServlet {
+@WebServlet("/getLed")
+public class getLed extends HttpServlet {
+
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
 		HttpSession session = request.getSession();
 		
 		//아두이노가 값을 받아오려면 이 서블릿에 와야함. (근데 아두이노가 본인 시리얼넘버를 같이 가지고 와야지만 값을 가지고 갈 수 있다.)
 		
 		WeatherArduinoDAO dao = new WeatherArduinoDAO(); 
-		wtVO avo = dao.getWt("910-1"); 
+		ledVO avo = dao.getLed("910-1"); 
 		String result = new Gson().toJson(avo); 
 		PrintWriter out = response.getWriter(); 
 		out.print(result);
 	
+		
+		
+		
+		
 	}
 
 }

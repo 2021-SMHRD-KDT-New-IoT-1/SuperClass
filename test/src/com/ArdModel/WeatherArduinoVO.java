@@ -10,11 +10,12 @@ public class WeatherArduinoVO {
 	String ws; //weather_sound;
 	String sc; //schedule;
 	String sp; //sleep_pattern;
+	String led; //led_onoff;
 	
 	
 	
 	
-	public WeatherArduinoVO(String st, String wt, String d, String fi, String s, String ws, String sc, String sp) {
+	public WeatherArduinoVO(String st, String wt, String d, String fi, String s, String ws, String sc, String sp, String led) {
 	
 		this.st = st;
 		this.wt = wt;
@@ -24,6 +25,7 @@ public class WeatherArduinoVO {
 		this.ws = ws;
 		this.sc = sc;
 		this.sp = sp;
+		this.led = led;
 	}
 
 
@@ -32,8 +34,11 @@ public class WeatherArduinoVO {
 	@Override
 	public String toString() {
 		return "WeatherArduinoVO [st=" + st + ", wt=" + wt + ", d=" + d + ", fi=" + fi + ", s=" + s + ", ws=" + ws
-				+ ", sc=" + sc + ", sp=" + sp + "]";
+				+ ", sc=" + sc + ", sp=" + sp + ", led=" + led + "]";
 	}
+
+
+
 
 
 
