@@ -20,6 +20,8 @@ public class InputSensor extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		//움직임감지센서값 아두이노한테 받아오는 서블릿
+		
 		int moveSensor = 999;
 		moveSensor = Integer.parseInt(request.getParameter("moveSensor"));
 		

@@ -8,10 +8,17 @@ import java.sql.SQLException;
 
 public class WeatherArduinoDAO {
 
+	WeatherArduinoVO vo = null;
+	MoveSensorVO mvo = null;
+	GetSoundVO svo = null;
+	FadeInVO fvo = null;
+
+	
+
 	private Connection conn;
 	private PreparedStatement psmt;
 	private ResultSet rs;
-	WeatherArduinoVO vo = null;
+	
 	int cnt = 0;
 	boolean check = false;
 
@@ -51,25 +58,151 @@ public class WeatherArduinoDAO {
 		}
 	}
 	
-	public WeatherArduinoVO getWeatherInfo() {
-		vo = null;
-		connection();
-		String sql = "select * from ARDUINO";
+////////////////wakeup 테이블에서 컬럼을 전부 빼오는 메서드(m_id와 시리얼넘버 빼고)
+	public WeatherArduinoVO getWeatherInfo(String p_serialnum) {
+		
 		try {
-			psmt = conn.prepareStatement(sql);
+			connection();
+			
+			String sql = "Select sleep_time, wake_time, dayofs, fade_in, sound, weather_sound, schedule, sleep_pattern from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+
+			
 			rs = psmt.executeQuery();
-			if (rs.next()) {
-				int mysensor = rs.getInt(1);
-				vo = new WeatherArduinoVO(mysensor);
+			
+			if(rs.next()) {
+				
+				
+				String sleep_time = rs.getString(1);
+				if(sleep_time == null) {
+					sleep_time = "x";
+				}
+			 	String wake_time = rs.getString(2);
+				if(wake_time == null) {
+					wake_time = "x";
+				}
+				String dayofs = rs.getString(3);
+				if(dayofs == null) {
+					dayofs = "x";
+				}
+				String fade_in = rs.getString(4);
+				if(fade_in == null) {
+					 fade_in = "x";
+				}
+				String sound = rs.getString(5);
+				if(sound == null) {
+					sound = "x";
+				}
+				String weather_sound = rs.getString(6);
+				if(weather_sound == null) {
+					weather_sound = "x";
+				}
+				String schedule = rs.getString(7);
+				if(schedule == null) {
+					schedule = "x";
+				}
+				String sleep_pattern = rs.getString(8);
+				if(sleep_pattern == null) {
+					sleep_pattern = "x";
+				}
+				
+				vo = new WeatherArduinoVO(sleep_time, wake_time, dayofs,fade_in,sound, weather_sound,schedule,sleep_pattern);
+				
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-		}
+			
+		} catch (Exception e) {
+				System.out.println("WeatherArduinoDAO getWeatherInfo() 실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
 		return vo;
+	}//메서드끝
+	
+	
+////////////////움직임감지기능 sleep_pattern on인지 x인지
+	public MoveSensorVO getMoveSensor(String p_serialnum) {
+		try {
+			connection();
+			
+			String sql = "Select sleep_pattern from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				String sleep_pattern = rs.getString(1);
+				if(sleep_pattern == null) {
+					sleep_pattern = "x";
+				}
+
+				mvo = new MoveSensorVO(sleep_pattern);
+				
+			}
+			
+		} catch (Exception e) {
+				System.out.println("WeatherArduinoDAO에서 getMoveSensor() 실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return mvo;
 	}
+	
+////////////////sound, weather_sound, schedule sound 온오프할것인지
+	public GetSoundVO getSound(String p_serialnum) {
+		
+		try {
+			connection();
+			
+			String sql = "Select sound, weather_sound, schedule from wakeup where p_serialnum = ?";
+			
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				
+			
+				String sound = rs.getString(1);
+				if(sound == null) {
+					sound = "x";
+				}
+				
+				String weather_sound = rs.getString(2);
+				if(weather_sound == null) {
+					weather_sound = "x";
+				}
+				String schedule = rs.getString(3);
+				if(schedule == null) {
+					schedule = "x";
+				}
+
+				
+				svo = new GetSoundVO(sound, weather_sound, schedule);
+				
+			}
+			
+		} catch (Exception e) {
+				System.out.println("WeatherArduinoDAO getSound() 실패!");
+				e.printStackTrace();
+				
+			}finally {
+				close();
+			}
+		return svo;
+	}
+	
 	
 	
 }
