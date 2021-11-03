@@ -109,7 +109,7 @@
             <div class="tm-col-right tm-col-footer">
                 <footer class="tm-site-footer text-right">
                     <p class="mb-0">Copyright 2021 SuperClass Co. 
-                    
+                    .
                     | Design: <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-link">±Í¿©¿î¼Û¹Ì</a></p>
                 </footer>
             </div>  

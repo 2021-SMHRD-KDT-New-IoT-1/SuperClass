@@ -137,6 +137,68 @@ public class TimeDAO {
 	      return vo;
    }
    
+   public String onOffLED(String p_serialnum) {
+	   String onOff ="";
+	   
+	   try {
+			connection();
+			
+			String sql = "select led_onoff from wakeup where p_serialnum = ?";
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, p_serialnum);
+			
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				onOff = rs.getString(1);
+			}
+						
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+			
+	}return onOff;
+   }
+   
+   public String changeLED(String p_serialnum, String onOff) {
+	   
+	   System.out.println("업데이트 진입");
+	   System.out.println("넘어온값" + onOff);
+	   try {
+			connection();
+			if(onOff.equals("off")) {
+				System.out.println("이프실행");
+				String sql2 = "update wakeup set led_onoff=? where p_serialnum = ?";
+				psmt= conn.prepareStatement(sql2);
+				psmt.setString(1, "on");
+				psmt.setString(2, p_serialnum);
+				psmt.executeUpdate();	
+				System.out.println("업데이트 on 변경");
+			}else {
+				System.out.println("엘스실행");
+				String sql2 = "update wakeup set led_onoff=? where p_serialnum = ?";
+				System.out.println("엘스1");
+				psmt= conn.prepareStatement(sql2);
+				System.out.println("엘스2");
+				psmt.setString(1, "off");
+				System.out.println("엘스3");
+				psmt.setString(2, p_serialnum);
+				System.out.println("엘스4");
+				psmt.executeUpdate();
+				System.out.println("엘스5");
+				System.out.println("업데이트 off 변경");
+			}
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+			
+	}return onOff;
+   }
+   
       
    
 }

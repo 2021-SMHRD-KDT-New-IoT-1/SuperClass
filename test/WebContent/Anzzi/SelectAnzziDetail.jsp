@@ -125,7 +125,8 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
 								<a href = "./UpdateProduct.jsp" >수정하기</a>
 								
 									<div class='toggleBG'>
-                           <button id="buttonID" type="submit" class='toggleFG' onclick="alert(getToggleBtnState('buttonID'));">ON</button>
+                           <button id="buttonID" type="submit" class='toggleFG off' >OFF</button>
+                           
                            
                         </div>
 					
@@ -326,6 +327,20 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
     $(document).on('click', '.toggleBG', function () {
         var toggleBG = $(this);
         var toggleFG = $(this).find('.toggleFG');
+        if($("#buttonID").hasClass("off")){
+        	$("#buttonID").addClass("on");
+        	$("#buttonID").removeClass("off");
+        	$("#buttonID").html("ON");
+        }else{
+        	$("#buttonID").addClass("off");
+        	$("#buttonID").removeClass("on");
+        	$("#buttonID").html("OFF");
+        }
+        
+        	
+        
+        	
+        
         var left = toggleFG.css('left');
         if(left == '40px') {
             toggleBG.css('background', '#CCCCCC');
@@ -352,13 +367,55 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
         setTimeout(function(){
             clearInterval(intervalID);
         }, 201);
+        
     }
+    
+   	$("#buttonID").on('click',function(){
+   	 $.ajax({
+     	url : "../onOffLED", //데이터를 전송하는 (요청하는) 서버페이지
+		type : "get", //데이터 전송(요청) 방식
+		dataType : "text", //응답데이터의 형식
+		success : function(data) { //통신성공
+			console.log(data)			
+		},
+		error : function() { //통신실패
+			alert("통신실패!!")
+		}
+		});	
+   		
+   	
+   	})
+   	
+    
     
     function getToggleBtnState(toggleBtnId){
         const left_px = parseInt( $('#'+toggleBtnId).css('left') );
-     
-        return (left_px > 0)? "off" : "on";
+        
+        $.ajax({
+        	url : "../onOffLED", //데이터를 전송하는 (요청하는) 서버페이지
+        
+			type : "get", //데이터 전송(요청) 방식
+			data : {
+				"m_id" : email.value
+			}, //전송하는 데이터
+			dataType : "text", //응답데이터의 형식
+			success : function(data) { //통신성공
+				let sp_result = document.getElementById("sp_result");
+				//alert(data)
+				if (data == "true") {
+					sp_result.innerText = "사용불가능한 아이디";
+				} else {
+					$("#sp_result").text("사용가능한 아이디");
+				}
+			},
+			error : function() { //통신실패
+				alert("통신실패!!")
+			}
+		});
     }
+    
+    
+   
     </script>
     <script>
     var min = 1500;
