@@ -23,7 +23,7 @@ public class getSt extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		//아두이노가 값을 받아오려면 이 서블릿에 와야함. (근데 아두이노가 본인 시리얼넘버를 같이 가지고 와야지만 값을 가지고 갈 수 있다.)
-		
+		//String sensor = request.getParameter("sensor");
 		WeatherArduinoDAO dao = new WeatherArduinoDAO(); 
 		stVO avo = dao.getSt("910-1"); 
 		String result = new Gson().toJson(avo); 

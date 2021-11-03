@@ -27,6 +27,8 @@ public class getD extends HttpServlet {
 		String result = new Gson().toJson(avo); 
 		PrintWriter out = response.getWriter(); 
 		out.print(result);
+		
+		
 	
 	}
 
