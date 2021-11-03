@@ -1,3 +1,4 @@
+<%@page import="com.model.ProductVO"%>
 <%@page import="com.model.CalendarVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.model.CalendarDAO"%>
@@ -44,12 +45,13 @@
 
 <%
 	MemberVO vo = (MemberVO)session.getAttribute("member");
+	ProductVO pvo = (ProductVO)session.getAttribute("PVO");
 	CalendarDAO Cdao = new CalendarDAO();
 	ArrayList<CalendarVO> al = null;
 	
 	if(vo != null){
-	String m_id = vo.getId();
-	al = Cdao.getSchedule(m_id);
+	String p_serialnum = pvo.getP_serialnum();
+	al = Cdao.getSchedule(p_serialnum);
 	}
 	%>	
 	

@@ -122,13 +122,11 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
 								<h2 class="mb-4 tm-content-title"><%=detail.getP_serialnum() %></h2>
 								<p><%=detail.getDetail_location() %></p>
 								<p><%=pdao.getWeather("https://www.kma.go.kr/wid/queryDFSRSS.jsp?zone=" + detail.getP_location()) %></p>
-								<a href = "./UpdateProduct.jsp" >수정하기</a>
+								<a href = "./UpdateProduct.jsp" ><button class="btn btn-primary">수정하기</button></a>
 								
-									<div class='toggleBG'>
+									<label for="buttonID"><div class='toggleBG'>
                            <button id="buttonID" type="submit" class='toggleFG off' >OFF</button>
-                           
-                           
-                        </div>
+                         </div></label>
 					
 							</div>
 							<% }%> 
@@ -324,6 +322,24 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
     <script src="js/templatemo-script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
      <script>
+     $(document).ready(function () {
+    	 
+    		 $.ajax({
+    		     	url : "../SelectLED", //데이터를 전송하는 (요청하는) 서버페이지
+    				type : "get", //데이터 전송(요청) 방식
+    				dataType : "text", //응답데이터의 형식
+    				success : function(data) { //통신성공
+    					console.log(data)			
+    				},
+    				error : function() { //통신실패
+    					alert("통신실패!!")
+    				}
+    				});		
+	}
+     );
+     
+     
+     
     $(document).on('click', '.toggleBG', function () {
         var toggleBG = $(this);
         var toggleFG = $(this).find('.toggleFG');
@@ -352,6 +368,7 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
     });
      
     // 토글 버튼 이동 모션 함수
+    
     function toggleActionStart(toggleBtn, LR) {
         // 0.01초 단위로 실행
         var intervalID = setInterval(

@@ -86,15 +86,15 @@ public class CalendarDAO {
 	}//inSchedule 메서드 끝
 		
 	
-	public ArrayList<CalendarVO> getSchedule (String m_id) {
+	public ArrayList<CalendarVO> getSchedule (String p_serialnum) {
 		
 		try {
 			connection();
 			
-			String sql = "Select TO_CHAR(start_date,'YYYY-MM-DD'),TO_CHAR(end_date,'YYYY-MM-DD'),s_option from schedule where m_id = ?";
+			String sql = "Select TO_CHAR(start_date,'YYYY-MM-DD'),TO_CHAR(end_date,'YYYY-MM-DD'),s_option from schedule where p_serialnum = ?";
 			
 			psmt= conn.prepareStatement(sql);
-			psmt.setString(1, m_id);
+			psmt.setString(1, p_serialnum);
 			
 			rs = psmt.executeQuery();
 			
