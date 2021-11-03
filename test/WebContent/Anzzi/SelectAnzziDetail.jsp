@@ -138,7 +138,8 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
 										<input style = "float : right" id="input_submit"type="submit" onclick="input()" value="확인">
 										<input style = "float : right" id="input_date" type="date">
 									</div>
-									<canvas style="color:white"  id='cvs'></canvas>
+									<canvas id="cvs"></canvas>
+									
 								</div>
 							          
                           
@@ -308,8 +309,7 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
 	  function (event) {
 	    cvsrect = this.getBoundingClientRect();
 	    ctx.clearRect(0, 0, cvsrect.width, cvsrect.height);
-	    mx = event.offsetX;
-	    my = event.offsetY;
+	   
 	    draw();
 	  },
 	  false
@@ -321,6 +321,7 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.backstretch.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
      <script>
     $(document).on('click', '.toggleBG', function () {
         var toggleBG = $(this);
@@ -359,6 +360,29 @@ ProductVO detail = (ProductVO)session.getAttribute("PVO");
         return (left_px > 0)? "off" : "on";
     }
     </script>
+    <script>
+    var min = 1500;
+	new Chart(document.getElementById("line-chart"), {
+  
+		type: 'line',
+  data: {
+    labels: [min,min+109,1700,1750,1800,1850,1900,1950,1999,2050],
+    datasets: [{ 
+        data: [86,114,106,106,107,111,133,221,783,2478],
+        label: "ANZZI",
+        borderColor: "white",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: '수면패턴'
+    }
+  }
+});
+	</script>
 </body>
 
 </html>

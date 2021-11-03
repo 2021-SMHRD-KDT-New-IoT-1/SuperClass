@@ -34,15 +34,16 @@ public class SetTime extends HttpServlet {
 	      String fade_in = request.getParameter("fade_in");
 	      
 	    
-	      String dayOfs = "";
+	      String dayOfs = "00";
+	      if(ex_dayofs != null) {
 	      for(int i = 0; i<ex_dayofs.length; i++) {
 	    	  dayOfs += ex_dayofs[i];
 	    	  if(i < ex_dayofs.length-1) {
 	    		  dayOfs += "#";
 	    	  }
 	      }
-	      
-	      
+	      }
+	      System.out.println(p_serialnum);
 	      System.out.println(wake_time);
 	      System.out.println(dayOfs);
 	      System.out.println(sound);
@@ -50,6 +51,25 @@ public class SetTime extends HttpServlet {
 	      System.out.println(schedule);
 	      System.out.println(pattern);
 	      System.out.println(fade_in);
+	      if(wake_time==null) {
+			   wake_time = "x";
+		   }
+		  
+		   if(fade_in==null) {
+			   fade_in = "x";
+		   }
+		   if(sound==null) {
+			   sound = "x";
+		   }
+		   if(weather_sound==null) {
+			   weather_sound = "x";
+		   }
+		   if(schedule==null) {
+			   schedule = "x";
+		   }
+		   if(pattern==null) {
+			   pattern = "x";
+		   }
 
 	      int cnt = dao.inWakeUp(p_serialnum, wake_time, dayOfs, fade_in, sound, weather_sound, schedule, pattern);
 	      

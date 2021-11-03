@@ -54,7 +54,6 @@
 	String p_serailnum = pvo.getP_serialnum();
 	TimeDAO tdao = new TimeDAO(); 
 	TimeVO tvo = tdao.getTime(p_serailnum);
-	
    %>
 
     <div class="tm-container">        
@@ -121,10 +120,10 @@
                         <input id = "ckbox1" type= "checkbox" name = "selectDay" value = "mon" class="dayCheck">
                         <%} %>
                         <label for="ckbox1">월</label>
-                        <%if(day.contains("th")){ %>
-                        <input id = "ckbox2"  type= "checkbox" name = "selectDay" value = "th" class="dayCheck" checked="checked">
+                        <%if(day.contains("thu")){ %>
+                        <input id = "ckbox2"  type= "checkbox" name = "selectDay" value = "thu" class="dayCheck" checked="checked">
                         <%}else{ %>
-                        <input id = "ckbox2"  type= "checkbox" name = "selectDay" value = "th" class="dayCheck">
+                        <input id = "ckbox2"  type= "checkbox" name = "selectDay" value = "thu" class="dayCheck">
                          <%} %>
                         <label for="ckbox2">화</label>
                          <%if(day.contains("wed")){ %>
@@ -133,10 +132,10 @@
                         <input id = "ckbox3"  type= "checkbox" name = "selectDay" value = "wed" class="dayCheck">
                          <%} %>
                         <label for="ckbox3">수</label>
-                         <%if(day.contains("tu")){ %>
-                        <input id = "ckbox4"  type= "checkbox" name = "selectDay" value = "tu" class="dayCheck" checked="checked">
+                         <%if(day.contains("thu")){ %>
+                        <input id = "ckbox4"  type= "checkbox" name = "selectDay" value = "thu" class="dayCheck" checked="checked">
                         <%}else{ %>
-                        <input id = "ckbox4"  type= "checkbox" name = "selectDay" value = "tu" class="dayCheck">
+                        <input id = "ckbox4"  type= "checkbox" name = "selectDay" value = "thu" class="dayCheck">
                         <%} %>
                         <label for="ckbox4">목</label>
                         <%if(day.contains("fri")){ %>
@@ -178,14 +177,14 @@
                         <label><input type="radio" class="btn btn-primary" value="10" name="fade_in">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <%} %>
                         <%if(fade.contains("20")){ %>
-                        <label><input type="radio" class="btn btn-primary" value="20" name="fade_in" checked="checked">&nbsp;&nbsp;20분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="20" name="fade_in" checked="checked">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <%}else{ %>
-                        <label><input type="radio" class="btn btn-primary" value="20" name="fade_in">&nbsp;&nbsp;20분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="20" name="fade_in">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <%} %>
                         <%if(fade.contains("30")){ %>
-                        <label><input type="radio" class="btn btn-primary" value="30" name="fade_in" checked="checked">&nbsp;&nbsp;30분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="30" name="fade_in" checked="checked">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <%}else{ %>
-                        <label><input type="radio" class="btn btn-primary" value="30" name="fade_in">&nbsp;&nbsp;30분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label><input type="radio" class="btn btn-primary" value="30" name="fade_in">&nbsp;&nbsp;10분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                         <%} %>
                         
                         <hr class="mb-5">
@@ -246,7 +245,17 @@
             <div class="tm-bg-right"></div>
         </div>
     </div>
+    <!-- <script>
+    let divArr = []
     
+   
+    $(".btn1.btn-primary").on('click',function(){
+       $(this).css("backgroundColor", "green");
+       divArr.push($(this).html());
+       console.log(divArr)
+       
+    }) 
+    </script> -->
 
 
     <script src="js/bootstrap.min.js"></script>

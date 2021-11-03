@@ -5,11 +5,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
+
 public class TimeDAO {
    Connection conn = null;
    PreparedStatement psmt = null;
    ResultSet rs = null;
-   
+   TimeVO vo = new TimeVO();
 
    int cnt = 0;
    boolean check = false;
@@ -51,9 +54,33 @@ public class TimeDAO {
 
 
    public int inWakeUp(String p_serialnum, String wake_time, String dayofs,String fade_in, String sound, String weather_sound, String schedule, String sleep_pattern ) {
+	   if(wake_time==null) {
+		   wake_time = "x";
+	   }
+	   if(dayofs==null) {
+		   dayofs = "x";
+	   }
+	   if(fade_in==null) {
+		   fade_in = "x";
+	   }
+	   if(sound==null) {
+		   sound = "x";
+	   }
+	   if(weather_sound==null) {
+		   weather_sound = "x";
+	   }
+	   if(schedule==null) {
+		   schedule = "x";
+	   }
+	   if(sleep_pattern==null) {
+		   sleep_pattern = "x";
+	   }
+	   
       try {
          connection();
+         
          String sql = "UPDATE Wakeup SET wake_time=?, dayofs=?, fade_in=?, sound=?, weather_sound=?, schedule=?, sleep_pattern=? WHERE p_serialnum =?";
+        
          psmt = conn.prepareStatement(sql);
          psmt.setString(1, wake_time);
          psmt.setString(2, dayofs);
@@ -75,6 +102,40 @@ public class TimeDAO {
       }
       return cnt;
    }//
+   
+   public TimeVO getTime(String p_serialnum) {
+	   
+	   try {
+	         connection();
+	         
+	         String sql = "select wake_time, dayofs, fade_in, sound, weather_sound, schedule, sleep_pattern from Wakeup WHERE p_serialnum =?";
+	         
+	         psmt = conn.prepareStatement(sql);
+	         psmt.setString(1, p_serialnum);
+	         
+	        // 5. SQL문 명령 후 처리
+	          rs = psmt.executeQuery();
+	         if(rs.next()) {
+	        	 String wake_time = rs.getString(1);
+	        	 String dayofs = rs.getString(2);
+	        	 String fade_in = rs.getString(3);
+	        	 String sound = rs.getString(4);
+	        	 String weather_sound = rs.getString(5);
+	        	 String schedule = rs.getString(6);
+	        	 String sleep_pattern = rs.getString(7);
+	        	 
+	        	vo = new TimeVO(wake_time,dayofs,fade_in,sound,weather_sound,schedule,sleep_pattern);
+	        	System.out.println("출력" + vo.getDayofs());
+	         }
+	         
+	      } catch (Exception e) {
+	         System.out.println("WakeUp 실패");
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return vo;
+   }
    
       
    

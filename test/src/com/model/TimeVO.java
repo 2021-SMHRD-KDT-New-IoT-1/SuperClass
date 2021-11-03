@@ -11,7 +11,7 @@ public class TimeVO {
  
    
 	public TimeVO(String wake_time, String dayofs, String fade_in, String sound, String weather_sound, String schedule, String pattern) {
-		super();
+		
 		this.wake_time = wake_time;
 		this.dayofs = dayofs;
 		this.fade_in = fade_in;
@@ -19,6 +19,9 @@ public class TimeVO {
 		this.weather_sound = weather_sound;
 		this.schedule = schedule;
 		this.pattern = pattern;
+	}
+	public TimeVO() {
+		
 	}
 
 	public String getWake_time() {
