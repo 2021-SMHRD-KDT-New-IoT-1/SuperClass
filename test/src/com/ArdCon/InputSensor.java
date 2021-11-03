@@ -1,4 +1,4 @@
-package com.controller;
+package com.ArdCon;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ArdModel.SensorDAO;
+import com.ArdModel.SensorVO;
 import com.google.gson.Gson;
-import com.model.SensorDAO;
-import com.model.SensorVO;
 
 @WebServlet("/InputSensor")
 public class InputSensor extends HttpServlet {

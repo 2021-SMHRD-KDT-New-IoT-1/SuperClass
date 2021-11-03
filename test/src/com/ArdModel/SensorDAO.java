@@ -1,4 +1,4 @@
-package com.model;
+package com.ArdModel;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
