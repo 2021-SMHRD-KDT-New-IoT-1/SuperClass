@@ -175,6 +175,7 @@ public class TimeDAO {
 				psmt.setString(2, p_serialnum);
 				psmt.executeUpdate();	
 				System.out.println("업데이트 on 변경");
+				onOff="on";
 			}else {
 				System.out.println("엘스실행");
 				String sql2 = "update wakeup set led_onoff=? where p_serialnum = ?";
@@ -188,6 +189,7 @@ public class TimeDAO {
 				psmt.executeUpdate();
 				System.out.println("엘스5");
 				System.out.println("업데이트 off 변경");
+				onOff="off";
 			}
 			
 			

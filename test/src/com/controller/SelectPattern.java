@@ -1,6 +1,8 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +24,10 @@ public class SelectPattern extends HttpServlet {
 		HttpSession session = request.getSession();
 		ProductVO pvo =(ProductVO)session.getAttribute("PVO");
 		String p_serialnum = pvo.getP_serialnum();
+		ProductDAO pdao = new ProductDAO();
+		ArrayList<ProductVO> pal = pdao.getMove(p_serialnum);
+		session.setAttribute("pal", pal);
+		response.sendRedirect("Anzzi/SelectAnzziDetail.jsp");
 		
 		
 		

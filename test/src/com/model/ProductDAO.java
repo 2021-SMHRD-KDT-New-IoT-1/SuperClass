@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Time;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -24,6 +25,8 @@ public class ProductDAO {
 	ResultSet rs = null;
 	ProductVO vo = null;
 	boolean check = false;
+	ArrayList<ProductVO> al = new ArrayList<ProductVO>();
+	
 	
 	public void connection() {
 		//1. 드라이버 동적로딩
@@ -229,20 +232,24 @@ public class ProductDAO {
 			}return vo;
 	}
 	
-	public void getMove(String p_serialnum) {
+	public ArrayList<ProductVO> getMove(String p_serialnum) {
+		
 		try {
 			connection();
-			
+			System.out.println("셀렉트전");
 			String sql = "select TO_CHAR(movetime, 'YYYY-MM-DD HH24:MI:SS') , movesensor from arduino";
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1,p_serialnum);
-			rs = psmt.executeQuery();
 			
+			rs = psmt.executeQuery();
+			System.out.println("셀레긑후");
 			while(rs.next()) {
-				Date movetime = rs.getDate(1);
-				String movesensor = rs.getString(2);
-				
-				
+				System.out.println("데이트 전");
+				String movetime = rs.getString(1);
+				System.out.println("데이트후");
+				int movesensor = Integer.parseInt(rs.getString(2));
+				System.out.println("센서후");
+				vo = new ProductVO(p_serialnum,movetime,movesensor);
+				al.add(vo);
 				
 			}
 			
@@ -252,7 +259,11 @@ public class ProductDAO {
 				
 			}finally {
 				close();
-			}
+			}return al;
 	}
+
+	
+
+	
 	
 }

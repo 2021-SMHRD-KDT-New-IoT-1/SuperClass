@@ -1,5 +1,8 @@
 package com.model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class ProductVO {
 
 	
@@ -9,7 +12,7 @@ public class ProductVO {
 	String movetime;
 	String sleep_time;
 	String wake_time;
-	String movesensor;
+	int movesensor;
 	
 	public ProductVO() {
 		
@@ -20,6 +23,12 @@ public class ProductVO {
 		this.p_location = p_location;
 		this.detail_location = detail_location;
 	}
+	public ProductVO(String p_serialnum,String movetime,int movesensor) {
+		this.p_serialnum = p_serialnum;
+		this.movetime = movetime;
+		this.movesensor = movesensor;
+	}
+	
 	
 	
 	public String getP_serialnum() {
@@ -54,6 +63,15 @@ public class ProductVO {
 		this.wake_time = wake_time;
 	}
 
+
+	public int getMovesensor() {
+		return movesensor;
+	}
+
+	public void setMovesensor(int movesensor) {
+		this.movesensor = movesensor;
+	}
+
 	public String getMovetime() {
 		return movetime;
 	}
@@ -62,13 +80,7 @@ public class ProductVO {
 		this.movetime = movetime;
 	}
 
-	public String getMovesensor() {
-		return movesensor;
-	}
-
-	public void setMovesensor(String movesensor) {
-		this.movesensor = movesensor;
-	}
+	
 	
 	
 	
