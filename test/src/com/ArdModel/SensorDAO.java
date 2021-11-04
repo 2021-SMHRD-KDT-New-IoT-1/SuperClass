@@ -40,7 +40,7 @@ public class SensorDAO {
 	try {
 			connection();
 			String sql1 = "UPDATE wakeup SET ledonoff = ? WHERE p_serialnum =?";
-		
+
 			psmt = conn.prepareStatement(sql1);			
 			psmt.setString(1, ledonoff);
 			psmt.setString(2, p);
@@ -59,8 +59,8 @@ public class SensorDAO {
 	public int inSt(String st, String p) {
 	try {
 			connection();
-			String sql1 = "UPDATE wakeup SET sleep_time = ? WHERE p_serialnum =?";
-		
+			String sql1 = "UPDATE wakeup SET sleep_time = getdate(),  WHERE p_serialnum =?";
+
 			psmt = conn.prepareStatement(sql1);			
 			psmt.setString(1, st);
 			psmt.setString(2, p);

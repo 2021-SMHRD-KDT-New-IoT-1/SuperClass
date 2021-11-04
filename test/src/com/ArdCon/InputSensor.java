@@ -24,13 +24,14 @@ public class InputSensor extends HttpServlet {
 		
 		String moveSensor = "-";
 		moveSensor = request.getParameter("moveSensor");
+		String p_serialnum = request.getParameter("p_serialnum");
 		
 		if(!moveSensor.equals("-")) {
 			System.out.println("값이 들어옴");
 			System.out.println("서버로 들어온 값 : " + moveSensor);
 			SensorDAO dao = new SensorDAO();
 			
-			int cnt = dao.inMoveSensor(moveSensor,"910-1");
+			int cnt = dao.inMoveSensor(moveSensor,p_serialnum);
 			
 			if(cnt>0) {
 				System.out.println("moveSensor insert 성공!");
