@@ -232,19 +232,22 @@ public class ProductDAO {
 			}return vo;
 	}
 	
-	public ArrayList<ProductVO> getMove(String p_serialnum) {
+	public ArrayList<ProductVO> getMove(String p_serialnum,String p_date) {
 		
 		try {
 			connection();
+			System.out.println(p_date);
+			java.sql.Date sqldate = java.sql.Date.valueOf(p_date); 
 			System.out.println("셀렉트전");
-			String sql = "select TO_CHAR(movetime, 'YYYY-MM-DD HH24:MI:SS') , movesensor from arduino";
+			String sql = "select TO_CHAR(see_time, 'YYYY-MM-DD HH24:MI:SS') , p_value from mpattern where p_serialnum=? and see_time like ?";
 			psmt = conn.prepareStatement(sql);
-			
+			psmt.setString(1, p_serialnum);
+			psmt.setDate(2, sqldate);
 			rs = psmt.executeQuery();
 			System.out.println("셀레긑후");
 			while(rs.next()) {
 				System.out.println("데이트 전");
-				String movetime = rs.getString(1);
+				String movetime = rs.getString(1).substring(11, 16);
 				System.out.println("데이트후");
 				int movesensor = Integer.parseInt(rs.getString(2));
 				System.out.println("센서후");

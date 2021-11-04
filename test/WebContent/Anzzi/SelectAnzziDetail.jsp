@@ -350,9 +350,13 @@ ArrayList<ProductVO> mal = (ArrayList<ProductVO>)session.getAttribute("pal");
                         
                         <%if(mal != null){for(int i =0;i<mal.size();i++){
                         	ProductVO mvo = mal.get(i);
-                        	String movetime = mvo.getMovetime(); %>
+                        	String movetime = mvo.getMovetime(); 
+                        	if(i>=1){
+                        		if(mal.get(i).getMovetime().equals(mal.get(i-1).getMovetime())){
+                        			}else{%>
+                        		
                         	'<%=movetime%>'
-                        <%if(i < mal.size()-1){%>
+                        <%}}if(i < mal.size()-1){%>
                         	,<%}}}%>
                         
                     ],

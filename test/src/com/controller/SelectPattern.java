@@ -25,7 +25,7 @@ public class SelectPattern extends HttpServlet {
 		ProductVO pvo =(ProductVO)session.getAttribute("PVO");
 		String p_serialnum = pvo.getP_serialnum();
 		ProductDAO pdao = new ProductDAO();
-		ArrayList<ProductVO> pal = pdao.getMove(p_serialnum);
+		ArrayList<ProductVO> pal = pdao.getMove(p_serialnum,p_date);
 		session.setAttribute("pal", pal);
 		response.sendRedirect("Anzzi/SelectAnzziDetail.jsp");
 		

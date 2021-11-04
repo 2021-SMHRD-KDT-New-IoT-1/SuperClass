@@ -66,10 +66,10 @@
                         <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
                             <ul class="navbar-nav text-uppercase">
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="Time.jsp">시간설정</a>
+                                    <a class="nav-link tm-nav-link" href="Time.jsp"></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link tm-nav-link" href="Calendar.jsp">스케줄설정</a>
+                                    <a class="nav-link tm-nav-link" href="Calendar.jsp"></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link tm-nav-link" href="ServiceCenter.jsp">게시판 </a>
