@@ -23,7 +23,8 @@ public class getD extends HttpServlet {
 		//아두이노가 값을 받아오려면 이 서블릿에 와야함. (근데 아두이노가 본인 시리얼넘버를 같이 가지고 와야지만 값을 가지고 갈 수 있다.)
 		
 		WeatherArduinoDAO dao = new WeatherArduinoDAO(); 
-		dVO avo = dao.getD("910-1"); 
+		String p = request.getParameter("p_serialnum");
+		dVO avo = dao.getD(p); 
 		String result = new Gson().toJson(avo); 
 		PrintWriter out = response.getWriter(); 
 		out.print(result);

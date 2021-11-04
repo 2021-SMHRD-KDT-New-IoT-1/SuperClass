@@ -19,6 +19,7 @@ public class InputSensor extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		int sensor_cnt = Counting.Count();
 		int tmp =0;
 		
@@ -26,10 +27,15 @@ public class InputSensor extends HttpServlet {
 		SensorDAO dao = new SensorDAO();
 		//아두이노한테 받아오는 서블릿
 		
-		String moveSensor = "-";
-		moveSensor = request.getParameter("moveSensor");
+		String moveSensor = request.getParameter("data");
+		
+	      if(moveSensor == null) {	          
+	    	  moveSensor = "-";
+	       }
+		
 		if(moveSensor.equals("1")) {
 			tmp = Counting.tmpCount();
+			System.out.println(tmp);
 		}
 		String p_serialnum = request.getParameter("p_serialnum");
 		//!moveSensor.equals("-");
@@ -48,6 +54,7 @@ public class InputSensor extends HttpServlet {
 				dao.setSleepValue(sensor_value,p_serialnum); //데이터베이스에 값 입력하기
 				sensor_value = "0";
 				Counting.tmpZero();
+				System.out.println("DB성공했겠지");
 			}
 		
 			

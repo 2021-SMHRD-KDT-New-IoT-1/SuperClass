@@ -31,8 +31,9 @@ public class inLed extends HttpServlet {
 			System.out.println("값이 들어옴");
 			System.out.println("서버로 들어온 값 : " + ledonoff);
 			
-			////이부분을 바꿔야함 SensorDAO에서. 아직 안 만듦.
-			int cnt = dao.inLed(ledonoff, "910-1");
+			String p = request.getParameter("p_serialnum");
+			
+			int cnt = dao.inLed(ledonoff, p);
 			
 			if(cnt>0) {
 				System.out.println("ledonoff insert 성공!");

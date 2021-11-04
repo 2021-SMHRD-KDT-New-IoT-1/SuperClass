@@ -94,7 +94,6 @@ public class SensorDAO {
 			
 			
 		} catch (SQLException e) {
-			
 			e.printStackTrace();
 		} finally {
 			close();
