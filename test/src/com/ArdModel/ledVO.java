@@ -4,7 +4,7 @@ public class ledVO {
 String led;
 
 public ledVO(String led) {
-	super();
+
 	this.led = led;
 }
 

@@ -249,6 +249,7 @@ public class WeatherArduinoDAO {
 		ledVO vo = null;
 		try {
 			connection();
+			
 			String sql = "Select led_onoff from wakeup where p_serialnum = ?";
 			
 			psmt= conn.prepareStatement(sql);
@@ -271,17 +272,40 @@ public class WeatherArduinoDAO {
 	
 	
 //////////////////////////////////////////////////////////////////DB연결,닫기//////////////////////////	
-	private void connection() {
-		try {Class.forName("oracle.jdbc.driver.OracleDriver");
-			 String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1521:xe";
-			 String dbid = "campus_a_3_1025";
-			 String dbpw = "smhrd3";
-			 conn = DriverManager.getConnection(url, dbid, dbpw);} catch (Exception e) {e.printStackTrace();System.out.println("연결실패");}}
-	
-	private void close() {
-		try {if (rs != null) {rs.close();}if (psmt != null) {psmt.close();}if (conn != null) {conn.close();}} catch (Exception e2) {e2.printStackTrace();}}
-	
+	public void connection() {
+		//1. 드라이버 동적로딩
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		
+		String url = "jdbc:oracle:thin:@project-db-stu.ddns.net:1524:xe";
+		String dbid = "campus_a_3_1025";
+		String dbpw = "smhrd3";
+		
+		
+		//2.데이터베이스 연결 객체(Connection) 생성
+		conn = DriverManager.getConnection(url,dbid,dbpw);
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("연결실패");
+		}
+	}
+	
+	public void close() {
+		try {
+			if(rs != null) {
+				rs.close();
+			}
+			if(psmt != null) {
+				psmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+			
+		}
+	}
 	
 	
 //////////////////움직임감지기능 sleep_pattern on인지 x인지
