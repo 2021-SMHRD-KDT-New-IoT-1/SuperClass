@@ -18,14 +18,14 @@ public class inSt extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//아두이노한테 취침시간 (버튼 눌렸을 때) 받아오는 서블릿.
+		response.setContentType("text/plain;");
 		PrintWriter out = response.getWriter();
 		
 		SensorDAO dao = new SensorDAO();
 		
 		String sleep_time = "";
 		String p_serialnum = "";
-		out.println(sleep_time);
-		out.println(p_serialnum);
+
 		
 		sleep_time =request.getParameter("data");
 		p_serialnum= request.getParameter("p_serialnum");
@@ -34,7 +34,7 @@ public class inSt extends HttpServlet {
 		
 		
 	
-		if(sleep_time.equals("on")) {
+		if(sleep_time.equals("off")) {
 			System.out.println("inSt.java에서 값을 못 받아 오거나 없음");
 			System.out.println("값이 들어옴");
 			System.out.println("서버로 들어온 값 : " + sleep_time);
@@ -49,7 +49,7 @@ public class inSt extends HttpServlet {
 			}
 			
 		} else {
-			System.out.println("inSt실패");
+			System.out.println("inSt값 null");
 		
 		}
 			
