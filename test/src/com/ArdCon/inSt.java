@@ -25,7 +25,7 @@ public class inSt extends HttpServlet {
       PrintWriter out = response.getWriter();
       
       SensorDAO dao = new SensorDAO();
-      
+
       
       String p_serialnum = "";
 
@@ -39,10 +39,10 @@ public class inSt extends HttpServlet {
       
       if(sleep_time.equals("on")) {
          //아두이노한테 취침시간 (버튼 눌렸을 때) 받아오는 서블릿.
-         LocalTime now = LocalTime.now();
-         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH시 mm분 ss초");
+    	 LocalTime now = LocalTime.now();
+    	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
          // 포맷 적용하기
-         String formatedNow = now.format(formatter);
+    	 String formatedNow = now.format(formatter);
          
          System.out.println("값이 들어옴");
          System.out.println("서버로 들어온 값 : " + sleep_time);
@@ -60,9 +60,8 @@ public class inSt extends HttpServlet {
          
       } else {
          System.out.println("inSt값 null");
-      
       }
-         
+  
       
    }
 

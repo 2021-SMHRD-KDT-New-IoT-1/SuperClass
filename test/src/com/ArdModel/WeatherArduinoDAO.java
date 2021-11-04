@@ -17,6 +17,9 @@ public class WeatherArduinoDAO {
 	
 	int cnt = 0;
 	boolean check = false;
+	
+	String sleep_time = null;				
+	String wake_time = null;			
 
 	
 	//wakeUp테이블 아이디랑 시리얼넘버 빼고 전부 불러오는 메서드
@@ -225,16 +228,29 @@ public class WeatherArduinoDAO {
 		wtVO vo = null;
 		try {
 			connection();
-			String sql = "Select wake_time from wakeup where p_serialnum = ?";
+			String sql_Times = "Select sleep_time, wake_time from wakeup where p_serialnum = ?";
 			
-			psmt= conn.prepareStatement(sql);
+			psmt= conn.prepareStatement(sql_Times);
 			psmt.setString(1, p);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				String wt = rs.getString(1);
-				vo = new wtVO(wt);
+				String sleep_time = rs.getString(1);				
+				String wake_time = rs.getString(2);				
 			}
+			
+			String sql_seconds = "Select ABS(to_date(?)-to_date(?)) from wakeup where p_serialnum = ?";
+			psmt= conn.prepareStatement(sql_seconds);
+			psmt.setString(1, sleep_time);
+			psmt.setString(2, wake_time);
+			psmt.setString(3, p);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				String result = rs.getString(1);					
+				vo = new wtVO(result);
+			}
+			
 		} catch (Exception e) {
 				System.out.println("getWt("+p+") 실패!");
 				e.printStackTrace();

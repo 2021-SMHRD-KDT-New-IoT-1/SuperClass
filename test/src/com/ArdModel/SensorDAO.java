@@ -59,7 +59,7 @@ public class SensorDAO {
 	public int inSt(String st, String p) {
 	try {
 			connection();
-			String sql1 = "UPDATE wakeup SET sleep_time = getdate(),  WHERE p_serialnum =?";
+			String sql1 = "UPDATE wakeup SET sleep_time = ?  WHERE p_serialnum =?";
 
 			psmt = conn.prepareStatement(sql1);			
 			psmt.setString(1, st);
@@ -67,7 +67,7 @@ public class SensorDAO {
 			cnt = psmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			System.out.println("SensorDAO inMoveSensor("+st+","+p+") 실패");
+			System.out.println("SensorDAO inSt("+st+","+p+") 실패");
 			e.printStackTrace();
 		} finally {
 			close();

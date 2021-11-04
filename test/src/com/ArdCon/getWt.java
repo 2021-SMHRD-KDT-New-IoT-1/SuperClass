@@ -25,7 +25,8 @@ public class getWt extends HttpServlet {
 		
 		WeatherArduinoDAO dao = new WeatherArduinoDAO(); 
 		String p = request.getParameter("p_serialnum");
-		wtVO avo = dao.getWt(p); 
+		wtVO avo = dao.getWt(p);
+		
 		String result = new Gson().toJson(avo); 
 		PrintWriter out = response.getWriter(); 
 		out.print(result);
