@@ -187,27 +187,12 @@ ArrayList<ProductVO> mal = (ArrayList<ProductVO>)session.getAttribute("pal");
     <script src="js/templatemo-script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
      <script>
-     $(document).ready(function () {
-    	 
-    		 $.ajax({
-    		     	url : "../SelectLED", //데이터를 전송하는 (요청하는) 서버페이지
-    				type : "get", //데이터 전송(요청) 방식
-    				dataType : "text", //응답데이터의 형식
-    				success : function(data) { //통신성공
-    					console.log(data)			
-    				},
-    				error : function() { //통신실패
-    					alert("통신실패!!")
-    				}
-    				});		
-	}
-     );
-     
-     
-     
-    $(document).on('click', '.toggleBG', function () {
+     $(document).on('click', '.toggleBG', function () {
         var toggleBG = $(this);
         var toggleFG = $(this).find('.toggleFG');
+        
+        
+        
         if($("#buttonID").hasClass("off")){
         	$("#buttonID").addClass("on");
         	$("#buttonID").removeClass("off");
@@ -217,11 +202,8 @@ ArrayList<ProductVO> mal = (ArrayList<ProductVO>)session.getAttribute("pal");
         	$("#buttonID").removeClass("on");
         	$("#buttonID").html("OFF");
         }
-        
-        	
-        
-        	
-        
+             	
+      
         var left = toggleFG.css('left');
         if(left == '40px') {
             toggleBG.css('background', '#CCCCCC');
@@ -251,6 +233,62 @@ ArrayList<ProductVO> mal = (ArrayList<ProductVO>)session.getAttribute("pal");
         }, 201);
         
     }
+    
+    window.onload = function(){
+    	loadLED()
+    };
+    
+    function loadLED(){
+    	$.ajax({
+         	url : "../SelectLED", //데이터를 전송하는 (요청하는) 서버페이지
+    		type : "get", //데이터 전송(요청) 방식
+    		dataType : "text", //응답데이터의 형식
+    		success : function(data) { //통신성공
+    			if(data == "off"){
+					 
+    				var toggleBG = $(".toggleBG");
+    		        var toggleFG = $(".toggleBG").find('.toggleFG');
+    		        
+    		        var left = toggleFG.css('left');
+    		        
+    		        if(left == '40px') {
+    		        	toggleBG.css('background', '#53FF4C');
+    		            toggleActionStart(toggleFG, 'TO_RIGHT');	
+	   		            
+    		        }else if(left == '0px') {
+    		        	toggleBG.css('background', '#CCCCCC');
+    		            toggleActionStart(toggleFG, 'TO_LEFT');
+    		            
+    		            
+    		        }
+    		        
+    				
+    		      	
+    			}else{
+    				
+    				var toggleBG = $(".toggleBG");
+    		        var toggleFG = $(".toggleBG").find('.toggleFG');
+    		        $("#buttonID").html("ON")
+    		        var left = toggleFG.css('left');
+    		        if(left == '40px') {
+    		        	oggleBG.css('background', '#CCCCCC');
+    		            toggleActionStart(toggleFG, 'TO_LEFT');    		            		        	
+    		        }else if(left == '0px') {
+    		        	toggleBG.css('background', '#53FF4C');
+    		            toggleActionStart(toggleFG, 'TO_RIGHT');    
+
+
+    		        }
+    			
+    				
+    			}
+    		},
+    		error : function() { //통신실패
+    			alert("통신실패!!")
+    		}
+    		});	
+    }
+    
     
    	$("#buttonID").on('click',function(){
    	 $.ajax({
