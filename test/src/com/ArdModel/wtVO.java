@@ -2,9 +2,9 @@ package com.ArdModel;
 //wakeup 테이블 wake_time 컬럼
 public class wtVO {
 
-String wt;
+int wt;
 
-public wtVO(String wt) {
+public wtVO(int wt) {
 	super();
 	this.wt = wt;
 }

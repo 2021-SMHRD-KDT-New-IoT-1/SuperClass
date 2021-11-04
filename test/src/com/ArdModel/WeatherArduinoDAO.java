@@ -17,6 +17,7 @@ public class WeatherArduinoDAO {
 	
 	int cnt = 0;
 	boolean check = false;
+	int result = 0;
 	
 	String sleep_time = null;				
 	String wake_time = null;			
@@ -92,7 +93,8 @@ public class WeatherArduinoDAO {
 			
 			if(rs.next()) {
 				String fi = rs.getString(1);
-				vo = new fiVO(fi);
+				int fiM = Integer.parseInt(fi)*60;
+				vo = new fiVO(fiM);
 			}
 		} catch (Exception e) {
 				System.out.println("getFi("+p+") ½ÇÆÐ!");
@@ -228,26 +230,16 @@ public class WeatherArduinoDAO {
 		wtVO vo = null;
 		try {
 			connection();
-			String sql_Times = "Select sleep_time, wake_time from wakeup where p_serialnum = ?";
+			String sql = "Select sleep_time, wake_time from wakeup where p_serialnum = ?";
 			
-			psmt= conn.prepareStatement(sql_Times);
+			psmt= conn.prepareStatement(sql);
 			psmt.setString(1, p);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				String sleep_time = rs.getString(1);				
-				String wake_time = rs.getString(2);				
-			}
-			
-			String sql_seconds = "Select ABS(to_date(?)-to_date(?)) from wakeup where p_serialnum = ?";
-			psmt= conn.prepareStatement(sql_seconds);
-			psmt.setString(1, sleep_time);
-			psmt.setString(2, wake_time);
-			psmt.setString(3, p);
-			rs = psmt.executeQuery();
-			
-			if(rs.next()) {
-				String result = rs.getString(1);					
+				String sleep_time = rs.getString(1);					
+				String wake_time = rs.getString(1);
+				int result = scound_time(sleep_time,wake_time);
 				vo = new wtVO(result);
 			}
 			
@@ -321,6 +313,21 @@ public class WeatherArduinoDAO {
 			e2.printStackTrace();
 			
 		}
+	}
+	
+	
+	public int scound_time(String sleep_time,String wake_time) {
+		
+		int dayM = 60*24;
+		String[] sleep = sleep_time.split(":");
+		int sleepT = Integer.parseInt(sleep[0]) * 60 + Integer.parseInt(sleep[1]);
+		System.out.println(dayM - sleepT);
+		
+		String[] wake = wake_time.split(":");
+		System.out.println(Integer.parseInt(wake[0]) * 60 + Integer.parseInt(wake[1]));
+		int wakeT = Integer.parseInt(wake[0]) * 60 + Integer.parseInt(wake[1]);
+		
+		return result = (sleepT + wakeT)*60;
 	}
 	
 	

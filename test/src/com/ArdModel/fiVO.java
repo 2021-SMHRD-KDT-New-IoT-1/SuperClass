@@ -1,9 +1,9 @@
 package com.ArdModel;
 //wakeup 테이블 fade_in 컬럼
 public class fiVO {
-String fi;
+int fi;
 
-public fiVO(String fi) {
+public fiVO(int fi) {
 	super();
 	this.fi = fi;
 }
