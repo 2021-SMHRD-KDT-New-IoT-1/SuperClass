@@ -37,7 +37,7 @@ public class inSt extends HttpServlet {
          sleep_time = "";
       }
       
-      if(sleep_time.equals("on")) {
+      if(sleep_time.equals("off")) {
          //아두이노한테 취침시간 (버튼 눌렸을 때) 받아오는 서블릿.
     	 LocalTime now = LocalTime.now();
     	 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
