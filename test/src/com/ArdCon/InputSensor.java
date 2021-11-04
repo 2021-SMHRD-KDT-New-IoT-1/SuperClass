@@ -20,36 +20,47 @@ public class InputSensor extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int sensor_cnt = Counting.Count();
+		int tmp =0;
 		
-		
+		String sensor_value = "0";
+		SensorDAO dao = new SensorDAO();
 		//아두이노한테 받아오는 서블릿
 		
 		String moveSensor = "-";
 		moveSensor = request.getParameter("moveSensor");
+		if(moveSensor.equals("1")) {
+			tmp = Counting.tmpCount();
+		}
 		String p_serialnum = request.getParameter("p_serialnum");
 		//!moveSensor.equals("-");
-		if(true) {
+		
 //			System.out.println("값이 들어옴");
 //			System.out.println("서버로 들어온 값 : " + moveSensor);
 //			SensorDAO dao = new SensorDAO();
 			
 			
-			if(sensor_cnt == 10) {
+			if(sensor_cnt == 70) {
 				Counting.CountZero();
+				tmp = Counting.gettmp();
+				if(tmp>=40) {
+				sensor_value = "1" ;
+				}
+				dao.setSleepValue(sensor_value,p_serialnum); //데이터베이스에 값 입력하기
+				sensor_value = "0";
+				Counting.tmpZero();
 			}
+		
+			
 			//int cnt = dao.inMoveSensor(moveSensor,p_serialnum);
 			
-//			if(cnt>0) {
-//				System.out.println("moveSensor insert 성공!");
-//			}else {
-//				System.out.println("moveSensor insert 실패!");
-//			}
 			
-		} else {
-			System.out.println("inputSensor.java에서 값을 못 받아 오거나 없음");
-		}
+			
+//		} else {
+//			System.out.println("inputSensor.java에서 값을 못 받아 오거나 없음");
+//		}
+//		
+//		System.out.println(sensor_cnt);
 		
-		System.out.println(sensor_cnt);
 		
 		
 	}

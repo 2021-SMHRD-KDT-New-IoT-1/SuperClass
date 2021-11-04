@@ -75,6 +75,32 @@ public class SensorDAO {
 		return cnt;
 	}
 	
+	public void setSleepValue(String sensorValue , String p_serialnum) {
+		try {
+			connection();
+			String sql1 = "INSERT INTO mpattern values(sysdate,?,?,?)";
+			
+			psmt = conn.prepareStatement(sql1);			
+			psmt.setString(1, sensorValue);
+			psmt.setString(2, p_serialnum);
+			psmt.setString(3, "x");
+			cnt = psmt.executeUpdate();
+			
+			if(cnt>0) {
+				System.out.println("しし");
+			}else {
+				System.out.println("いい");
+			}
+			
+			
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		
+	}
 	
 	
 	
