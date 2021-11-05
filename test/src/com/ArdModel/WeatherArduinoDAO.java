@@ -318,7 +318,7 @@ public class WeatherArduinoDAO {
 	
 	public int scound_time(String sleep_time,String wake_time) {
 		
-		int dayM = 60*24;
+		int dayM = 60*24; //1440Ка
 		String[] sleep = sleep_time.split(":");
 		int sleepT = Integer.parseInt(sleep[0]) * 60 + Integer.parseInt(sleep[1]);
 		System.out.println(dayM - sleepT);
